@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  title: "rentonhead.dev",
+  title: "rentonhead | Hasan Cemil Acar",
   description:
-    "Hasan Cemil Acar, rentonhead, Software Developer, Web Developer, Ios Developer, React, Swift, Istanbul, Turkey",
+    "Hasan Cemil Acar, rentonhead | Software Developer | Web Developer | Ios Developer | React | Swift | Istanbul | Turkey",
 };
 
 export default function RootLayout({

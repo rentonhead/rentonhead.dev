@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Me from "./myphoto.jpeg";
+import Me from "./myphoto.webp";
 
 export default function Home() {
   return (
