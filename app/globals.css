@@ -5,4 +5,5 @@
 @font-face {
   font-family: "durer";
   src: url("../public/Durer.otf");
+  font-display: swap;
 }
