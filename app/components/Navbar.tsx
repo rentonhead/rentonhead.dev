@@ -99,7 +99,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="hidden">
             <div className="pt-2 pb-3 space-y-1">
               <Link
                 href="/"
