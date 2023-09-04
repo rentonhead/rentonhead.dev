@@ -57,7 +57,7 @@ export default function Home() {
 
         <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
           <p>
-            Hey I'm Hasan but you can call me rentonhead. <br /> Software
+            Hey I&apos;m Hasan but you can call me rentonhead. <br /> Software
             developer based in Istanbul/Turkey
           </p>
           <p>
