@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Me from "./myphoto.webp";
 
+export const metadata = {
+  title: "Homepage",
+};
+
 export default function Home() {
   return (
     <div className="divide-y divide-gray-100 dark:divide-gray-700">

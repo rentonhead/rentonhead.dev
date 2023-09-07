@@ -13,9 +13,43 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  title: "rentonhead | Hasan Cemil Acar",
-  description:
-    "Hasan Cemil Acar, rentonhead | Software Developer | Web Developer | Ios Developer | React | Swift | Istanbul | Turkey",
+  title: {
+    default: "rentonhead | Hasan Cemil Acar",
+    template: "%s | rentonhead | Hasan Cemil Acar",
+  },
+  description: "rentonhead | Software Developer | Istanbul/Turkey",
+  keywords: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "React",
+    "JavaScript",
+    "Web Developer",
+    "Swift",
+    "iOS",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google",
+    yandex: "yandex",
+    yahoo: "yahoo",
+    other: {
+      me: ["hasancemilacar@gmail.com", "www.rentonhead.dev"],
+    },
+  },
+  category: "software development",
 };
 
 export default function RootLayout({
