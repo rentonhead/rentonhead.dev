@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     "Web Developer",
     "Swift",
     "iOS",
+    "macOS",
   ],
   robots: {
     index: true,
