@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     "macOS",
   ],
   robots: {
-    index: true,
+    index: false,
     follow: true,
-    nocache: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
