@@ -2,7 +2,7 @@ import Image from "next/image";
 import Me from "./myphoto.webp";
 
 export const metadata = {
-  title: "Homepage",
+  title: "rentonhead.dev | Hasan Cemil Acar",
 };
 
 export default function Home() {
