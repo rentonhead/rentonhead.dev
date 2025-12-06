@@ -46,13 +46,19 @@ export default async function Projects() {
               <Image
                 fill
                 src={project.imageUrl}
-                alt="Image of the project"
+                alt={`${project.title} project image`}
                 className="w-full h-full object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
 
             <div className="p-4 sm:p-6">
-              <a href={project.link} target="_blank">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                   {project.title}
                 </h3>
@@ -65,6 +71,7 @@ export default async function Projects() {
               <a
                 href={project.link}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-teal-500"
               >
                 Learn More!

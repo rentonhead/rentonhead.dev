@@ -33,6 +33,7 @@ export default function Home() {
             <a
               href="https://github.com/rentonhead"
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="rentonhead's github profile"
             >
               <svg
@@ -46,6 +47,7 @@ export default function Home() {
             <a
               href="https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/"
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="rentonhead's linkedin profile"
             >
               <svg
@@ -73,17 +75,29 @@ export default function Home() {
 
         <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
           <p>
-            Hey I&apos;m Hasan but you can call me rentonhead. <br /> Software
-            developer based in Istanbul/Turkey
+            Hey, I&apos;m Hasan — but most people know me as{" "}
+            <span className="font-semibold">rentonhead</span>.<br />
+            A multidisciplinary developer & designer based in Istanbul, Turkey.
           </p>
           <p>
-            I building Full Stack applications with React and NextJS and Mobile
-            apps with Swift. I am also interested in UI/UX design and Branding.
+            I build modern digital products: Full-Stack web applications with
+            React & Next.js, mobile experiences with SwiftUI, and scalable
+            e-commerce infrastructures for growing brands.
+          </p>
+          <p>
+            Beyond development, I craft visual identities, branding systems and
+            clean UI/UX designs. I love turning abstract ideas into functional,
+            aesthetic and meaningful digital experiences.
           </p>
           <p className="italic text-sm animate-pulse bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900 bg-clip-text text-transparent dark:animate-pulse dark:bg-gradient-to-r dark:from-yellow-500 dark:via-green-500 dark:to-violet-500 dark:bg-clip-text dark:text-transparent">
-            I will update my portfolio soon. You can check my{" "}
-            <a className="underline" href="https://www.github.com/rentonhead">
-              github profile.
+            More case studies are on the way — meanwhile you can explore my{" "}
+            <a
+              className="underline"
+              href="https://www.github.com/rentonhead"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub profile.
             </a>
           </p>
         </div>

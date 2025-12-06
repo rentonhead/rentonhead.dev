@@ -24,10 +24,12 @@ export default async function SlugPage({
       image: ({ value }: { value: any }) => (
         <Image
           src={urlFor(value).url()}
-          alt="Image"
+          alt="Blog post image"
           className="rounded-lg"
           width={800}
           height={800}
+          sizes="(max-width: 768px) 100vw, 800px"
+          loading="lazy"
         />
       ),
     },

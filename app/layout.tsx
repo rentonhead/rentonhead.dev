@@ -1,11 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import { Provider } from "./components/Provider";
 import Footer from "./components/Footer";
-import CursorComp from "./components/Cursor";
 import { Analytics } from "@vercel/analytics/react";
+
+const CursorComp = dynamic(() => import("./components/Cursor"), {
+  ssr: false,
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
