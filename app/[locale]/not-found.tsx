@@ -1,7 +1,9 @@
-import React from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
-function Movie404() {
+export default function NotFound() {
+  const t = useTranslations("notFound");
+
   return (
     <div
       style={{
@@ -12,15 +14,13 @@ function Movie404() {
         flexDirection: "column",
       }}
     >
-      <h1>We couldn&apos;t find the movie you looking for!</h1>
+      <h1>{t("description")}</h1>
       <Link
         href="/"
         style={{ textDecoration: "underline", fontSize: 20, marginTop: 8 }}
       >
-        Go home
+        {t("goHome")}
       </Link>
     </div>
   );
 }
-
-export default Movie404;

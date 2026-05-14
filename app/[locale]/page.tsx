@@ -1,11 +1,16 @@
 import Image from "next/image";
-import Me from "./myphoto.webp";
+import Me from "../myphoto.webp";
+import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata = {
   title: "rentonhead.dev | Hasan Cemil Acar",
 };
 
-export default function Home() {
+export default function Home({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("home");
+
   return (
     <div className="divide-y divide-gray-100 dark:divide-gray-700">
       <div className="items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
@@ -20,13 +25,13 @@ export default function Home() {
             className="h-48 w-48 rounded-full object-cover object-top"
           />
           <h1 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
-            Hasan Cemil Acar
+            {t("name")}
           </h1>
           <p className="text-gray-500 text-xl dark:text-gray-300 text-center">
-            a.k.a rentonhead
+            {t("aka")}
           </p>
           <p className="text-gray-500  dark:text-gray-300 text-center">
-            Art Director &amp; Programmer
+            {t("role")}
           </p>
 
           <div className="flex space-x-5 pt-6">
@@ -34,7 +39,7 @@ export default function Home() {
               href="https://github.com/rentonhead"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="rentonhead's github profile"
+              aria-label={t("githubAria")}
             >
               <svg
                 viewBox="0 0 1024 1024"
@@ -48,7 +53,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="rentonhead's linkedin profile"
+              aria-label={t("linkedinAria")}
             >
               <svg
                 viewBox="0 0 1024 1024"
@@ -60,7 +65,7 @@ export default function Home() {
             </a>
             <a
               href="mailto:hasancemilacar@gmail.com?subject=Hey,rentonhead!"
-              aria-label="Mail to rentonhead"
+              aria-label={t("mailAria")}
             >
               <svg
                 viewBox="0 0 1024 1024"
@@ -75,22 +80,12 @@ export default function Home() {
 
         <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
           <p>
-            Hey, I&apos;m Hasan — but most people know me as{" "}
-            <span className="font-semibold">rentonhead</span>.
-            An Art Director and Programmer based between İstanbul and Moscow.
+            {t("bio1")}{" "}
+            <span className="font-semibold">{t("bio1Name")}</span>
+            {t("bio1End")}
           </p>
-          <p>
-            I bridge the gap between design and development to build modern
-            digital products. On the technical side, I create mobile applications
-            with SwiftUI, web experiences with React &amp; Next.js, and robust
-            e-commerce solutions.
-          </p>
-          <p>
-            On the creative side, I craft visual identities and seamless UI/UX
-            designs using Figma and the Adobe Creative Suite. I love turning
-            abstract ideas into functional, aesthetic, and meaningful digital
-            experiences.
-          </p>
+          <p>{t("bio2")}</p>
+          <p>{t("bio3")}</p>
         </div>
       </div>
     </div>
