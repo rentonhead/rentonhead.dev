@@ -54,7 +54,7 @@ const statusConfig = {
 
 export default function MobileProjectsPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div>
       {/* Hero Header */}
       <div className="pt-6 pb-12">
         {/* Breadcrumb */}

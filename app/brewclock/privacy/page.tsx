@@ -173,7 +173,7 @@ const sections = [
 
 export default function BrewClockPrivacyPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <div className="max-w-3xl">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 pt-6 mb-10">
         <Link href="/projects" className="hover:text-teal-500 transition-colors duration-150">Projects</Link>

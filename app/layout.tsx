@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: "rentonhead | Hasan Cemil Acar",
     template: "%s | rentonhead | Hasan Cemil Acar",
   },
-  description: "rentonhead | Software Developer | Istanbul/Turkey",
+  description: "rentonhead | Art Director & Programmer | Istanbul & Moscow",
   keywords: [
     "Next.js",
     "TypeScript",
@@ -30,8 +30,12 @@ export const metadata: Metadata = {
     "JavaScript",
     "Web Developer",
     "Swift",
+    "SwiftUI",
     "iOS",
-    "macOS",
+    "Art Director",
+    "UI/UX Design",
+    "Figma",
+    "Branding",
   ],
   robots: {
     index: true,

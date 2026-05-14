@@ -128,7 +128,7 @@ export default async function Projects() {
   const data: SanityProject[] = await getProjects();
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div>
       {/* Page Header */}
       <div className="pt-6 pb-10 border-b border-gray-100 dark:border-gray-800">
         <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl mb-3">
