@@ -26,7 +26,7 @@ export default function Home() {
             a.k.a rentonhead
           </p>
           <p className="text-gray-500  dark:text-gray-300 text-center">
-            Software Developer
+            Art Director &amp; Programmer
           </p>
 
           <div className="flex space-x-5 pt-6">
@@ -76,29 +76,20 @@ export default function Home() {
         <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
           <p>
             Hey, I&apos;m Hasan — but most people know me as{" "}
-            <span className="font-semibold">rentonhead</span>.<br />
-            A multidisciplinary developer & designer based in Istanbul, Turkey.
+            <span className="font-semibold">rentonhead</span>.
+            An Art Director and Programmer based between İstanbul and Moscow.
           </p>
           <p>
-            I build modern digital products: Full-Stack web applications with
-            React & Next.js, mobile experiences with SwiftUI, and scalable
-            e-commerce infrastructures for growing brands.
+            I bridge the gap between design and development to build modern
+            digital products. On the technical side, I create mobile applications
+            with SwiftUI, web experiences with React &amp; Next.js, and robust
+            e-commerce solutions.
           </p>
           <p>
-            Beyond development, I craft visual identities, branding systems and
-            clean UI/UX designs. I love turning abstract ideas into functional,
-            aesthetic and meaningful digital experiences.
-          </p>
-          <p className="italic text-sm animate-pulse bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900 bg-clip-text text-transparent dark:animate-pulse dark:bg-gradient-to-r dark:from-yellow-500 dark:via-green-500 dark:to-violet-500 dark:bg-clip-text dark:text-transparent">
-            More case studies are on the way — meanwhile you can explore my{" "}
-            <a
-              className="underline"
-              href="https://www.github.com/rentonhead"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub profile.
-            </a>
+            On the creative side, I craft visual identities and seamless UI/UX
+            designs using Figma and the Adobe Creative Suite. I love turning
+            abstract ideas into functional, aesthetic, and meaningful digital
+            experiences.
           </p>
         </div>
       </div>
