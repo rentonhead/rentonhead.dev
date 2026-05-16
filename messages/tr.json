@@ -23,7 +23,8 @@
     "bio1Name": "rentonhead",
     "bio1End": " olarak tanır. İstanbul ve Moskova arasında yaşayan bir Art Director ve Programcıyım.",
     "bio2": "Tasarım ile geliştirme arasındaki köprüyü kurarak modern dijital ürünler inşa ediyorum. Teknik tarafta SwiftUI ile mobil uygulamalar, React & Next.js ile web deneyimleri ve güçlü e-ticaret çözümleri geliştiriyorum.",
-    "bio3": "Yaratıcı tarafta ise Figma ve Adobe Creative Suite kullanarak görsel kimlikler ve akıcı UI/UX tasarımları oluşturuyorum. Soyut fikirleri işlevsel, estetik ve anlamlı dijital deneyimlere dönüştürmeyi seviyorum."
+    "bio3": "Yaratıcı tarafta ise Figma ve Adobe Creative Suite kullanarak görsel kimlikler ve akıcı UI/UX tasarımları oluşturuyorum. Soyut fikirleri işlevsel, estetik ve anlamlı dijital deneyimlere dönüştürmeyi seviyorum.",
+    "imageAlt": "Hasan Cemil Acar - İstanbul ve Global Odaklı Art Director, UI/UX Tasarımcı ve Mobil Uygulama Geliştirici"
   },
   "projects": {
     "title": "Tüm Projeler",

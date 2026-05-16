@@ -23,7 +23,8 @@
     "bio1Name": "rentonhead",
     "bio1End": ". An Art Director and Programmer based between İstanbul and Moscow.",
     "bio2": "I bridge the gap between design and development to build modern digital products. On the technical side, I create mobile applications with SwiftUI, web experiences with React & Next.js, and robust e-commerce solutions.",
-    "bio3": "On the creative side, I craft visual identities and seamless UI/UX designs using Figma and the Adobe Creative Suite. I love turning abstract ideas into functional, aesthetic, and meaningful digital experiences."
+    "bio3": "On the creative side, I craft visual identities and seamless UI/UX designs using Figma and the Adobe Creative Suite. I love turning abstract ideas into functional, aesthetic, and meaningful digital experiences.",
+    "imageAlt": "Hasan Cemil Acar - Art Director, UI/UX Designer & iOS Developer in Istanbul and Moscow"
   },
   "projects": {
     "title": "All Projects",

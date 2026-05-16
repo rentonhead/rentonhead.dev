@@ -62,11 +62,20 @@ export async function generateMetadata({
       siteName: "rentonhead",
       locale: locale,
       type: "website",
+      images: [
+        {
+          url: "https://rentonhead.dev/myphoto.webp",
+          width: 500,
+          height: 500,
+          alt: "Hasan Cemil Acar - rentonhead",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
+      images: ["https://rentonhead.dev/myphoto.webp"],
     },
     alternates: {
       canonical: `/${locale}`,
@@ -107,6 +116,26 @@ export default async function LocaleLayout({
     alternateName: "rentonhead",
     url: "https://rentonhead.dev",
     jobTitle: "Art Director & Programmer",
+    image: "https://rentonhead.dev/myphoto.webp",
+    worksFor: {
+      "@type": "Organization",
+      name: "Freelance",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Istanbul",
+      addressCountry: "Turkey",
+    },
+    knowsAbout: [
+      "Mobile App Development",
+      "iOS Development",
+      "SwiftUI",
+      "React",
+      "Next.js",
+      "UI/UX Design",
+      "Figma",
+      "Art Direction",
+    ],
     sameAs: [
       "https://github.com/rentonhead",
       "https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/"

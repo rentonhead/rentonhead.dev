@@ -24,7 +24,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       <div className="items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
         <div className="flex flex-col items-center pt-8">
           <Image
-            alt="Picture of hasan cemil acar"
+            alt={t("imageAlt")}
             src={Me}
             width={500}
             height={500}

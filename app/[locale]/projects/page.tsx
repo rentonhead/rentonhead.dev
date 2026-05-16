@@ -136,8 +136,24 @@ export default async function Projects({ params: { locale } }: { params: { local
     },
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": data.map((project, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": project.link,
+      "name": project.title,
+      "description": project.overview
+    }))
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="pt-6 pb-10 border-b border-gray-100 dark:border-gray-800">
         <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl mb-3">
           {t("title")}
