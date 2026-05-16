@@ -13,11 +13,12 @@ const localeLabels: Record<string, { flag: string; label: string }> = {
   ru: { flag: "🇷🇺", label: "RU" },
 };
 
-function LanguageSwitcher() {
+function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   const locale = useLocale();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations("nav");
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -30,7 +31,6 @@ function LanguageSwitcher() {
   }, []);
 
   const switchLocale = (newLocale: string) => {
-    // Replace /en/, /tr/, /ru/ prefix in the current path
     const segments = pathname.split("/");
     segments[1] = newLocale;
     window.location.href = segments.join("/");
@@ -42,11 +42,14 @@ function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-150"
-        aria-label="Switch language"
+        className={`inline-flex items-center gap-1.5 rounded-lg text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-150 ${
+          compact ? "px-2 py-1.5" : "px-2.5 py-1.5"
+        }`}
+        aria-label={t("switchLanguage")}
+        aria-expanded={open}
       >
         <span className="text-base leading-none">{current.flag}</span>
-        <span>{current.label}</span>
+        {!compact && <span>{current.label}</span>}
         <svg
           className={`w-3 h-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
@@ -59,7 +62,7 @@ function LanguageSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-32 rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-xl z-50 overflow-hidden">
+        <div className="absolute right-0 top-full mt-2 w-36 rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-xl z-50 overflow-hidden">
           {Object.entries(localeLabels).map(([loc, { flag, label }]) => (
             <button
               key={loc}
@@ -88,52 +91,68 @@ function LanguageSwitcher() {
   );
 }
 
-
-
 export default function Navbar() {
   const t = useTranslations("nav");
-  let pathname = usePathname() || "/";
+  const pathname = usePathname() || "/";
+  const isProjects = pathname.includes("/projects");
+  const isHome =
+    pathname.endsWith("/") &&
+    pathname.split("/").filter(Boolean).length <= 1;
+
   return (
-    <Disclosure as="nav">
+    <Disclosure as="nav" className="sticky top-0 z-40 backdrop-blur-xl bg-white/70 dark:bg-[#090908]/70 border-b border-gray-100/80 dark:border-gray-800/80">
       {({ open }: { open: boolean }) => (
         <>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
-            <div className="flex justify-between h-16">
-              <div className="flex justify-between w-full">
-                <div className="flex items-center">
-                  <Link href="/">
-                    <h1 className="text-4xl font-xl font-durer dark:text-yellow-300">
-                      rentonhead
-                    </h1>
-                  </Link>
-                </div>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16 sm:h-20">
+              {/* Logo */}
+              <Link href="/" className="flex items-center" aria-label="rentonhead home">
+                <h1 className="text-3xl sm:text-4xl font-xl font-durer dark:text-yellow-300 leading-none">
+                  rentonhead
+                </h1>
+              </Link>
 
-                <div className="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
-                  <Link
-                    href="/projects"
-                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200 ${
-                      pathname.includes("/projects")
-                        ? "border-teal-500 text-gray-900 dark:text-white"
-                        : "border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:border-teal-400"
-                    }`}
-                  >
-                    {t("projects")}
-                  </Link>
-                  <LanguageSwitcher />
-                  <Themebutton />
-                </div>
-              </div>
-
-              <div className="-mr-2 flex items-center sm:hidden">
+              {/* Desktop nav */}
+              <div className="hidden sm:flex sm:items-center sm:gap-6">
+                <Link
+                  href="/"
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    isHome
+                      ? "text-teal-600 dark:text-teal-400"
+                      : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  }`}
+                >
+                  {t("home")}
+                </Link>
+                <Link
+                  href="/projects"
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    isProjects
+                      ? "text-teal-600 dark:text-teal-400"
+                      : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  }`}
+                >
+                  {t("projects")}
+                </Link>
+                <div className="h-5 w-px bg-gray-200 dark:bg-gray-700" />
                 <LanguageSwitcher />
                 <Themebutton />
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 dark:hover:bg-gray-800">
+              </div>
+
+              {/* Mobile actions */}
+              <div className="flex items-center gap-1.5 sm:hidden">
+                <LanguageSwitcher compact />
+                <Themebutton />
+                <Disclosure.Button
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 transition-colors"
+                  aria-label={open ? t("closeMenu") : t("openMenu")}
+                >
                   {open ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                   )}
@@ -142,31 +161,33 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
-            <div className="pt-2 pb-3 space-y-1">
-              <Link
+          <Disclosure.Panel className="sm:hidden border-t border-gray-100 dark:border-gray-800 bg-white/95 dark:bg-[#090908]/95 backdrop-blur-xl">
+            <div className="px-3 py-3 space-y-1">
+              <Disclosure.Button
+                as={Link}
                 href="/"
                 prefetch
-                className={`${
-                  pathname.endsWith(`/`) && pathname.split("/").length <= 3
-                    ? "bg-teal-50 border-teal-500 text-teal-500 block pl-3 pr-4 py-2 border-l-4 text-base font-medium dark:bg-gray-800"
-                    : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-teal-500 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 border-l-4 text-base font-medium dark:text-white"
-                } `}
+                className={`block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                  isHome
+                    ? "bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                }`}
               >
                 {t("home")}
-              </Link>
+              </Disclosure.Button>
 
-              <Link
+              <Disclosure.Button
+                as={Link}
                 href="/projects"
                 prefetch
-                className={`${
-                  pathname.includes("/projects")
-                    ? "bg-teal-50 border-teal-500 text-teal-500 block pl-3 pr-4 py-2 border-l-4 text-base font-medium dark:bg-gray-800"
-                    : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-teal-500 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 border-l-4 text-base font-medium dark:text-white"
-                } `}
+                className={`block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                  isProjects
+                    ? "bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                }`}
               >
                 {t("projects")}
-              </Link>
+              </Disclosure.Button>
             </div>
           </Disclosure.Panel>
         </>

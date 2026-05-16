@@ -6,16 +6,25 @@
     "allProjectsDesc": "Веб, дизайн и другое",
     "mobileProjects": "Мобильные проекты",
     "mobileProjectsDesc": "Приложения iOS и SwiftUI",
-    "categories": "Категории"
+    "categories": "Категории",
+    "menu": "Меню",
+    "closeMenu": "Закрыть меню",
+    "openMenu": "Открыть меню",
+    "switchLanguage": "Сменить язык"
   },
   "footer": {
-    "createdBy": "© {year} создано rentonhead с помощью Next.js"
+    "createdBy": "© {year} rentonhead — сделано на Next.js",
+    "based": "Стамбул ↔ Москва",
+    "availableForWork": "Открыт для новых проектов",
+    "rights": "Все права защищены."
   },
   "home": {
     "title": "rentonhead.dev | Hasan Cemil Acar",
     "name": "Hasan Cemil Acar",
     "aka": "a.k.a rentonhead",
     "role": "Арт-директор и Программист",
+    "location": "Стамбул ↔ Москва",
+    "availability": "Открыт для новых проектов",
     "githubAria": "GitHub профиль rentonhead",
     "linkedinAria": "LinkedIn профиль rentonhead",
     "mailAria": "Написать rentonhead",
@@ -24,7 +33,27 @@
     "bio1End": ". Арт-директор и Программист, живущий между Стамбулом и Москвой.",
     "bio2": "Я создаю мост между дизайном и разработкой для создания современных цифровых продуктов. С технической стороны — мобильные приложения на SwiftUI, веб-опыт на React и Next.js, а также надёжные решения для электронной коммерции.",
     "bio3": "С творческой стороны — я создаю визуальные идентичности и продуманный UI/UX дизайн с помощью Figma и Adobe Creative Suite. Мне нравится превращать абстрактные идеи в функциональные, эстетичные и значимые цифровые продукты.",
-    "imageAlt": "Хасан Джемиль Аджар - Арт-директор, UI/UX дизайнер и iOS-разработчик в Стамбуле и Москве"
+    "imageAlt": "Хасан Джемиль Аджар - Арт-директор, UI/UX дизайнер и iOS-разработчик в Стамбуле и Москве",
+    "skillsTitle": "Чем я занимаюсь",
+    "skillsSubtitle": "Цифровые продукты под ключ — от фирменного стиля до запуска нативных мобильных приложений.",
+    "skill_creative_title": "Креативное направление & UI/UX",
+    "skill_creative_desc": "Создаю фирменный стиль с нуля в Figma, Photoshop, Illustrator и After Effects — проектирую эстетичный и функциональный UI/UX для мобильных и веб-приложений.",
+    "skill_creative_tags": "Figma · Photoshop · Illustrator · After Effects",
+    "skill_mobile_title": "Разработка мобильных приложений",
+    "skill_mobile_desc": "Нативные, производительные iOS-приложения на Swift и SwiftUI с чистой и масштабируемой архитектурой кода.",
+    "skill_mobile_tags": "Swift · SwiftUI · iOS · App Store",
+    "skill_web_title": "Современная веб-разработка",
+    "skill_web_desc": "Быстрые, динамичные и элегантные сайты на React, Next.js и Tailwind CSS. На бэкенде — Python и Firebase.",
+    "skill_web_tags": "React · Next.js · Tailwind · Python · Firebase",
+    "skill_ecom_title": "E-commerce и CMS",
+    "skill_ecom_desc": "Полное владение WordPress и WooCommerce — от кастомизации тем до технической инфраструктуры. Проекты под ключ.",
+    "skill_ecom_tags": "WordPress · WooCommerce · Shopify",
+    "skill_seo_title": "SEO и контент-стратегия",
+    "skill_seo_desc": "Оптимизирую сайты под поисковые системы с помощью Rank Math, повышаю видимость через локальные и общие стратегии SEO.",
+    "skill_seo_tags": "Rank Math · Local SEO · Content",
+    "skill_appstore_title": "Дизайн скриншотов App Store",
+    "skill_appstore_desc": "Скриншоты для App Store, ориентированные на конверсию и соответствующие визуальному языку бренда.",
+    "skill_appstore_tags": "App Store · Маркетинг · Визуал"
   },
   "projects": {
     "title": "Все проекты",
@@ -119,17 +148,20 @@
   },
   "metadata": {
     "home": {
-      "title": "rentonhead | Hasan Cemil Acar | Разработка мобильных приложений и UI/UX",
-      "description": "rentonhead (Hasan Cemil Acar) — арт-директор и программист из Стамбула и Москвы. Специализируется на разработке iOS-приложений и UI/UX дизайне.",
-      "keywords": "Разработка мобильных приложений Стамбул, UI/UX дизайнер Москва, Дизайн интерфейсов, Дизайн скриншотов приложений, Создание iOS приложений Турция, Next.js, TypeScript, React, Swift, SwiftUI, Арт-директор, Брендинг"
+      "title": "rentonhead | Hasan Cemil Acar — Разработка iOS и UI/UX дизайн | Москва",
+      "description": "Хасан Джемиль Аджар (rentonhead) — арт-директор и программист из Стамбула и Москвы. Разработка нативных iOS-приложений (Swift/SwiftUI), веб-сайтов на React и Next.js, интернет-магазинов на WooCommerce и профессиональный UI/UX дизайн для клиентов в Москве, Санкт-Петербурге и по всему миру.",
+      "keywords": "разработка iOS приложений Москва, разработчик мобильных приложений Санкт-Петербург, UI UX дизайнер Москва, скриншоты App Store, Swift SwiftUI разработчик, React Next.js разработчик, WordPress WooCommerce специалист, разработка сайта под ключ, интернет-магазин под ключ, фирменный стиль, дизайн логотипа, локальное SEO, Figma UI дизайн, арт-директор, фрилансер Москва",
+      "geoRegion": "RU-MOW",
+      "geoPlaceName": "Москва, Россия",
+      "geoPosition": "55.7558;37.6173"
     },
     "projects": {
-      "title": "Проекты | rentonhead",
-      "description": "Портфолио работ в области разработки мобильных приложений, веба, электронной коммерции, брендинга и UI/UX дизайна для клиентов в Стамбуле, Москве и по всему миру."
+      "title": "Проекты | rentonhead — Mobile, Web и Дизайн",
+      "description": "Портфолио работ: нативные iOS-приложения, веб-сайты, e-commerce, брендинг и UI/UX дизайн для клиентов в Москве, Санкт-Петербурге, Стамбуле и по всему миру."
     },
     "mobileProjects": {
-      "title": "Разработка мобильных приложений | rentonhead",
-      "description": "Нативные iOS-приложения на SwiftUI. Индивидуальная разработка мобильных приложений для экосистемы Apple, базирующаяся в Стамбуле и Москве."
+      "title": "Разработка iOS-приложений | rentonhead — Москва",
+      "description": "Нативные iOS-приложения на SwiftUI. Индивидуальная разработка мобильных приложений для экосистемы Apple для клиентов в Москве, Санкт-Петербурге и по всей России."
     }
   }
 }
