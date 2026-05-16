@@ -116,5 +116,20 @@
   },
   "blog": {
     "title": "All Posts"
+  },
+  "metadata": {
+    "home": {
+      "title": "rentonhead | Hasan Cemil Acar",
+      "description": "rentonhead | Art Director & Programmer | Istanbul & Moscow",
+      "keywords": "Mobile App Development, UI Design, App Screenshot Design, Next.js, TypeScript, React, Swift, SwiftUI, iOS, Art Director, UI/UX Design, Figma, Branding"
+    },
+    "projects": {
+      "title": "Projects | rentonhead",
+      "description": "A collection of work spanning mobile, web, e-commerce, branding and design."
+    },
+    "mobileProjects": {
+      "title": "Mobile Projects | rentonhead",
+      "description": "Native iOS experiences built with SwiftUI — crafted for the Apple ecosystem with precision and care."
+    }
   }
 }

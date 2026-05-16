@@ -1,11 +1,19 @@
 import Image from "next/image";
 import Me from "../myphoto.webp";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
-export const metadata = {
-  title: "rentonhead.dev | Hasan Cemil Acar",
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "metadata.home" });
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default function Home({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);

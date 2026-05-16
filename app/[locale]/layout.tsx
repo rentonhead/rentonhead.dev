@@ -7,7 +7,7 @@ import { Provider } from "./components/Provider";
 import Footer from "./components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, setRequestLocale, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 
@@ -17,51 +17,67 @@ const CursorComp = dynamic(() => import("./components/Cursor"), {
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  icons: {
-    icon: "/favicon.ico",
-  },
-  title: {
-    default: "rentonhead | Hasan Cemil Acar",
-    template: "%s | rentonhead | Hasan Cemil Acar",
-  },
-  description: "rentonhead | Art Director & Programmer | Istanbul & Moscow",
-  keywords: [
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "React",
-    "JavaScript",
-    "Web Developer",
-    "Swift",
-    "SwiftUI",
-    "iOS",
-    "Art Director",
-    "UI/UX Design",
-    "Figma",
-    "Branding",
-  ],
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "metadata.home" });
+
+  return {
+    metadataBase: new URL("https://rentonhead.dev"),
+    icons: {
+      icon: "/favicon.ico",
+    },
+    title: {
+      default: t("title"),
+      template: "%s",
+    },
+    description: t("description"),
+    keywords: t("keywords").split(", "),
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+      },
     },
-  },
-  verification: {
-    google: "RgUvBdhUfXiMJXPjGxk23nTuk3zf9w-9MX9qCRd7Xjk",
-    yandex: "yandex",
-    yahoo: "yahoo",
-    other: {
-      me: ["hasancemilacar@gmail.com", "www.rentonhead.dev"],
+    verification: {
+      google: "RgUvBdhUfXiMJXPjGxk23nTuk3zf9w-9MX9qCRd7Xjk",
+      yandex: "yandex",
+      yahoo: "yahoo",
+      other: {
+        me: ["hasancemilacar@gmail.com", "www.rentonhead.dev"],
+      },
     },
-  },
-  category: "software development",
-};
+    category: "software development",
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: "https://rentonhead.dev",
+      siteName: "rentonhead",
+      locale: locale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: "/en",
+        tr: "/tr",
+        ru: "/ru",
+      },
+    },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -84,11 +100,28 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Hasan Cemil Acar",
+    alternateName: "rentonhead",
+    url: "https://rentonhead.dev",
+    jobTitle: "Art Director & Programmer",
+    sameAs: [
+      "https://github.com/rentonhead",
+      "https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/"
+    ]
+  };
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
         className={`${inter.className} bg-white text-black dark:bg-[#090908] dark:text-white h-full selection:bg-gray-50 dark:selection:bg-gray-800`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Provider>
             <CursorComp />

@@ -115,5 +115,20 @@
   },
   "blog": {
     "title": "Tüm Yazılar"
+  },
+  "metadata": {
+    "home": {
+      "title": "rentonhead | Hasan Cemil Acar",
+      "description": "rentonhead | Art Director & Programcı | İstanbul & Moskova",
+      "keywords": "Mobil Uygulama Geliştirme, Arayüz Tasarımı, App Screenshot Tasarımı, Next.js, TypeScript, React, Swift, SwiftUI, iOS, Art Director, UI/UX Tasarım, Figma, Branding"
+    },
+    "projects": {
+      "title": "Projeler | rentonhead",
+      "description": "Mobil, web, e-ticaret, marka kimliği ve tasarım alanlarını kapsayan çalışmalar."
+    },
+    "mobileProjects": {
+      "title": "Mobil Projeler | rentonhead",
+      "description": "Apple ekosistemi için SwiftUI ile özenle geliştirilen yerli iOS deneyimleri."
+    }
   }
 }

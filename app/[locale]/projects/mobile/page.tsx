@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Mobile Projects | rentonhead.dev",
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "metadata.mobileProjects" });
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default function MobileProjectsPage({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);

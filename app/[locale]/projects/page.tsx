@@ -4,9 +4,17 @@ import type { Metadata } from "next";
 import { client } from "../../lib/sanity";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Projects | rentonhead.dev",
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "metadata.projects" });
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 interface SanityProject {
   title: string;
