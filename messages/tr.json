@@ -6,16 +6,25 @@
     "allProjectsDesc": "Web, tasarım ve daha fazlası",
     "mobileProjects": "Mobil Projeler",
     "mobileProjectsDesc": "iOS & SwiftUI uygulamaları",
-    "categories": "Kategoriler"
+    "categories": "Kategoriler",
+    "menu": "Menü",
+    "closeMenu": "Menüyü kapat",
+    "openMenu": "Menüyü aç",
+    "switchLanguage": "Dili değiştir"
   },
   "footer": {
-    "createdBy": "© {year} rentonhead tarafından Next.js ile oluşturuldu"
+    "createdBy": "© {year} rentonhead — Next.js ile oluşturuldu",
+    "based": "İstanbul ↔ Moskova",
+    "availableForWork": "Yeni projelere açık",
+    "rights": "Tüm hakları saklıdır."
   },
   "home": {
     "title": "rentonhead.dev | Hasan Cemil Acar",
     "name": "Hasan Cemil Acar",
     "aka": "a.k.a rentonhead",
     "role": "Art Director & Programcı",
+    "location": "İstanbul ↔ Moskova",
+    "availability": "Yeni projelere açık",
     "githubAria": "rentonhead'in GitHub profili",
     "linkedinAria": "rentonhead'in LinkedIn profili",
     "mailAria": "rentonhead'e e-posta gönder",
@@ -24,7 +33,27 @@
     "bio1End": " olarak tanır. İstanbul ve Moskova arasında yaşayan bir Art Director ve Programcıyım.",
     "bio2": "Tasarım ile geliştirme arasındaki köprüyü kurarak modern dijital ürünler inşa ediyorum. Teknik tarafta SwiftUI ile mobil uygulamalar, React & Next.js ile web deneyimleri ve güçlü e-ticaret çözümleri geliştiriyorum.",
     "bio3": "Yaratıcı tarafta ise Figma ve Adobe Creative Suite kullanarak görsel kimlikler ve akıcı UI/UX tasarımları oluşturuyorum. Soyut fikirleri işlevsel, estetik ve anlamlı dijital deneyimlere dönüştürmeyi seviyorum.",
-    "imageAlt": "Hasan Cemil Acar - İstanbul ve Global Odaklı Art Director, UI/UX Tasarımcı ve Mobil Uygulama Geliştirici"
+    "imageAlt": "Hasan Cemil Acar - İstanbul ve Global Odaklı Art Director, UI/UX Tasarımcı ve Mobil Uygulama Geliştirici",
+    "skillsTitle": "Yetkinlikler",
+    "skillsSubtitle": "Marka kimliğinden mobil uygulamaya, uçtan uca dijital ürünler üretiyorum.",
+    "skill_creative_title": "Kreatif Liderlik & UI/UX",
+    "skill_creative_desc": "Figma, Photoshop, Illustrator ve After Effects ile bir markanın kimliğini sıfırdan inşa ediyor; mobil uygulama ve web sitelerinin UI/UX'ini estetik ve işlevsel şekilde tasarlıyorum.",
+    "skill_creative_tags": "Figma · Photoshop · Illustrator · After Effects",
+    "skill_mobile_title": "Mobil Uygulama Geliştirme",
+    "skill_mobile_desc": "Swift ve SwiftUI ile iOS ekosistemine yerli (native), performanslı ve sürdürülebilir kod mimarisine sahip mobil uygulamalar geliştiriyorum.",
+    "skill_mobile_tags": "Swift · SwiftUI · iOS · App Store",
+    "skill_web_title": "Modern Web Geliştirme",
+    "skill_web_desc": "React, Next.js ve Tailwind CSS ile hızlı, dinamik ve şık web siteleri kodluyorum. Arka planda Python ve Firebase ile veri yönetimi sağlıyorum.",
+    "skill_web_tags": "React · Next.js · Tailwind · Python · Firebase",
+    "skill_ecom_title": "E-Ticaret & CMS",
+    "skill_ecom_desc": "WordPress ve WooCommerce ekosistemine tam hakimiyet. Tema özelleştirmeden teknik altyapıya kadar anahtar teslim e-ticaret projeleri çıkarıyorum.",
+    "skill_ecom_tags": "WordPress · WooCommerce · Shopify",
+    "skill_seo_title": "SEO & İçerik Stratejisi",
+    "skill_seo_desc": "Rank Math gibi araçlarla web sitelerini arama motorlarına göre optimize ediyor; lokal ve genel SEO stratejileriyle görünürlüğü artırıyorum.",
+    "skill_seo_tags": "Rank Math · Local SEO · Content",
+    "skill_appstore_title": "App Store Screen Tasarımı",
+    "skill_appstore_desc": "Mobil uygulamalar için dönüşüm odaklı, marka diliyle uyumlu App Store ekran tasarımları (screenshots) hazırlıyorum.",
+    "skill_appstore_tags": "App Store · Marketing · Visuals"
   },
   "projects": {
     "title": "Tüm Projeler",
@@ -119,17 +148,20 @@
   },
   "metadata": {
     "home": {
-      "title": "rentonhead | Hasan Cemil Acar | Mobil Uygulama ve UI/UX Tasarım",
-      "description": "rentonhead (Hasan Cemil Acar) İstanbul, Ankara ve İzmir başta olmak üzere tüm Türkiye'ye ve globale hizmet veren Art Director ve Yazılımcıdır. iOS mobil uygulama geliştirme ve profesyonel arayüz tasarımı (UI/UX) çözümleri.",
-      "keywords": "Mobil Uygulama Geliştirme, Arayüz Tasarımı, App Screenshot Tasarımı, Freelance Yazılımcı İstanbul, UI/UX Tasarımcı Ankara, iOS Uygulama Yapanlar İzmir, Web Tasarım, Next.js, TypeScript, React, Swift, SwiftUI, Özel Yazılım Geliştirme, Art Director, Branding"
+      "title": "rentonhead | Hasan Cemil Acar — Mobil Uygulama & UI/UX Tasarım | İstanbul",
+      "description": "Hasan Cemil Acar (rentonhead) — İstanbul merkezli, tüm Türkiye'ye (Ankara, İzmir, Bursa, Antalya) ve globale hizmet veren Art Director ve Yazılımcı. iOS mobil uygulama geliştirme (Swift/SwiftUI), React & Next.js ile web, WordPress/WooCommerce e-ticaret ve profesyonel UI/UX tasarım çözümleri.",
+      "keywords": "mobil uygulama yapımı İstanbul, iOS uygulama geliştirici İstanbul, freelance yazılımcı Ankara, UI UX tasarımcı İzmir, App Store screen tasarımı, app screenshot tasarımı, Swift SwiftUI geliştirici, React Next.js geliştirici Türkiye, WordPress WooCommerce uzmanı, kurumsal web sitesi tasarımı, e-ticaret sitesi yapımı, marka kimliği tasarımı, logo tasarımı, lokal SEO Türkiye, Rank Math SEO, Figma UI tasarımı, Art Director İstanbul",
+      "geoRegion": "TR",
+      "geoPlaceName": "İstanbul, Türkiye",
+      "geoPosition": "41.0082;28.9784"
     },
     "projects": {
-      "title": "Projeler | rentonhead",
-      "description": "İstanbul, Ankara, İzmir ve global pazarlar için geliştirdiğim mobil uygulama, web sitesi, e-ticaret, marka kimliği ve UI/UX tasarım çalışmaları."
+      "title": "Projeler | rentonhead — İstanbul Merkezli Yazılım & Tasarım",
+      "description": "İstanbul, Ankara, İzmir ve global pazarlar için ürettiğim iOS mobil uygulama, web sitesi, e-ticaret, marka kimliği ve UI/UX tasarım projeleri."
     },
     "mobileProjects": {
-      "title": "Mobil Uygulama Geliştirme | rentonhead",
-      "description": "Apple ekosistemi için SwiftUI ile geliştirilen performanslı ve yerli iOS deneyimleri. İstanbul ve Türkiye geneli özel iOS mobil uygulama geliştirme hizmetleri."
+      "title": "iOS Mobil Uygulama Geliştirme | rentonhead — Türkiye",
+      "description": "Apple ekosistemi için SwiftUI ile geliştirilen yerli iOS uygulamaları. İstanbul, Ankara ve tüm Türkiye'ye yönelik özel iOS mobil uygulama geliştirme hizmetleri."
     }
   }
 }

@@ -154,16 +154,19 @@ export default async function Projects({ params: { locale } }: { params: { local
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="pt-6 pb-10 border-b border-gray-100 dark:border-gray-800">
-        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl mb-3">
+      <div className="pt-8 sm:pt-12 pb-10 border-b border-gray-100 dark:border-gray-800">
+        <p className="text-xs font-semibold tracking-widest uppercase text-teal-600 dark:text-teal-400 mb-3">
+          {t("areasOfWork")}
+        </p>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 mb-3 text-balance">
           {t("title")}
         </h1>
-        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl">
+        <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-2xl text-pretty">
           {t("subtitle")}
         </p>
       </div>
 
-      <div className="py-10">
+      <div className="py-10 sm:py-12">
         <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-5">
           {t("areasOfWork")}
         </p>

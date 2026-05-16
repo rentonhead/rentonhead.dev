@@ -40,7 +40,7 @@ export default function MobileProjectsPage({ params: { locale } }: { params: { l
   return (
     <div>
       {/* Hero Header */}
-      <div className="pt-6 pb-12">
+      <div className="pt-8 sm:pt-12 pb-12">
         <div className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 mb-8">
           <Link href="/projects" className="hover:text-teal-500 transition-colors duration-150">
             {t("breadcrumbProjects")}
@@ -51,17 +51,17 @@ export default function MobileProjectsPage({ params: { locale } }: { params: { l
           <span className="text-gray-600 dark:text-gray-400 font-medium">{t("breadcrumbMobile")}</span>
         </div>
 
-        <div className="flex items-start gap-5 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5 mb-4">
           <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-violet-500/25">
             <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
           </div>
-          <div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl leading-tight">
+          <div className="min-w-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 leading-tight text-balance">
               {t("title")}
             </h1>
-            <p className="mt-2 text-lg text-gray-500 dark:text-gray-400 max-w-2xl">
+            <p className="mt-2 text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-2xl text-pretty">
               {t("subtitle")}
             </p>
           </div>
