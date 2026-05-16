@@ -1,5 +1,5 @@
 import "../globals.css";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
@@ -79,16 +79,6 @@ const localeGeoMap: Record<
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#090908" },
-  ],
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-};
-
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -131,6 +121,15 @@ export async function generateMetadata({
       },
     },
     category: "software development",
+    themeColor: [
+      { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+      { media: "(prefers-color-scheme: dark)", color: "#090908" },
+    ],
+    viewport: {
+      width: "device-width",
+      initialScale: 1,
+      maximumScale: 5,
+    },
     other: {
       // Local SEO geo meta tags
       "geo.region": geo.region,
