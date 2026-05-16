@@ -119,17 +119,17 @@
   },
   "metadata": {
     "home": {
-      "title": "rentonhead | Hasan Cemil Acar",
-      "description": "rentonhead | Art Director & Programmer | Istanbul & Moscow",
-      "keywords": "Mobile App Development, UI Design, App Screenshot Design, Next.js, TypeScript, React, Swift, SwiftUI, iOS, Art Director, UI/UX Design, Figma, Branding"
+      "title": "rentonhead | Hasan Cemil Acar | Mobile App & UI/UX Design",
+      "description": "rentonhead (Hasan Cemil Acar) is an Art Director and Programmer based between Istanbul and Moscow. Specializing in native iOS mobile app development and UI/UX design.",
+      "keywords": "Mobile App Development Istanbul, UI/UX Designer Moscow, App Screenshot Design, Custom iOS App Development Turkey, Freelance React Developer, Next.js, TypeScript, Swift, SwiftUI, Art Director, Branding, Web Design Agency"
     },
     "projects": {
       "title": "Projects | rentonhead",
-      "description": "A collection of work spanning mobile, web, e-commerce, branding and design."
+      "description": "A collection of work spanning mobile app development, web, e-commerce, branding and UI/UX design for clients in Istanbul, Moscow, and globally."
     },
     "mobileProjects": {
-      "title": "Mobile Projects | rentonhead",
-      "description": "Native iOS experiences built with SwiftUI — crafted for the Apple ecosystem with precision and care."
+      "title": "Mobile App Development | rentonhead",
+      "description": "Native iOS experiences built with SwiftUI — crafted for the Apple ecosystem with precision and care. Custom mobile application development services."
     }
   }
 }
