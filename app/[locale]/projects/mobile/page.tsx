@@ -18,7 +18,7 @@ export async function generateMetadata({
 export default function MobileProjectsPage({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
   const t = useTranslations("mobileProjects");
-  const projectCount = 2;
+  const projectCount: number = 2;
 
   const statusConfig: Record<string, { dot: string; badge: string }> = {
     "In Development": {
