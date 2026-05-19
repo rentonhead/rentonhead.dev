@@ -1,15 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy – BrewClock | rentonhead.dev",
-};
+const SITE_URL = "https://rentonhead.dev";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "metadata.brewclockPrivacy" });
+  const url = `${SITE_URL}/${locale}/brewclock/privacy`;
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${SITE_URL}/en/brewclock/privacy`,
+        tr: `${SITE_URL}/tr/brewclock/privacy`,
+        ru: `${SITE_URL}/ru/brewclock/privacy`,
+        "x-default": `${SITE_URL}/en/brewclock/privacy`,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url,
+      type: "article",
+    },
+  };
+}
 
 export default function BrewClockPrivacyPage({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
   const t = useTranslations("privacy");
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t("breadcrumbProjects"), item: `${SITE_URL}/${locale}/projects` },
+      { "@type": "ListItem", position: 3, name: t("breadcrumbMobile"), item: `${SITE_URL}/${locale}/projects/mobile` },
+      { "@type": "ListItem", position: 4, name: t("breadcrumbPrivacy"), item: `${SITE_URL}/${locale}/brewclock/privacy` },
+    ],
+  };
 
   const dataItems = [
     { key: "local", icon: <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" /> },
@@ -74,6 +111,10 @@ export default function BrewClockPrivacyPage({ params: { locale } }: { params: {
 
   return (
     <div className="max-w-3xl pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 pt-6 mb-10">
         <Link href="/projects" className="hover:text-teal-500 transition-colors duration-150">{t("breadcrumbProjects")}</Link>
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>

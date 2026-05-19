@@ -1,26 +1,80 @@
 /** @type {import('next-sitemap').IConfig} */
 
+const SITE_URL = "https://rentonhead.dev";
+const LOCALES = ["en", "tr", "ru"];
+const DEFAULT_LOCALE = "en";
+
+// Per-URL priority/changefreq map keyed by locale-stripped path
+const ROUTE_META = {
+  "/": { priority: 1.0, changefreq: "weekly" },
+  "/projects": { priority: 0.9, changefreq: "weekly" },
+  "/projects/mobile": { priority: 0.8, changefreq: "weekly" },
+  "/blog": { priority: 0.7, changefreq: "weekly" },
+  "/brewclock/privacy": { priority: 0.3, changefreq: "yearly" },
+  "/gastromancy/privacy": { priority: 0.3, changefreq: "yearly" },
+};
+
+function stripLocale(path) {
+  const segments = path.split("/").filter(Boolean);
+  if (segments.length > 0 && LOCALES.includes(segments[0])) {
+    return "/" + segments.slice(1).join("/");
+  }
+  return path;
+}
+
+function localePathOf(path) {
+  const segments = path.split("/").filter(Boolean);
+  return segments[0] && LOCALES.includes(segments[0]) ? segments[0] : null;
+}
+
 module.exports = {
-  siteUrl: "https://rentonhead.dev",
-  changefreq: "daily",
-  priority: 0.7,
+  siteUrl: SITE_URL,
   generateRobotsTxt: true,
-  // Default transformation function
+  generateIndexSitemap: true,
+  autoLastmod: true,
+  changefreq: "weekly",
+  priority: 0.7,
+  // Build alternateRefs for hreflang on every URL
   transform: async (config, path) => {
-    return {
-      loc: path, // => this will be exported as http(s)://<config.siteUrl>/<path>
-      changefreq: config.changefreq,
+    const locale = localePathOf(path);
+    const bare = stripLocale(path) || "/";
+    const normalizedBare = bare === "" ? "/" : bare;
+
+    const meta = ROUTE_META[normalizedBare] || {
       priority: config.priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-      alternateRefs: config.alternateRefs ?? [],
+      changefreq: config.changefreq,
+    };
+
+    // Build hreflang alternates pointing at the same logical page across locales
+    const alternateRefs = [
+      ...LOCALES.map((l) => ({
+        href: `${SITE_URL}/${l}${normalizedBare === "/" ? "" : normalizedBare}`,
+        hreflang: l,
+      })),
+      {
+        href: `${SITE_URL}/${DEFAULT_LOCALE}${normalizedBare === "/" ? "" : normalizedBare}`,
+        hreflang: "x-default",
+      },
+    ];
+
+    return {
+      loc: path,
+      changefreq: meta.changefreq,
+      priority: meta.priority,
+      lastmod: new Date().toISOString(),
+      alternateRefs,
     };
   },
   robotsTxtOptions: {
     policies: [
-      {
-        userAgent: "*",
-        allow: "/",
-      },
+      { userAgent: "*", allow: "/" },
+      { userAgent: "Googlebot", allow: "/" },
+      { userAgent: "Googlebot-Image", allow: "/" },
+      { userAgent: "Bingbot", allow: "/" },
+      { userAgent: "YandexBot", allow: "/" },
+      { userAgent: "DuckDuckBot", allow: "/" },
+      { userAgent: "Applebot", allow: "/" },
     ],
+    additionalSitemaps: [`${SITE_URL}/sitemap.xml`],
   },
 };

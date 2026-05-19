@@ -4,15 +4,39 @@ import type { Metadata } from "next";
 import { client } from "../../lib/sanity";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+const SITE_URL = "https://rentonhead.dev";
+
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "metadata.projects" });
+  const url = `${SITE_URL}/${locale}/projects`;
   return {
     title: t("title"),
     description: t("description"),
+    keywords: t("keywords").split(",").map((k) => k.trim()),
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${SITE_URL}/en/projects`,
+        tr: `${SITE_URL}/tr/projects`,
+        ru: `${SITE_URL}/ru/projects`,
+        "x-default": `${SITE_URL}/en/projects`,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
@@ -136,7 +160,7 @@ export default async function Projects({ params: { locale } }: { params: { local
     },
   ];
 
-  const jsonLd = {
+  const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": data.map((project, index) => ({
@@ -148,11 +172,24 @@ export default async function Projects({ params: { locale } }: { params: { local
     }))
   };
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", position: 1, name: locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t("title"), item: `${SITE_URL}/${locale}/projects` },
+    ],
+  };
+
   return (
     <div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <div className="pt-8 sm:pt-12 pb-10 border-b border-gray-100 dark:border-gray-800">
         <p className="text-xs font-semibold tracking-widest uppercase text-teal-600 dark:text-teal-400 mb-3">

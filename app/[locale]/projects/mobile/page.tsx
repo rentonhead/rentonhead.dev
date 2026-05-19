@@ -3,15 +3,39 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 
+const SITE_URL = "https://rentonhead.dev";
+
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "metadata.mobileProjects" });
+  const url = `${SITE_URL}/${locale}/projects/mobile`;
   return {
     title: t("title"),
     description: t("description"),
+    keywords: t("keywords").split(",").map((k) => k.trim()),
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${SITE_URL}/en/projects/mobile`,
+        tr: `${SITE_URL}/tr/projects/mobile`,
+        ru: `${SITE_URL}/ru/projects/mobile`,
+        "x-default": `${SITE_URL}/en/projects/mobile`,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
@@ -19,6 +43,42 @@ export default function MobileProjectsPage({ params: { locale } }: { params: { l
   setRequestLocale(locale);
   const t = useTranslations("mobileProjects");
   const projectCount: number = 2;
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t("breadcrumbProjects"), item: `${SITE_URL}/${locale}/projects` },
+      { "@type": "ListItem", position: 3, name: t("breadcrumbMobile"), item: `${SITE_URL}/${locale}/projects/mobile` },
+    ],
+  };
+
+  const brewclockApp = {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: t("brewclock_name"),
+    description: t("brewclock_description"),
+    applicationCategory: "LifestyleApplication",
+    operatingSystem: "iOS",
+    author: { "@id": `${SITE_URL}/#person` },
+    publisher: { "@id": `${SITE_URL}/#person` },
+    inLanguage: ["en", "tr", "ru"],
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  };
+
+  const gastromancyApp = {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: t("gastromancy_name"),
+    description: t("gastromancy_description"),
+    applicationCategory: "FoodAndDrinkApplication",
+    operatingSystem: "iOS",
+    author: { "@id": `${SITE_URL}/#person` },
+    publisher: { "@id": `${SITE_URL}/#person` },
+    inLanguage: ["en", "tr", "ru"],
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  };
 
   const statusConfig: Record<string, { dot: string; badge: string }> = {
     "In Development": {
@@ -40,6 +100,18 @@ export default function MobileProjectsPage({ params: { locale } }: { params: { l
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(brewclockApp) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(gastromancyApp) }}
+      />
       {/* Hero Header */}
       <div className="pt-8 sm:pt-12 pb-12">
         <div className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 mb-8">
