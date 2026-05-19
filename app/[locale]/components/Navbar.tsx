@@ -13,7 +13,7 @@ const localeLabels: Record<string, { code: string; name: string }> = {
   ru: { code: "RU", name: "Русский" },
 };
 
-function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
+function LanguageSwitcher() {
   const locale = useLocale();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -42,9 +42,7 @@ function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex items-center rounded-lg bg-teal-500/30 text-teal-500 hover:bg-teal-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 transition-colors duration-150 ${
-          compact ? "p-2 gap-1" : "px-2.5 py-2 gap-1.5"
-        }`}
+        className="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-lg bg-teal-500/30 text-teal-500 hover:bg-teal-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 transition-colors duration-150"
         aria-label={t("switchLanguage")}
         aria-expanded={open}
       >
@@ -54,7 +52,7 @@ function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={compact ? "w-6 h-6" : "w-5 h-5"}
+          className="w-5 h-5"
           aria-hidden="true"
         >
           <path
@@ -63,11 +61,9 @@ function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
             d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3 7.5 7.03 7.5 12s2.015 9 4.5 9zM3.6 9h16.8M3.6 15h16.8"
           />
         </svg>
-        {!compact && (
-          <span className="text-sm font-semibold tracking-wide leading-none">
-            {current.code}
-          </span>
-        )}
+        <span className="text-sm font-semibold tracking-wide leading-none">
+          {current.code}
+        </span>
         <svg
           className={`w-3 h-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
@@ -180,7 +176,7 @@ export default function Navbar() {
 
               {/* Mobile actions */}
               <div className="flex items-center gap-1.5 sm:hidden">
-                <LanguageSwitcher compact />
+                <LanguageSwitcher />
                 <Themebutton />
                 <Disclosure.Button
                   className="inline-flex items-center justify-center w-9 h-9 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 transition-colors"
