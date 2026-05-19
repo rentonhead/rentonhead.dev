@@ -1,7 +1,38 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Post } from "../../lib/interface";
 import { client } from "../../lib/sanity";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+
+const SITE_URL = "https://rentonhead.dev";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "metadata.blog" });
+  const url = `${SITE_URL}/${locale}/blog`;
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${SITE_URL}/en/blog`,
+        tr: `${SITE_URL}/tr/blog`,
+        ru: `${SITE_URL}/ru/blog`,
+        "x-default": `${SITE_URL}/en/blog`,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url,
+      type: "website",
+    },
+  };
+}
 
 async function getData() {
   const query = `*[_type == "post"]`;

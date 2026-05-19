@@ -1,23 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
 type Locale = "tr" | "en" | "ru";
+
+const SITE_URL = "https://rentonhead.dev";
 
 export async function generateMetadata({
   params: { locale },
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  const titles: Record<Locale, string> = {
-    tr: "Gizlilik Politikası – Gastromancy | rentonhead.dev",
-    en: "Privacy Policy – Gastromancy | rentonhead.dev",
-    ru: "Политика конфиденциальности – Gastromancy | rentonhead.dev",
-  };
+  const t = await getTranslations({ locale, namespace: "metadata.gastromancyPrivacy" });
+  const url = `${SITE_URL}/${locale}/gastromancy/privacy`;
   return {
-    title: titles[(locale as Locale) ?? "en"] ?? titles.en,
-    description:
-      "Gastromancy iOS app privacy policy — what data is processed, how it is used, and your rights.",
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${SITE_URL}/en/gastromancy/privacy`,
+        tr: `${SITE_URL}/tr/gastromancy/privacy`,
+        ru: `${SITE_URL}/ru/gastromancy/privacy`,
+        "x-default": `${SITE_URL}/en/gastromancy/privacy`,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url,
+      type: "article",
+    },
   };
 }
 
@@ -721,8 +734,23 @@ export default function GastromancyPrivacyPage({
 
   const contactNumber = String(c.sections.length + 1);
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: c.breadcrumbProjects, item: `${SITE_URL}/${locale}/projects` },
+      { "@type": "ListItem", position: 3, name: c.breadcrumbMobile, item: `${SITE_URL}/${locale}/projects/mobile` },
+      { "@type": "ListItem", position: 4, name: c.breadcrumbPrivacy, item: `${SITE_URL}/${locale}/gastromancy/privacy` },
+    ],
+  };
+
   return (
     <div className="max-w-3xl pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 pt-6 mb-10 flex-wrap">
         <Link href="/projects" className="hover:text-teal-500 transition-colors duration-150">

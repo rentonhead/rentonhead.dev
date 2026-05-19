@@ -79,6 +79,35 @@ const localeGeoMap: Record<
   },
 };
 
+// Locale → localized service catalog (used in ProfessionalService JSON-LD)
+type ServiceOffer = { name: string; description: string };
+const localeServicesMap: Record<string, ServiceOffer[]> = {
+  tr: [
+    { name: "iOS Mobil Uygulama Geliştirme", description: "Swift ve SwiftUI ile yerli iOS mobil uygulama geliştirme — İstanbul ve tüm Türkiye'ye anahtar teslim hizmet." },
+    { name: "Modern Web Geliştirme", description: "React, Next.js ve Tailwind CSS ile modern, hızlı ve SEO uyumlu web sitesi geliştirme." },
+    { name: "E-Ticaret & CMS Çözümleri", description: "WordPress, WooCommerce ve Shopify ile anahtar teslim, uygun fiyatlı e-ticaret sitesi yapımı." },
+    { name: "UI/UX Tasarım", description: "Figma ve Adobe Creative Suite ile profesyonel UI/UX ve marka kimliği tasarımı." },
+    { name: "App Store Ekran Tasarımı", description: "iOS uygulamaları için dönüşüm odaklı App Store screenshot ve görsel tasarımı." },
+    { name: "Lokal SEO", description: "Türkiye ve global pazarlar için Rank Math destekli lokal ve teknik SEO." },
+  ],
+  ru: [
+    { name: "Разработка мобильных приложений iOS", description: "Нативные iOS-приложения на Swift и SwiftUI — разработка под ключ для клиентов из Москвы, Санкт-Петербурга и других регионов." },
+    { name: "Современная веб-разработка", description: "Разработка быстрых и SEO-оптимизированных сайтов на React, Next.js и Tailwind CSS." },
+    { name: "E-Commerce и CMS-решения", description: "Создание интернет-магазинов под ключ на WordPress, WooCommerce и Shopify — недорого и качественно." },
+    { name: "UI/UX дизайн", description: "Профессиональный UI/UX и дизайн фирменного стиля в Figma и Adobe Creative Suite." },
+    { name: "Дизайн скриншотов App Store", description: "Конверсионные скриншоты и визуалы App Store для iOS-приложений." },
+    { name: "Локальное SEO", description: "Локальное и техническое SEO на базе Rank Math для клиентов в России и за рубежом." },
+  ],
+  en: [
+    { name: "iOS Mobile App Development", description: "Native iOS apps built with Swift and SwiftUI — end-to-end mobile development for clients in Istanbul, Moscow and worldwide." },
+    { name: "Modern Web Development", description: "Fast, SEO-friendly websites built with React, Next.js and Tailwind CSS." },
+    { name: "E-Commerce & CMS", description: "Turnkey, affordable e-commerce stores with WordPress, WooCommerce and Shopify." },
+    { name: "UI/UX Design", description: "Professional UI/UX and brand identity design in Figma and Adobe Creative Suite." },
+    { name: "App Store Screenshot Design", description: "Conversion-focused App Store screenshot and marketing visual design for iOS apps." },
+    { name: "Local SEO", description: "Local and technical SEO powered by Rank Math for clients in Turkey, Russia and worldwide." },
+  ],
+};
+
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -114,10 +143,8 @@ export async function generateMetadata({
     },
     verification: {
       google: "RgUvBdhUfXiMJXPjGxk23nTuk3zf9w-9MX9qCRd7Xjk",
-      yandex: "yandex",
-      yahoo: "yahoo",
       other: {
-        me: ["hasancemilacar@gmail.com", "www.rentonhead.dev"],
+        me: ["hasancemilacar@gmail.com", "https://rentonhead.dev"],
       },
     },
     category: "software development",
@@ -193,6 +220,7 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
   const geo = localeGeoMap[locale] || localeGeoMap.en;
+  const services = localeServicesMap[locale] || localeServicesMap.en;
 
   // Person schema
   const personSchema = {
@@ -274,56 +302,19 @@ export default async function LocaleLayout({
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "iOS Mobile App Development",
-            description: "Native iOS apps built with Swift and SwiftUI.",
-          },
+      itemListElement: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.name,
+          description: s.description,
+          areaServed: geo.areaServed.map((a) => ({
+            "@type": a.type === "Country" ? "Country" : "City",
+            name: a.name,
+          })),
+          provider: { "@id": `${SITE_URL}/#service` },
         },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Web Development",
-            description: "Modern web apps with React, Next.js and Tailwind CSS.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "E-Commerce & CMS",
-            description: "Turnkey WordPress and WooCommerce solutions.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "UI/UX Design",
-            description: "Figma and Adobe Creative Suite based interface and brand design.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "App Store Screenshot Design",
-            description: "Conversion-focused App Store screenshot design for mobile apps.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Local SEO",
-            description: "Local and global SEO strategies with tools like Rank Math.",
-          },
-        },
-      ],
+      })),
     },
     sameAs: [
       "https://github.com/rentonhead",
@@ -337,8 +328,16 @@ export default async function LocaleLayout({
     "@id": `${SITE_URL}/#website`,
     url: SITE_URL,
     name: "rentonhead",
-    inLanguage: locale,
+    alternateName: ["rentonhead.dev", "Hasan Cemil Acar"],
+    description:
+      locale === "tr"
+        ? "İstanbul merkezli, iOS mobil uygulama, web sitesi ve e-ticaret stüdyosu."
+        : locale === "ru"
+        ? "Студия из Стамбула и Москвы: iOS-приложения, сайты под ключ и интернет-магазины."
+        : "Istanbul-based studio for iOS apps, modern websites and e-commerce.",
+    inLanguage: ["en", "tr", "ru"],
     publisher: { "@id": `${SITE_URL}/#person` },
+    image: `${SITE_URL}/myphoto.webp`,
   };
 
   const graph = {

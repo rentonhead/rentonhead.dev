@@ -153,20 +153,34 @@
   },
   "metadata": {
     "home": {
-      "title": "rentonhead | Hasan Cemil Acar — Mobil Uygulama & UI/UX Tasarım | İstanbul",
-      "description": "Hasan Cemil Acar (rentonhead) — İstanbul merkezli, tüm Türkiye'ye (Ankara, İzmir, Bursa, Antalya) ve globale hizmet veren Art Director ve Yazılımcı. iOS mobil uygulama geliştirme (Swift/SwiftUI), React & Next.js ile web, WordPress/WooCommerce e-ticaret ve profesyonel UI/UX tasarım çözümleri.",
-      "keywords": "mobil uygulama yapımı İstanbul, iOS uygulama geliştirici İstanbul, freelance yazılımcı Ankara, UI UX tasarımcı İzmir, App Store screen tasarımı, app screenshot tasarımı, Swift SwiftUI geliştirici, React Next.js geliştirici Türkiye, WordPress WooCommerce uzmanı, kurumsal web sitesi tasarımı, e-ticaret sitesi yapımı, marka kimliği tasarımı, logo tasarımı, lokal SEO Türkiye, Rank Math SEO, Figma UI tasarımı, Art Director İstanbul",
+      "title": "rentonhead | Hasan Cemil Acar — İstanbul Mobil Uygulama & UI/UX Tasarım & E-Ticaret Stüdyosu",
+      "description": "Hasan Cemil Acar (rentonhead) — İstanbul merkezli Art Director & Yazılımcı. iOS mobil uygulama geliştirme (Swift/SwiftUI), React & Next.js ile modern web sitesi, WooCommerce & Shopify ile anahtar teslim e-ticaret, Figma & Adobe ile UI/UX tasarım ve lokal SEO. Uygun fiyatlı, anahtar teslim çözümler — İstanbul, Ankara, İzmir, Bursa, Antalya, Moskova ve global müşterilere hizmet veriyorum.",
+      "keywords": "mobil uygulama yapımı İstanbul, İstanbul iOS uygulama geliştirici, freelance iOS geliştirici Türkiye, SwiftUI uzmanı Türkiye, Swift geliştirici İstanbul, Türkiye mobil uygulama ajansı, mobil uygulama yaptırma, mobil uygulama maliyeti, mobil uygulama fiyatları, uygun fiyatlı mobil uygulama, ucuz mobil uygulama yapımı, App Store ekran tasarımı, App Store screenshot tasarımı, ASO uygulama optimizasyonu, iOS uygulama yayınlama, ucuz e-ticaret sitesi, e-ticaret sitesi yapımı İstanbul, anahtar teslim e-ticaret, anahtar teslim web sitesi, uygun fiyatlı e-ticaret çözümleri, ekonomik e-ticaret paketi, WooCommerce kurulum hizmeti, WooCommerce Türkçe, Shopify Türkiye, sanal mağaza kurma, online satış sitesi açma, butik mağaza e-ticaret, kafe için web sitesi, restoran mobil uygulama, restoran web sitesi tasarımı, otel web sitesi tasarımı, kurumsal web sitesi tasarımı, İstanbul websitesi yapan, İstanbul kişisel web sitesi, kişisel marka websitesi, kişisel portfolyo websitesi, freelancer portfolyo tasarımı, modern web sitesi tasarımı, responsive web tasarım, Next.js geliştirici Türkiye, React geliştirici İstanbul, Tailwind CSS uzmanı, Avrupa yakası web tasarım, Anadolu yakası web tasarım, Kadıköy web tasarım, Beşiktaş web tasarımcı, Şişli yazılım firması, Beyoğlu web tasarım, freelance web tasarımcı İstanbul, lokal SEO İstanbul, Google Haritalar SEO, Rank Math SEO uzmanı, UI UX tasarımcı İstanbul, Figma UI tasarımı, Adobe Photoshop tasarım, Adobe Illustrator logo, marka kimliği tasarımı, logo tasarımı İstanbul, kurumsal kimlik tasarımı, AI uygulama geliştirme, yapay zeka asistanı uygulaması, ChatGPT entegrasyon, Art Director İstanbul, sanat yönetmeni Türkiye, yurt dışı müşteri için web sitesi, İngilizce konuşan yazılımcı Türkiye",
       "geoRegion": "TR",
       "geoPlaceName": "İstanbul, Türkiye",
       "geoPosition": "41.0082;28.9784"
     },
     "projects": {
-      "title": "Projeler | rentonhead — İstanbul Merkezli Yazılım & Tasarım",
-      "description": "İstanbul, Ankara, İzmir ve global pazarlar için ürettiğim iOS mobil uygulama, web sitesi, e-ticaret, marka kimliği ve UI/UX tasarım projeleri."
+      "title": "Projeler | rentonhead — İstanbul Mobil Uygulama, Web & E-Ticaret",
+      "description": "İstanbul, Ankara, İzmir, Moskova ve global pazarlar için ürettiğim iOS mobil uygulama, anahtar teslim web sitesi, uygun fiyatlı e-ticaret, marka kimliği ve UI/UX tasarım projeleri. Tüm Türkiye'ye freelance hizmet.",
+      "keywords": "rentonhead projeleri, İstanbul mobil uygulama referansları, iOS uygulama portfolyo, e-ticaret site örnekleri, web sitesi referansları, freelance proje portfolyo, UI UX tasarım örnekleri, marka kimliği projeleri"
     },
     "mobileProjects": {
-      "title": "iOS Mobil Uygulama Geliştirme | rentonhead — Türkiye",
-      "description": "Apple ekosistemi için SwiftUI ile geliştirilen yerli iOS uygulamaları. İstanbul, Ankara ve tüm Türkiye'ye yönelik özel iOS mobil uygulama geliştirme hizmetleri."
+      "title": "iOS Mobil Uygulama Geliştirme | rentonhead — İstanbul & Türkiye",
+      "description": "SwiftUI ile geliştirilen yerli iOS uygulamaları. İstanbul, Ankara, İzmir ve tüm Türkiye'ye yönelik özel iOS mobil uygulama geliştirme, App Store yayınlama, ASO ve App Store screenshot tasarımı hizmetleri.",
+      "keywords": "iOS uygulama geliştirme İstanbul, SwiftUI uygulama yapımı, mobil uygulama portfolyo, BrewClock, Gastromancy, AI yemek tarifi uygulaması, kahve timer uygulaması, App Store uygulama, iPhone uygulama geliştirme"
+    },
+    "blog": {
+      "title": "Blog | rentonhead — Yazılım, Tasarım & SEO",
+      "description": "Yazılım, mobil uygulama geliştirme, UI/UX tasarım, e-ticaret ve SEO üzerine yazılar."
+    },
+    "brewclockPrivacy": {
+      "title": "Gizlilik Politikası — BrewClock | rentonhead",
+      "description": "BrewClock iOS uygulamasının gizlilik politikası — verilerinizin nasıl saklandığı ve kullanıldığı hakkında şeffaf bilgilendirme."
+    },
+    "gastromancyPrivacy": {
+      "title": "Gizlilik Politikası — Gastromancy | rentonhead",
+      "description": "Gastromancy AI yemek tarifi asistanı uygulamasının gizlilik politikası — kişisel verilerinizin nasıl korunduğu hakkında detaylar."
     }
   }
 }
