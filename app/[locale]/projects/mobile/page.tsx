@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 
 const SITE_URL = "https://rentonhead.dev";
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.mobileProjects" });
   const url = `${SITE_URL}/${locale}/projects/mobile`;
   return {
@@ -39,9 +39,10 @@ export async function generateMetadata({
   };
 }
 
-export default function MobileProjectsPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function MobileProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations("mobileProjects");
+  const t = await getTranslations("mobileProjects");
   const projectCount: number = 2;
 
   const breadcrumbLd = {

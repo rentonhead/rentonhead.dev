@@ -1,8 +1,8 @@
 import "../globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
+import CursorClient from "./components/CursorClient";
 import { Provider } from "./components/Provider";
 import Footer from "./components/Footer";
 import { Analytics } from "@vercel/analytics/react";
@@ -10,10 +10,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-
-const CursorComp = dynamic(() => import("./components/Cursor"), {
-  ssr: false,
-});
 
 const inter = Inter({ subsets: ["latin", "cyrillic", "latin-ext"], display: "swap" });
 
@@ -109,10 +105,11 @@ const localeServicesMap: Record<string, ServiceOffer[]> = {
 };
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.home" });
   const og = ogLocaleMap[locale] || ogLocaleMap.en;
   const geo = localeGeoMap[locale] || localeGeoMap.en;
@@ -209,9 +206,9 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!routing.locales.includes(locale as any)) {
     notFound();
@@ -357,7 +354,7 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider messages={messages}>
           <Provider>
-            <CursorComp />
+            <CursorClient />
             <Navbar />
             <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               {children}

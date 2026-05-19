@@ -7,10 +7,11 @@ type Locale = "tr" | "en" | "ru";
 const SITE_URL = "https://rentonhead.dev";
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.gastromancyPrivacy" });
   const url = `${SITE_URL}/${locale}/gastromancy/privacy`;
   return {
@@ -724,11 +725,12 @@ function getContent(locale: Locale): Content {
   };
 }
 
-export default function GastromancyPrivacyPage({
-  params: { locale },
+export default async function GastromancyPrivacyPage({
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const c = getContent((["tr", "en", "ru"].includes(locale) ? locale : "en") as Locale);
 

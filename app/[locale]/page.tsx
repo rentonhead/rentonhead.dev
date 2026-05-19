@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Me from "../myphoto.webp";
-import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.home" });
   return {
     title: t("title"),
@@ -72,9 +72,10 @@ const skills = [
   },
 ] as const;
 
-export default function Home({ params: { locale } }: { params: { locale: string } }) {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations("home");
+  const t = await getTranslations("home");
 
   return (
     <div className="pb-16">
