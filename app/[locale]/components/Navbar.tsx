@@ -130,6 +130,7 @@ export default function Navbar() {
   const t = useTranslations("nav");
   const pathname = usePathname() || "/";
   const isProjects = pathname.includes("/projects");
+  const isContact = pathname.includes("/contact");
   const isHome =
     pathname.endsWith("/") &&
     pathname.split("/").filter(Boolean).length <= 1;
@@ -168,6 +169,16 @@ export default function Navbar() {
                   }`}
                 >
                   {t("projects")}
+                </Link>
+                <Link
+                  href="/contact"
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    isContact
+                      ? "text-teal-600 dark:text-teal-400"
+                      : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  }`}
+                >
+                  {t("contact")}
                 </Link>
                 <div className="h-5 w-px bg-gray-200 dark:bg-gray-700" />
                 <LanguageSwitcher />
@@ -222,6 +233,19 @@ export default function Navbar() {
                 }`}
               >
                 {t("projects")}
+              </Disclosure.Button>
+
+              <Disclosure.Button
+                as={Link}
+                href="/contact"
+                prefetch
+                className={`block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                  isContact
+                    ? "bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                }`}
+              >
+                {t("contact")}
               </Disclosure.Button>
             </div>
           </Disclosure.Panel>

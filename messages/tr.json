@@ -2,6 +2,7 @@
   "nav": {
     "home": "Ana Sayfa",
     "projects": "Projeler",
+    "contact": "İletişim",
     "allProjects": "Tüm Projeler",
     "allProjectsDesc": "Web, tasarım ve daha fazlası",
     "mobileProjects": "Mobil Projeler",
@@ -11,6 +12,32 @@
     "closeMenu": "Menüyü kapat",
     "openMenu": "Menüyü aç",
     "switchLanguage": "Dili değiştir"
+  },
+  "contact": {
+    "eyebrow": "İletişim",
+    "title": "Birlikte bir şeyler üretelim",
+    "subtitle": "Yeni bir proje, iş birliği veya sadece merhaba demek için aşağıdaki formu doldurabilirsin. Genellikle 24 saat içinde dönüş yapıyorum.",
+    "infoTitle": "Doğrudan ulaşmak istersen",
+    "available": "Yeni projelere açık",
+    "availableDesc": "Şu an yeni iş birlikleri ve freelance projeler için müsaitim.",
+    "fieldName": "Adın",
+    "fieldEmail": "E-posta",
+    "fieldSubject": "Konu",
+    "fieldMessage": "Mesajın",
+    "placeholderName": "Adın Soyadın",
+    "placeholderEmail": "ornek@mail.com",
+    "placeholderSubject": "Konu (opsiyonel)",
+    "placeholderMessage": "Projeden, fikirden, beklediğin teslim tarihinden bahset...",
+    "send": "Mesajı Gönder",
+    "sending": "Gönderiliyor...",
+    "successTitle": "Mesajın iletildi",
+    "successDesc": "En kısa sürede sana dönüş yapacağım. Teşekkürler!",
+    "errorMissingFields": "Lütfen tüm zorunlu alanları doldur.",
+    "errorInvalidEmail": "Geçerli bir e-posta adresi gir.",
+    "errorMessageTooLong": "Bazı alanlar çok uzun. Lütfen kısaltıp tekrar dene.",
+    "errorRateLimited": "Çok fazla mesaj gönderildi. Lütfen biraz sonra tekrar dene.",
+    "errorSpamDetected": "Mesajın gönderilemedi. Lütfen içeriği kontrol et veya doğrudan e-posta gönder.",
+    "errorServer": "Bir hata oluştu. Lütfen tekrar dene veya doğrudan e-posta gönder."
   },
   "footer": {
     "createdBy": "© {year} rentonhead — Next.js ile oluşturuldu",
@@ -173,6 +200,11 @@
     "blog": {
       "title": "Blog | rentonhead — Yazılım, Tasarım & SEO",
       "description": "Yazılım, mobil uygulama geliştirme, UI/UX tasarım, e-ticaret ve SEO üzerine yazılar."
+    },
+    "contact": {
+      "title": "İletişim | rentonhead — Hasan Cemil Acar",
+      "description": "Hasan Cemil Acar (rentonhead) ile iletişime geç. iOS mobil uygulama, web sitesi, e-ticaret ve UI/UX tasarım projeleri için teklif al. İstanbul, Moskova ve global müşterilere hizmet.",
+      "keywords": "iletişim rentonhead, Hasan Cemil Acar iletişim, freelance iOS geliştirici iletişim, web sitesi teklifi al, mobil uygulama teklifi, e-ticaret danışmanlık İstanbul"
     },
     "brewclockPrivacy": {
       "title": "Gizlilik Politikası — BrewClock | rentonhead",

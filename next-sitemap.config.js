@@ -9,6 +9,7 @@ const ROUTE_META = {
   "/": { priority: 1.0, changefreq: "weekly" },
   "/projects": { priority: 0.9, changefreq: "weekly" },
   "/projects/mobile": { priority: 0.8, changefreq: "weekly" },
+  "/contact": { priority: 0.8, changefreq: "monthly" },
   "/blog": { priority: 0.7, changefreq: "weekly" },
   "/brewclock/privacy": { priority: 0.3, changefreq: "yearly" },
   "/gastromancy/privacy": { priority: 0.3, changefreq: "yearly" },

@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "projects": "Projects",
+    "contact": "Contact",
     "allProjects": "All Projects",
     "allProjectsDesc": "Web, design & more",
     "mobileProjects": "Mobile Projects",
@@ -11,6 +12,32 @@
     "closeMenu": "Close menu",
     "openMenu": "Open menu",
     "switchLanguage": "Switch language"
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "title": "Let's build something together",
+    "subtitle": "Drop me a line about a new project, collaboration, or just to say hi. I usually reply within 24 hours.",
+    "infoTitle": "Prefer reaching out directly?",
+    "available": "Available for new projects",
+    "availableDesc": "Currently open to new collaborations and freelance work.",
+    "fieldName": "Your name",
+    "fieldEmail": "Email",
+    "fieldSubject": "Subject",
+    "fieldMessage": "Your message",
+    "placeholderName": "Jane Doe",
+    "placeholderEmail": "you@example.com",
+    "placeholderSubject": "Subject (optional)",
+    "placeholderMessage": "Tell me about the project, your idea, expected timeline...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "successTitle": "Message sent",
+    "successDesc": "I'll get back to you as soon as possible. Thanks for reaching out!",
+    "errorMissingFields": "Please fill in all required fields.",
+    "errorInvalidEmail": "Please enter a valid email address.",
+    "errorMessageTooLong": "Some fields are too long. Please shorten and try again.",
+    "errorRateLimited": "Too many messages sent. Please try again later.",
+    "errorSpamDetected": "Your message couldn't be sent. Please review the content or email directly.",
+    "errorServer": "Something went wrong. Please try again or email directly."
   },
   "footer": {
     "createdBy": "© {year} rentonhead — built with Next.js",
@@ -174,6 +201,11 @@
     "blog": {
       "title": "Blog | rentonhead — Software, Design & SEO",
       "description": "Notes on software, mobile app development, UI/UX design, e-commerce and SEO."
+    },
+    "contact": {
+      "title": "Contact | rentonhead — Hasan Cemil Acar",
+      "description": "Get in touch with Hasan Cemil Acar (rentonhead). Request a quote for iOS mobile apps, websites, e-commerce and UI/UX design. Serving Istanbul, Moscow and clients worldwide.",
+      "keywords": "contact rentonhead, hire Hasan Cemil Acar, hire freelance iOS developer, request website quote, mobile app quote, e-commerce consulting Istanbul"
     },
     "brewclockPrivacy": {
       "title": "Privacy Policy — BrewClock | rentonhead",
