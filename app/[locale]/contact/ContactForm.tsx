@@ -11,10 +11,14 @@ export default function ContactPage() {
   const [state, setState] = useState<ContactFormState>(initialState);
   const [pending, startTransition] = useTransition();
 
-  const action = (formData: FormData) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     startTransition(async () => {
       const result = await sendContactEmail(state, formData);
       setState(result);
+      if (result.status === "success") form.reset();
     });
   };
 
@@ -130,7 +134,7 @@ export default function ContactPage() {
 
         {/* Right — form */}
         <div className="lg:col-span-3">
-          <form action={action} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5" noValidate>
             {/* Honeypot anti-spam */}
             <input type="text" name="_honey" className="hidden" aria-hidden="true" tabIndex={-1} />
 
