@@ -95,7 +95,12 @@
     "brewclock_name": "BrewClock",
     "brewclock_tagline": "Her seferinde mükemmel demleme.",
     "brewclock_description": "Kahve tutkunları için hassas bir demleme zamanlayıcısı ve rehberi. Demleme yöntemlerinizi takip edin, tariflerinizi ayarlayın ve her seferinde mükemmel bir fincan hazırlayın.",
-    "brewclock_status": "Geliştirme Aşamasında"
+    "brewclock_status": "Geliştirme Aşamasında",
+    "gastromancy_name": "Gastromancy",
+    "gastromancy_tagline": "AI Tarif Asistanı — buzdolabın, yemeğin.",
+    "gastromancy_description": "Evindeki malzemelerle saniyeler içinde gerçek tarifler üreten yapay zekâ destekli ev mutfağı asistanı. Ruh haline göre tarif stilleri, diyet filtreleri, sesli pişirme modu, haftalık menü ve akıllı dolap takibi.",
+    "gastromancy_status": "Yayında",
+    "viewPrivacy": "Gizlilik"
   },
   "privacy": {
     "pageTitle": "Gizlilik Politikası – BrewClock",
