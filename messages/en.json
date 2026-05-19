@@ -96,7 +96,12 @@
     "brewclock_name": "BrewClock",
     "brewclock_tagline": "The perfect brew, every time.",
     "brewclock_description": "A precision brew timer and guide for coffee enthusiasts. Track your brewing methods, dial in your recipes, and craft the perfect cup — every single time.",
-    "brewclock_status": "In Development"
+    "brewclock_status": "In Development",
+    "gastromancy_name": "Gastromancy",
+    "gastromancy_tagline": "AI Recipe Assistant — your fridge, your meal.",
+    "gastromancy_description": "An AI-powered home cooking assistant that turns the ingredients you already have into real recipes in seconds. Mood-based recipe styles, dietary filters, voice-guided cooking, weekly menus and a smart pantry tracker.",
+    "gastromancy_status": "Live",
+    "viewPrivacy": "Privacy"
   },
   "privacy": {
     "pageTitle": "Privacy Policy – BrewClock",
