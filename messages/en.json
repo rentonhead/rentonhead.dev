@@ -176,9 +176,6 @@
     "description": "We couldn't find the page you're looking for!",
     "goHome": "Go home"
   },
-  "blog": {
-    "title": "All Posts"
-  },
   "metadata": {
     "home": {
       "title": "rentonhead | Hasan Cemil Acar — Istanbul iOS App, Web & E-Commerce Studio",
@@ -197,10 +194,6 @@
       "title": "iOS Mobile App Development | rentonhead — Istanbul & Worldwide",
       "description": "Native iOS apps built with SwiftUI — custom iOS development, App Store launch, ASO and App Store screenshot design for clients in Istanbul, Moscow and worldwide.",
       "keywords": "iOS development Istanbul, SwiftUI app development, mobile app portfolio, BrewClock, Gastromancy, AI recipe app, coffee timer app, iPhone app developer, App Store screenshot designer"
-    },
-    "blog": {
-      "title": "Blog | rentonhead — Software, Design & SEO",
-      "description": "Notes on software, mobile app development, UI/UX design, e-commerce and SEO."
     },
     "contact": {
       "title": "Contact | rentonhead — Hasan Cemil Acar",

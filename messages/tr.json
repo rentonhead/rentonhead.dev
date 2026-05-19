@@ -175,9 +175,6 @@
     "description": "Aradığınız sayfayı bulamadık!",
     "goHome": "Ana sayfaya dön"
   },
-  "blog": {
-    "title": "Tüm Yazılar"
-  },
   "metadata": {
     "home": {
       "title": "rentonhead | Hasan Cemil Acar — İstanbul Mobil Uygulama & UI/UX Tasarım & E-Ticaret Stüdyosu",
@@ -196,10 +193,6 @@
       "title": "iOS Mobil Uygulama Geliştirme | rentonhead — İstanbul & Türkiye",
       "description": "SwiftUI ile geliştirilen yerli iOS uygulamaları. İstanbul, Ankara, İzmir ve tüm Türkiye'ye yönelik özel iOS mobil uygulama geliştirme, App Store yayınlama, ASO ve App Store screenshot tasarımı hizmetleri.",
       "keywords": "iOS uygulama geliştirme İstanbul, SwiftUI uygulama yapımı, mobil uygulama portfolyo, BrewClock, Gastromancy, AI yemek tarifi uygulaması, kahve timer uygulaması, App Store uygulama, iPhone uygulama geliştirme"
-    },
-    "blog": {
-      "title": "Blog | rentonhead — Yazılım, Tasarım & SEO",
-      "description": "Yazılım, mobil uygulama geliştirme, UI/UX tasarım, e-ticaret ve SEO üzerine yazılar."
     },
     "contact": {
       "title": "İletişim | rentonhead — Hasan Cemil Acar",
