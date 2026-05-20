@@ -64,11 +64,8 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
       description: t("cat_mobile_desc"),
       href: "/projects/mobile",
       gradient: "from-violet-500 to-purple-700",
-      bgLight: "bg-violet-50",
-      bgDark: "dark:bg-violet-900/20",
-      borderLight: "border-violet-100",
-      borderDark: "dark:border-violet-800",
       textAccent: "text-violet-600 dark:text-violet-400",
+      isLive: true,
       icon: (
         <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -82,11 +79,8 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
       description: t("cat_web_desc"),
       href: "#web-projects",
       gradient: "from-teal-400 to-cyan-600",
-      bgLight: "bg-teal-50",
-      bgDark: "dark:bg-teal-900/20",
-      borderLight: "border-teal-100",
-      borderDark: "dark:border-teal-800",
       textAccent: "text-teal-600 dark:text-teal-400",
+      isLive: false,
       icon: (
         <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -100,11 +94,8 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
       description: t("cat_ecommerce_desc"),
       href: "#web-projects",
       gradient: "from-emerald-400 to-green-600",
-      bgLight: "bg-emerald-50",
-      bgDark: "dark:bg-emerald-900/20",
-      borderLight: "border-emerald-100",
-      borderDark: "dark:border-emerald-800",
       textAccent: "text-emerald-600 dark:text-emerald-400",
+      isLive: false,
       icon: (
         <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -118,11 +109,8 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
       description: t("cat_branding_desc"),
       href: "#web-projects",
       gradient: "from-pink-500 to-rose-600",
-      bgLight: "bg-pink-50",
-      bgDark: "dark:bg-pink-900/20",
-      borderLight: "border-pink-100",
-      borderDark: "dark:border-pink-800",
       textAccent: "text-pink-600 dark:text-pink-400",
+      isLive: false,
       icon: (
         <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
@@ -136,11 +124,8 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
       description: t("cat_uiux_desc"),
       href: "#web-projects",
       gradient: "from-amber-400 to-orange-500",
-      bgLight: "bg-amber-50",
-      bgDark: "dark:bg-amber-900/20",
-      borderLight: "border-amber-100",
-      borderDark: "dark:border-amber-800",
       textAccent: "text-amber-600 dark:text-amber-400",
+      isLive: false,
       icon: (
         <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
@@ -196,25 +181,51 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
         <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-5">
           {t("areasOfWork")}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {categories.map((cat) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {categories.map((cat, idx) => (
             <Link
               key={cat.id}
               href={cat.href}
-              className={`group flex items-start gap-4 p-5 rounded-2xl border ${cat.borderLight} ${cat.borderDark} ${cat.bgLight} ${cat.bgDark} hover:shadow-md transition-all duration-200`}
+              className="group relative flex flex-col p-6 rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
-              <span className={`flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br ${cat.gradient} shadow-md`}>
-                {cat.icon}
-              </span>
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <p className="font-bold text-gray-900 dark:text-white text-sm">{cat.label}</p>
-                  {cat.id === "mobile" && (
-                    <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-400">↗</span>
-                  )}
-                </div>
-                <p className={`text-[11px] font-semibold mb-1.5 ${cat.textAccent}`}>{cat.sublabel}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">{cat.description}</p>
+              {/* Soft ambient glow on hover */}
+              <div className={`pointer-events-none absolute -top-16 -right-16 w-40 h-40 rounded-full bg-gradient-to-br ${cat.gradient} opacity-0 group-hover:opacity-15 dark:group-hover:opacity-25 blur-3xl transition-opacity duration-500`} />
+
+              <div className="flex items-start justify-between mb-5">
+                <span className={`relative flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${cat.gradient} shadow-lg shadow-gray-900/5 dark:shadow-black/30 ring-1 ring-black/5 dark:ring-white/10`}>
+                  {cat.icon}
+                </span>
+                <span className="text-[10px] font-mono font-semibold tracking-widest text-gray-300 dark:text-gray-600 group-hover:text-gray-400 dark:group-hover:text-gray-500 transition-colors">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight">
+                  {cat.label}
+                </h3>
+                {cat.isLive && (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                    </span>
+                    Live
+                  </span>
+                )}
+              </div>
+              <p className={`text-xs font-semibold mb-3 ${cat.textAccent}`}>{cat.sublabel}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-1">
+                {cat.description}
+              </p>
+
+              <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between">
+                <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500">
+                  {cat.isLive ? t("learnMore") : "Coming soon"}
+                </span>
+                <svg className="w-4 h-4 text-gray-400 dark:text-gray-600 group-hover:text-gray-900 dark:group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </div>
             </Link>
           ))}

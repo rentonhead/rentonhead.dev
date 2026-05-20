@@ -19,8 +19,6 @@ const skills = [
   {
     key: "creative",
     accent: "from-pink-500 to-rose-600",
-    iconBg: "bg-pink-50 dark:bg-pink-900/20",
-    iconColor: "text-pink-600 dark:text-pink-400",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
     ),
@@ -28,8 +26,6 @@ const skills = [
   {
     key: "mobile",
     accent: "from-violet-500 to-purple-700",
-    iconBg: "bg-violet-50 dark:bg-violet-900/20",
-    iconColor: "text-violet-600 dark:text-violet-400",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
     ),
@@ -37,8 +33,6 @@ const skills = [
   {
     key: "web",
     accent: "from-teal-400 to-cyan-600",
-    iconBg: "bg-teal-50 dark:bg-teal-900/20",
-    iconColor: "text-teal-600 dark:text-teal-400",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
     ),
@@ -46,8 +40,6 @@ const skills = [
   {
     key: "ecom",
     accent: "from-emerald-400 to-green-600",
-    iconBg: "bg-emerald-50 dark:bg-emerald-900/20",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
     ),
@@ -55,8 +47,6 @@ const skills = [
   {
     key: "seo",
     accent: "from-amber-400 to-orange-500",
-    iconBg: "bg-amber-50 dark:bg-amber-900/20",
-    iconColor: "text-amber-600 dark:text-amber-400",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
     ),
@@ -64,8 +54,6 @@ const skills = [
   {
     key: "appstore",
     accent: "from-sky-500 to-blue-600",
-    iconBg: "bg-sky-50 dark:bg-sky-900/20",
-    iconColor: "text-sky-600 dark:text-sky-400",
     icon: (
       <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
     ),
@@ -190,24 +178,32 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {skills.map((s) => (
+          {skills.map((s, idx) => (
             <article
               key={s.key}
-              className="group relative flex flex-col p-5 sm:p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white/70 dark:bg-gray-900/50 backdrop-blur-sm hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+              className="group relative flex flex-col p-6 rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
-              <div className={`absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-gradient-to-r ${s.accent} opacity-20 group-hover:opacity-100 transition-opacity duration-300`} />
-              <div className={`flex items-center justify-center w-11 h-11 rounded-xl ${s.iconBg} mb-4`}>
-                <svg className={`w-5 h-5 ${s.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                  {s.icon}
-                </svg>
+              {/* Soft ambient glow that appears on hover */}
+              <div className={`pointer-events-none absolute -top-16 -right-16 w-40 h-40 rounded-full bg-gradient-to-br ${s.accent} opacity-0 group-hover:opacity-15 dark:group-hover:opacity-25 blur-3xl transition-opacity duration-500`} />
+
+              <div className="flex items-start justify-between mb-5">
+                <div className={`relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${s.accent} shadow-lg shadow-gray-900/5 dark:shadow-black/30 ring-1 ring-black/5 dark:ring-white/10`}>
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                    {s.icon}
+                  </svg>
+                </div>
+                <span className="text-[10px] font-mono font-semibold tracking-widest text-gray-300 dark:text-gray-600 group-hover:text-gray-400 dark:group-hover:text-gray-500 transition-colors">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
               </div>
-              <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
+
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 tracking-tight">
                 {t(`skill_${s.key}_title` as any)}
               </h3>
-              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-4 flex-1">
+              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-5 flex-1">
                 {t(`skill_${s.key}_desc` as any)}
               </p>
-              <p className="text-[11px] font-medium tracking-wide text-gray-400 dark:text-gray-500 pt-3 border-t border-gray-100 dark:border-gray-800">
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 pt-4 border-t border-gray-100 dark:border-gray-800/80">
                 {t(`skill_${s.key}_tags` as any)}
               </p>
             </article>

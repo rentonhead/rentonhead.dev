@@ -160,11 +160,12 @@ export default async function MobileProjectsPage({ params }: { params: Promise<{
 
       {/* BrewClock Card */}
       <div className="pb-16 space-y-6">
-        <article className="group relative overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl dark:hover:shadow-black/40 transition-all duration-300">
+        <article className="group relative overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm shadow-sm hover:shadow-xl dark:hover:shadow-black/40 hover:-translate-y-1 transition-all duration-300">
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 via-orange-400 to-red-400" />
+          <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 opacity-0 group-hover:opacity-15 dark:group-hover:opacity-25 blur-3xl transition-opacity duration-500" />
           <div className="p-6 sm:p-8">
             <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg">
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-1 ring-black/5 dark:ring-white/10">
                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
@@ -201,11 +202,12 @@ export default async function MobileProjectsPage({ params }: { params: Promise<{
         </article>
 
         {/* Gastromancy Card */}
-        <article className="group relative overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-xl dark:hover:shadow-black/40 transition-all duration-300">
+        <article className="group relative overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm shadow-sm hover:shadow-xl dark:hover:shadow-black/40 hover:-translate-y-1 transition-all duration-300">
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400" />
+          <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full bg-gradient-to-br from-rose-500 to-orange-600 opacity-0 group-hover:opacity-15 dark:group-hover:opacity-25 blur-3xl transition-opacity duration-500" />
           <div className="p-6 sm:p-8">
             <div className="flex flex-col sm:flex-row sm:items-start gap-5">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-600 flex items-center justify-center shadow-lg">
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-600 flex items-center justify-center shadow-lg shadow-rose-500/20 ring-1 ring-black/5 dark:ring-white/10">
                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m0 14v2M5.6 5.6l1.4 1.4m10 10l1.4 1.4M3 12h2m14 0h2M5.6 18.4l1.4-1.4m10-10l1.4-1.4" />
                   <circle cx="12" cy="12" r="4" strokeLinecap="round" strokeLinejoin="round" />
