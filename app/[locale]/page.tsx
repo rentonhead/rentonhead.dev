@@ -70,35 +70,10 @@ const skills = [
   },
 ] as const;
 
-// Per-locale city + district lists for the visible "Service Areas" block.
-// These exist on the page (not just in JSON-LD) because crawlers weight visible
-// text more heavily than structured data alone — strong local relevance signal.
-const areaGroupsPerLocale: Record<
-  string,
-  { primary: string[]; districts: string[]; secondary: string[] }
-> = {
-  tr: {
-    primary: ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya"],
-    districts: ["Kadıköy", "Beşiktaş", "Şişli", "Beyoğlu", "Üsküdar", "Bakırköy", "Maltepe"],
-    secondary: ["Eskişehir", "Konya", "Gaziantep", "Adana", "Türkiye geneli"],
-  },
-  ru: {
-    primary: ["Москва", "Санкт-Петербург", "Казань"],
-    districts: ["ЦАО", "САО", "Хамовники", "Пресненский", "Тверской"],
-    secondary: ["Новосибирск", "Екатеринбург", "Нижний Новгород", "Россия"],
-  },
-  en: {
-    primary: ["İstanbul", "Moscow", "Ankara", "İzmir", "St. Petersburg"],
-    districts: ["Kadıköy", "Beşiktaş", "Şişli", "Beyoğlu", "Üsküdar"],
-    secondary: ["Bursa", "Antalya", "Eskişehir", "Worldwide"],
-  },
-};
-
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("home");
-  const areas = areaGroupsPerLocale[locale] || areaGroupsPerLocale.en;
 
   const SITE_URL = "https://rentonhead.dev";
   const homeName = locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home";
@@ -257,84 +232,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </p>
             </article>
           ))}
-        </div>
-      </section>
-
-      {/* ============ SERVICE AREAS (local SEO) ============ */}
-      <section className="mt-16 sm:mt-20 pt-10 sm:pt-12 border-t border-gray-100 dark:border-gray-800">
-        <div className="mb-8 sm:mb-10">
-          <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-3">
-            {t("areasTitle")}
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight max-w-2xl text-balance bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 dark:from-white dark:via-gray-100 dark:to-gray-400 bg-clip-text text-transparent">
-            {t("areasSubtitle")}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-          {/* Primary cities */}
-          <div className="relative p-6 rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-600 shadow-lg shadow-teal-500/20 ring-1 ring-black/5 dark:ring-white/10">
-                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </span>
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white tracking-tight">
-                {locale === "ru" ? t("areasRussia") : locale === "tr" ? t("areasTurkey") : "Primary cities"}
-              </h3>
-            </div>
-            <ul className="flex flex-wrap gap-2">
-              {areas.primary.map((city) => (
-                <li key={city} className="inline-flex items-center px-3 py-1.5 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 text-xs font-semibold ring-1 ring-teal-200/60 dark:ring-teal-800/60">
-                  {city}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Districts */}
-          <div className="relative p-6 rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-violet-500/20 ring-1 ring-black/5 dark:ring-white/10">
-                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </span>
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white tracking-tight">
-                {t("areasIstanbulDistricts")}
-              </h3>
-            </div>
-            <ul className="flex flex-wrap gap-2">
-              {areas.districts.map((d) => (
-                <li key={d} className="inline-flex items-center px-3 py-1.5 rounded-full bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-300 text-xs font-semibold ring-1 ring-violet-200/60 dark:ring-violet-800/60">
-                  {d}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Secondary / Remote */}
-          <div className="relative p-6 rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-green-600 shadow-lg shadow-emerald-500/20 ring-1 ring-black/5 dark:ring-white/10">
-                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </span>
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white tracking-tight">
-                {t("areasRemote")}
-              </h3>
-            </div>
-            <ul className="flex flex-wrap gap-2">
-              {areas.secondary.map((s) => (
-                <li key={s} className="inline-flex items-center px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 text-xs font-semibold ring-1 ring-emerald-200/60 dark:ring-emerald-800/60">
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
     </div>

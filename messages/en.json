@@ -83,13 +83,7 @@
     "skill_appstore_tags": "App Store · Marketing · Visuals",
     "skill_wordpress_title": "WordPress Plugin Development",
     "skill_wordpress_desc": "Custom WordPress plugins in PHP — extending WooCommerce, Elementor and the core with clean, maintainable code tailored to project needs.",
-    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks",
-    "areasTitle": "Service Areas",
-    "areasSubtitle": "Based in İstanbul and Moscow — serving clients across Turkey, Russia and worldwide.",
-    "areasRemote": "Remote-friendly worldwide",
-    "areasTurkey": "Turkey",
-    "areasRussia": "Russia",
-    "areasIstanbulDistricts": "İstanbul Districts"
+    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks"
   },
   "projects": {
     "title": "All Projects",

@@ -1,22 +1,13 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { sendContactEmail, ContactFormState } from "../../actions/contact";
-
-// Per-locale map embed config (OpenStreetMap — no API key required)
-const mapConfigPerLocale: Record<string, { bbox: string; marker: string; label: string }> = {
-  tr: { bbox: "28.5,40.8,29.5,41.3", marker: "41.0082,28.9784", label: "İstanbul, Türkiye" },
-  ru: { bbox: "37.3,55.55,37.9,55.95", marker: "55.7558,37.6173", label: "Москва, Россия" },
-  en: { bbox: "28.5,40.8,29.5,41.3", marker: "41.0082,28.9784", label: "Istanbul, Turkey" },
-};
 
 const initialState: ContactFormState = { status: "idle" };
 
 export default function ContactPage() {
   const t = useTranslations("contact");
-  const locale = useLocale();
-  const mapCfg = mapConfigPerLocale[locale] || mapConfigPerLocale.en;
   const [state, formAction, pending] = useActionState(sendContactEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -103,30 +94,6 @@ export default function ContactPage() {
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   İstanbul ↔ Moskova
                 </span>
-              </div>
-            </div>
-
-            {/* Embedded map — local search signal + visual proof of location */}
-            <div className="mt-5 overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800/80 bg-white dark:bg-gray-900/40">
-              <iframe
-                title={mapCfg.label}
-                src={`https://www.openstreetmap.org/export/embed.html?bbox=${mapCfg.bbox}&layer=mapnik&marker=${mapCfg.marker}`}
-                width="100%"
-                height="220"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                style={{ border: 0, display: "block" }}
-              />
-              <div className="px-3 py-2 text-[11px] font-medium text-gray-500 dark:text-gray-400 flex items-center justify-between border-t border-gray-100 dark:border-gray-800/80">
-                <span>{mapCfg.label}</span>
-                <a
-                  href={`https://www.openstreetmap.org/?mlat=${mapCfg.marker.split(",")[0]}&mlon=${mapCfg.marker.split(",")[1]}#map=12/${mapCfg.marker.replace(",", "/")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-600 dark:text-teal-400 hover:underline"
-                >
-                  ↗
-                </a>
               </div>
             </div>
           </div>

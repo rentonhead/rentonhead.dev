@@ -83,13 +83,7 @@
     "skill_appstore_tags": "App Store · Маркетинг · Визуал",
     "skill_wordpress_title": "Разработка плагинов WordPress",
     "skill_wordpress_desc": "Кастомные плагины WordPress на PHP — расширяю WooCommerce, Elementor и ядро системы чистым и поддерживаемым кодом под задачи проекта.",
-    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks",
-    "areasTitle": "Регионы обслуживания",
-    "areasSubtitle": "Базируюсь между Стамбулом и Москвой — работаю с клиентами по всей России, Турции и за рубежом.",
-    "areasRemote": "Удалённая работа по всему миру",
-    "areasTurkey": "Турция",
-    "areasRussia": "Россия",
-    "areasIstanbulDistricts": "Районы Стамбула"
+    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks"
   },
   "projects": {
     "title": "Все проекты",
