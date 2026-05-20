@@ -30,7 +30,9 @@ const localeGeoMap: Record<
     addressCountry: string;
     addressCountryCode: string;
     region: string;
+    currency: string;
     geo: { latitude: number; longitude: number };
+    serviceRadiusKm: number;
     areaServed: { name: string; type: "City" | "Country" | "AdministrativeArea" }[];
   }
 > = {
@@ -39,13 +41,28 @@ const localeGeoMap: Record<
     addressCountry: "Türkiye",
     addressCountryCode: "TR",
     region: "TR-34",
+    currency: "TRY",
     geo: { latitude: 41.0082, longitude: 28.9784 },
+    serviceRadiusKm: 50,
     areaServed: [
+      // Primary city + key Istanbul districts (heavy local search volume)
       { name: "İstanbul", type: "City" },
+      { name: "Kadıköy", type: "AdministrativeArea" },
+      { name: "Beşiktaş", type: "AdministrativeArea" },
+      { name: "Şişli", type: "AdministrativeArea" },
+      { name: "Beyoğlu", type: "AdministrativeArea" },
+      { name: "Üsküdar", type: "AdministrativeArea" },
+      { name: "Bakırköy", type: "AdministrativeArea" },
+      { name: "Maltepe", type: "AdministrativeArea" },
+      // Secondary Turkish cities
       { name: "Ankara", type: "City" },
       { name: "İzmir", type: "City" },
       { name: "Bursa", type: "City" },
       { name: "Antalya", type: "City" },
+      { name: "Eskişehir", type: "City" },
+      { name: "Konya", type: "City" },
+      { name: "Gaziantep", type: "City" },
+      { name: "Adana", type: "City" },
       { name: "Türkiye", type: "Country" },
     ],
   },
@@ -54,10 +71,22 @@ const localeGeoMap: Record<
     addressCountry: "Россия",
     addressCountryCode: "RU",
     region: "RU-MOW",
+    currency: "RUB",
     geo: { latitude: 55.7558, longitude: 37.6173 },
+    serviceRadiusKm: 80,
     areaServed: [
+      // Moscow + key districts
       { name: "Москва", type: "City" },
+      { name: "ЦАО", type: "AdministrativeArea" },
+      { name: "САО", type: "AdministrativeArea" },
+      { name: "Хамовники", type: "AdministrativeArea" },
+      { name: "Пресненский район", type: "AdministrativeArea" },
+      // Secondary Russian cities
       { name: "Санкт-Петербург", type: "City" },
+      { name: "Казань", type: "City" },
+      { name: "Новосибирск", type: "City" },
+      { name: "Екатеринбург", type: "City" },
+      { name: "Нижний Новгород", type: "City" },
       { name: "Россия", type: "Country" },
     ],
   },
@@ -66,10 +95,17 @@ const localeGeoMap: Record<
     addressCountry: "Turkey",
     addressCountryCode: "TR",
     region: "TR-34",
+    currency: "USD",
     geo: { latitude: 41.0082, longitude: 28.9784 },
+    serviceRadiusKm: 50,
     areaServed: [
       { name: "Istanbul", type: "City" },
+      { name: "Kadıköy", type: "AdministrativeArea" },
+      { name: "Beşiktaş", type: "AdministrativeArea" },
       { name: "Moscow", type: "City" },
+      { name: "St. Petersburg", type: "City" },
+      { name: "Ankara", type: "City" },
+      { name: "İzmir", type: "City" },
       { name: "Worldwide", type: "Country" },
     ],
   },
@@ -287,6 +323,8 @@ export default async function LocaleLayout({
     url: `${SITE_URL}/${locale}`,
     image: `${SITE_URL}/myphoto.webp`,
     priceRange: "$$",
+    currenciesAccepted: `${geo.currency}, USD, EUR`,
+    paymentAccepted: "Bank transfer, Wire, USDT",
     email: "hasancemilacar@gmail.com",
     description:
       "iOS mobile app development, modern web development with React & Next.js, WooCommerce e-commerce, custom WordPress plugin development in PHP, UI/UX design and local SEO.",
@@ -301,6 +339,16 @@ export default async function LocaleLayout({
       latitude: geo.geo.latitude,
       longitude: geo.geo.longitude,
     },
+    // GeoCircle service area — concrete signal for "near me" / local-pack searches
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: geo.geo.latitude,
+        longitude: geo.geo.longitude,
+      },
+      geoRadius: `${geo.serviceRadiusKm * 1000}`,
+    },
     // Opening hours — helps with local pack visibility on Google Maps / search
     openingHoursSpecification: [
       {
@@ -311,7 +359,7 @@ export default async function LocaleLayout({
       },
     ],
     areaServed: geo.areaServed.map((a) => ({
-      "@type": a.type === "Country" ? "Country" : "City",
+      "@type": a.type === "Country" ? "Country" : a.type === "AdministrativeArea" ? "AdministrativeArea" : "City",
       name: a.name,
     })),
     hasOfferCatalog: {
@@ -353,7 +401,82 @@ export default async function LocaleLayout({
     inLanguage: ["en", "tr", "ru"],
     publisher: { "@id": `${SITE_URL}/#person` },
     image: `${SITE_URL}/myphoto.webp`,
+    // Sitelinks Searchbox — opt-in to Google's site search action in SERP
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/${locale}/projects?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+    // Voice search hint — what assistants read aloud when citing this site
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2", ".text-pretty"],
+    },
   };
+
+  // Per-city LocalBusiness schemas — each major service city gets its own
+  // anchored LocalBusiness entry. This is the strongest "I serve {city}"
+  // signal for Google's local pack and Yandex local search.
+  type CityEntry = {
+    name: string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+    lat: number;
+    lng: number;
+    radiusKm: number;
+  };
+  const cityListPerLocale: Record<string, CityEntry[]> = {
+    tr: [
+      { name: "rentonhead — İstanbul",  addressLocality: "İstanbul", addressRegion: "TR-34", addressCountry: "TR", lat: 41.0082, lng: 28.9784, radiusKm: 30 },
+      { name: "rentonhead — Ankara",    addressLocality: "Ankara",   addressRegion: "TR-06", addressCountry: "TR", lat: 39.9334, lng: 32.8597, radiusKm: 25 },
+      { name: "rentonhead — İzmir",     addressLocality: "İzmir",    addressRegion: "TR-35", addressCountry: "TR", lat: 38.4192, lng: 27.1287, radiusKm: 25 },
+      { name: "rentonhead — Bursa",     addressLocality: "Bursa",    addressRegion: "TR-16", addressCountry: "TR", lat: 40.1828, lng: 29.0665, radiusKm: 20 },
+      { name: "rentonhead — Antalya",   addressLocality: "Antalya",  addressRegion: "TR-07", addressCountry: "TR", lat: 36.8969, lng: 30.7133, radiusKm: 25 },
+    ],
+    ru: [
+      { name: "rentonhead — Москва",          addressLocality: "Москва",          addressRegion: "RU-MOW", addressCountry: "RU", lat: 55.7558, lng: 37.6173, radiusKm: 50 },
+      { name: "rentonhead — Санкт-Петербург", addressLocality: "Санкт-Петербург", addressRegion: "RU-SPE", addressCountry: "RU", lat: 59.9311, lng: 30.3609, radiusKm: 40 },
+      { name: "rentonhead — Казань",          addressLocality: "Казань",          addressRegion: "RU-TA",  addressCountry: "RU", lat: 55.7963, lng: 49.1064, radiusKm: 30 },
+      { name: "rentonhead — Екатеринбург",    addressLocality: "Екатеринбург",    addressRegion: "RU-SVE", addressCountry: "RU", lat: 56.8389, lng: 60.6057, radiusKm: 30 },
+    ],
+    en: [
+      { name: "rentonhead — Istanbul", addressLocality: "Istanbul", addressRegion: "TR-34",  addressCountry: "TR", lat: 41.0082, lng: 28.9784, radiusKm: 30 },
+      { name: "rentonhead — Moscow",   addressLocality: "Moscow",   addressRegion: "RU-MOW", addressCountry: "RU", lat: 55.7558, lng: 37.6173, radiusKm: 50 },
+    ],
+  };
+  const citiesForLocale = cityListPerLocale[locale] || cityListPerLocale.en;
+  const cityLocalBusinessSchemas = citiesForLocale.map((c, i) => ({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/${locale}#local-${c.addressLocality.replace(/\s+/g, "-").toLowerCase()}`,
+    name: c.name,
+    image: `${SITE_URL}/myphoto.webp`,
+    url: `${SITE_URL}/${locale}`,
+    telephone: undefined,
+    email: "hasancemilacar@gmail.com",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: c.addressLocality,
+      addressRegion: c.addressRegion,
+      addressCountry: c.addressCountry,
+    },
+    geo: { "@type": "GeoCoordinates", latitude: c.lat, longitude: c.lng },
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: { "@type": "GeoCoordinates", latitude: c.lat, longitude: c.lng },
+      geoRadius: `${c.radiusKm * 1000}`,
+    },
+    parentOrganization: { "@id": `${SITE_URL}/#service` },
+    sameAs: [
+      "https://github.com/rentonhead",
+      "https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/",
+    ],
+  }));
 
   // FAQPage schema — drives Google "People Also Ask" rich results
   const faqLocaleMap: Record<string, { q: string; a: string }[]> = {
@@ -438,7 +561,7 @@ export default async function LocaleLayout({
 
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [personSchema, serviceSchema, websiteSchema, faqSchema],
+    "@graph": [personSchema, serviceSchema, websiteSchema, faqSchema, ...cityLocalBusinessSchemas],
   };
 
   return (

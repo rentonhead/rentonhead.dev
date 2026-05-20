@@ -83,7 +83,13 @@
     "skill_appstore_tags": "App Store · Marketing · Visuals",
     "skill_wordpress_title": "WordPress Eklenti Geliştirme",
     "skill_wordpress_desc": "PHP ile özel WordPress eklentileri geliştiriyorum — WooCommerce, Elementor ve çekirdek WordPress'i temiz ve sürdürülebilir kodla projeye özgü ihtiyaçlara göre genişletiyorum.",
-    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks"
+    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks",
+    "areasTitle": "Hizmet Verdiğim Bölgeler",
+    "areasSubtitle": "İstanbul ve Moskova merkezli — Türkiye, Rusya ve dünya genelinde freelance hizmet.",
+    "areasRemote": "Tüm dünyaya uzaktan hizmet",
+    "areasTurkey": "Türkiye",
+    "areasRussia": "Rusya",
+    "areasIstanbulDistricts": "İstanbul İlçeleri"
   },
   "projects": {
     "title": "Tüm Projeler",
