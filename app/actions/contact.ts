@@ -44,8 +44,8 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-function getClientIp(): string {
-  const h = headers();
+async function getClientIp(): Promise<string> {
+  const h = await headers();
   const forwarded = h.get("x-forwarded-for");
   if (forwarded) return forwarded.split(",")[0].trim();
   return h.get("x-real-ip") || "unknown";
@@ -71,7 +71,7 @@ export async function sendContactEmail(
   if (honeypot) return { status: "success" };
 
   // Rate limit
-  const ip = getClientIp();
+  const ip = await getClientIp();
   if (isRateLimited(ip)) {
     return { status: "error", message: "rate_limited" };
   }

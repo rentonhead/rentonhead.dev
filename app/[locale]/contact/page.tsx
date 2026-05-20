@@ -5,10 +5,11 @@ import ContactForm from "./ContactForm";
 const SITE_URL = "https://rentonhead.dev";
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.contact" });
   const url = `${SITE_URL}/${locale}/contact`;
   return {
@@ -38,7 +39,8 @@ export async function generateMetadata({
   };
 }
 
-export default function ContactPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   const breadcrumbLd = {

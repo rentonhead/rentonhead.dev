@@ -6,10 +6,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 const SITE_URL = "https://rentonhead.dev";
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.projects" });
   const url = `${SITE_URL}/${locale}/projects`;
   return {
@@ -49,7 +50,8 @@ interface FeaturedProject {
 
 const featuredProjects: FeaturedProject[] = [];
 
-export default async function Projects({ params: { locale } }: { params: { locale: string } }) {
+export default async function Projects({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const data = featuredProjects;
   const t = await getTranslations("projects");
