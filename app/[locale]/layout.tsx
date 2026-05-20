@@ -116,7 +116,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
-    icons: { icon: "/favicon.ico" },
+    icons: { icon: "/icon.png" },
     title: {
       default: t("title"),
       template: "%s",
