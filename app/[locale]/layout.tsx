@@ -82,6 +82,7 @@ const localeServicesMap: Record<string, ServiceOffer[]> = {
     { name: "iOS Mobil Uygulama Geliştirme", description: "Swift ve SwiftUI ile yerli iOS mobil uygulama geliştirme — İstanbul ve tüm Türkiye'ye anahtar teslim hizmet." },
     { name: "Modern Web Geliştirme", description: "React, Next.js ve Tailwind CSS ile modern, hızlı ve SEO uyumlu web sitesi geliştirme." },
     { name: "E-Ticaret & CMS Çözümleri", description: "WordPress, WooCommerce ve Shopify ile anahtar teslim, uygun fiyatlı e-ticaret sitesi yapımı." },
+    { name: "WordPress Eklenti Geliştirme", description: "PHP ile özel WordPress eklentileri — WooCommerce, Elementor ve çekirdek WordPress'i temiz koduyla genişletme." },
     { name: "UI/UX Tasarım", description: "Figma ve Adobe Creative Suite ile profesyonel UI/UX ve marka kimliği tasarımı." },
     { name: "App Store Ekran Tasarımı", description: "iOS uygulamaları için dönüşüm odaklı App Store screenshot ve görsel tasarımı." },
     { name: "Lokal SEO", description: "Türkiye ve global pazarlar için Rank Math destekli lokal ve teknik SEO." },
@@ -90,6 +91,7 @@ const localeServicesMap: Record<string, ServiceOffer[]> = {
     { name: "Разработка мобильных приложений iOS", description: "Нативные iOS-приложения на Swift и SwiftUI — разработка под ключ для клиентов из Москвы, Санкт-Петербурга и других регионов." },
     { name: "Современная веб-разработка", description: "Разработка быстрых и SEO-оптимизированных сайтов на React, Next.js и Tailwind CSS." },
     { name: "E-Commerce и CMS-решения", description: "Создание интернет-магазинов под ключ на WordPress, WooCommerce и Shopify — недорого и качественно." },
+    { name: "Разработка плагинов WordPress", description: "Кастомные плагины WordPress на PHP — расширяю WooCommerce, Elementor и ядро системы чистым и поддерживаемым кодом." },
     { name: "UI/UX дизайн", description: "Профессиональный UI/UX и дизайн фирменного стиля в Figma и Adobe Creative Suite." },
     { name: "Дизайн скриншотов App Store", description: "Конверсионные скриншоты и визуалы App Store для iOS-приложений." },
     { name: "Локальное SEO", description: "Локальное и техническое SEO на базе Rank Math для клиентов в России и за рубежом." },
@@ -98,6 +100,7 @@ const localeServicesMap: Record<string, ServiceOffer[]> = {
     { name: "iOS Mobile App Development", description: "Native iOS apps built with Swift and SwiftUI — end-to-end mobile development for clients in Istanbul, Moscow and worldwide." },
     { name: "Modern Web Development", description: "Fast, SEO-friendly websites built with React, Next.js and Tailwind CSS." },
     { name: "E-Commerce & CMS", description: "Turnkey, affordable e-commerce stores with WordPress, WooCommerce and Shopify." },
+    { name: "WordPress Plugin Development", description: "Custom WordPress plugins in PHP — extending WooCommerce, Elementor and the core with clean, maintainable code." },
     { name: "UI/UX Design", description: "Professional UI/UX and brand identity design in Figma and Adobe Creative Suite." },
     { name: "App Store Screenshot Design", description: "Conversion-focused App Store screenshot and marketing visual design for iOS apps." },
     { name: "Local SEO", description: "Local and technical SEO powered by Rank Math for clients in Turkey, Russia and worldwide." },
@@ -248,6 +251,12 @@ export default async function LocaleLayout({
       "Next.js",
       "Tailwind CSS",
       "TypeScript",
+      "PHP",
+      "WordPress Plugin Development",
+      "Custom WordPress Plugins",
+      "WordPress Hooks",
+      "WordPress REST API",
+      "Elementor Addon Development",
       "UI/UX Design",
       "Figma",
       "Adobe Creative Suite",
@@ -278,10 +287,9 @@ export default async function LocaleLayout({
     url: `${SITE_URL}/${locale}`,
     image: `${SITE_URL}/myphoto.webp`,
     priceRange: "$$",
-    telephone: "",
     email: "hasancemilacar@gmail.com",
     description:
-      "iOS mobile app development, modern web development with React & Next.js, WooCommerce e-commerce, UI/UX design and local SEO.",
+      "iOS mobile app development, modern web development with React & Next.js, WooCommerce e-commerce, custom WordPress plugin development in PHP, UI/UX design and local SEO.",
     founder: { "@id": `${SITE_URL}/#person` },
     address: {
       "@type": "PostalAddress",
@@ -293,6 +301,15 @@ export default async function LocaleLayout({
       latitude: geo.geo.latitude,
       longitude: geo.geo.longitude,
     },
+    // Opening hours — helps with local pack visibility on Google Maps / search
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "19:00",
+      },
+    ],
     areaServed: geo.areaServed.map((a) => ({
       "@type": a.type === "Country" ? "Country" : "City",
       name: a.name,
@@ -338,9 +355,90 @@ export default async function LocaleLayout({
     image: `${SITE_URL}/myphoto.webp`,
   };
 
+  // FAQPage schema — drives Google "People Also Ask" rich results
+  const faqLocaleMap: Record<string, { q: string; a: string }[]> = {
+    tr: [
+      {
+        q: "Hangi hizmetleri sunuyorsunuz?",
+        a: "iOS mobil uygulama geliştirme (Swift/SwiftUI), modern web sitesi (React/Next.js), anahtar teslim e-ticaret (WooCommerce/Shopify), özel WordPress eklenti geliştirme (PHP), UI/UX tasarım (Figma/Adobe) ve lokal SEO hizmetleri sunuyorum.",
+      },
+      {
+        q: "Nereden hizmet veriyorsunuz?",
+        a: "İstanbul ve Moskova merkezliyim; Türkiye genelinde (Ankara, İzmir, Bursa, Antalya), Rusya'da (Moskova, Sankt-Petersburg) ve dünya genelinde uzaktan freelance hizmet veriyorum.",
+      },
+      {
+        q: "WordPress için özel eklenti yazıyor musunuz?",
+        a: "Evet. PHP ile çekirdek WordPress, WooCommerce ve Elementor'ü genişleten temiz, sürdürülebilir ve projeye özgü eklentiler geliştiriyorum.",
+      },
+      {
+        q: "Mobil uygulama maliyeti nedir?",
+        a: "Uygulama maliyeti kapsama, özellik sayısına ve App Store yayın gereksinimlerine bağlıdır. Detaylı bir teklif için iletişim sayfasından mesaj atabilirsiniz; 1-2 iş günü içinde dönüş yapıyorum.",
+      },
+      {
+        q: "Hangi dillerde iletişim kurabiliyorsunuz?",
+        a: "Türkçe, İngilizce ve Rusça iletişim kurabiliyorum. Tüm projeler için ana dilde dokümantasyon sağlıyorum.",
+      },
+    ],
+    ru: [
+      {
+        q: "Какие услуги вы предлагаете?",
+        a: "Разработка нативных iOS-приложений (Swift/SwiftUI), современные сайты (React/Next.js), интернет-магазины под ключ (WooCommerce/Shopify), кастомные плагины WordPress (PHP), UI/UX дизайн (Figma/Adobe) и локальное SEO.",
+      },
+      {
+        q: "В каких городах вы работаете?",
+        a: "Я работаю из Стамбула и Москвы. Беру удалённые проекты по всей России (Москва, Санкт-Петербург), Турции (Стамбул, Анкара, Измир) и по всему миру.",
+      },
+      {
+        q: "Вы разрабатываете кастомные плагины WordPress?",
+        a: "Да. На PHP я создаю чистые, поддерживаемые и адаптированные под задачи проекта плагины, расширяющие ядро WordPress, WooCommerce и Elementor.",
+      },
+      {
+        q: "Сколько стоит разработка мобильного приложения?",
+        a: "Стоимость зависит от объёма функций, сложности и требований к публикации в App Store. Напишите через страницу «Контакты» — отвечаю в течение 1-2 рабочих дней с подробной оценкой.",
+      },
+      {
+        q: "На каких языках вы общаетесь с клиентами?",
+        a: "Свободно общаюсь на русском, английском и турецком. По проектам предоставляю документацию на родном языке клиента.",
+      },
+    ],
+    en: [
+      {
+        q: "What services do you offer?",
+        a: "Native iOS app development (Swift/SwiftUI), modern websites (React/Next.js), turnkey e-commerce (WooCommerce/Shopify), custom WordPress plugin development (PHP), UI/UX design (Figma/Adobe), and local SEO.",
+      },
+      {
+        q: "Where are you based and who do you serve?",
+        a: "I'm based between Istanbul and Moscow and work remotely with clients across Turkey (Istanbul, Ankara, Izmir), Russia (Moscow, St. Petersburg), and worldwide.",
+      },
+      {
+        q: "Do you build custom WordPress plugins?",
+        a: "Yes. I write custom WordPress plugins in PHP that extend the core, WooCommerce, and Elementor with clean, maintainable code tailored to project requirements.",
+      },
+      {
+        q: "How much does a mobile app cost?",
+        a: "Cost depends on scope, feature complexity, and App Store launch requirements. Reach out via the contact page and I'll return a detailed quote within 1-2 business days.",
+      },
+      {
+        q: "What languages do you communicate in?",
+        a: "I speak English, Turkish, and Russian fluently and provide project documentation in the client's preferred language.",
+      },
+    ],
+  };
+  const faqs = faqLocaleMap[locale] || faqLocaleMap.en;
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}/${locale}#faq`,
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [personSchema, serviceSchema, websiteSchema],
+    "@graph": [personSchema, serviceSchema, websiteSchema, faqSchema],
   };
 
   return (
