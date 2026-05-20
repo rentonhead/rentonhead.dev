@@ -152,33 +152,42 @@ export default function Navbar() {
               <div className="hidden sm:flex sm:items-center sm:gap-6">
                 <Link
                   href="/"
-                  className={`text-sm font-medium transition-colors duration-200 ${
+                  className={`relative text-sm font-medium transition-colors duration-200 pb-px ${
                     isHome
                       ? "text-teal-600 dark:text-teal-400"
                       : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 >
                   {t("home")}
+                  {isHome && (
+                    <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-teal-500" />
+                  )}
                 </Link>
                 <Link
                   href="/projects"
-                  className={`text-sm font-medium transition-colors duration-200 ${
+                  className={`relative text-sm font-medium transition-colors duration-200 pb-px ${
                     isProjects
                       ? "text-teal-600 dark:text-teal-400"
                       : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 >
                   {t("projects")}
+                  {isProjects && (
+                    <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-teal-500" />
+                  )}
                 </Link>
                 <Link
                   href="/contact"
-                  className={`text-sm font-medium transition-colors duration-200 ${
+                  className={`relative text-sm font-medium transition-colors duration-200 pb-px ${
                     isContact
                       ? "text-teal-600 dark:text-teal-400"
                       : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 >
                   {t("contact")}
+                  {isContact && (
+                    <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-teal-500" />
+                  )}
                 </Link>
                 <div className="h-5 w-px bg-gray-200 dark:bg-gray-700" />
                 <LanguageSwitcher />

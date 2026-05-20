@@ -8,7 +8,8 @@ const Footer = () => {
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
-    <footer className="mt-16 sm:mt-20 border-t border-gray-100 dark:border-gray-800">
+    <footer className="mt-16 sm:mt-20">
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-gray-700" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">

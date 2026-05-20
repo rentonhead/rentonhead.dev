@@ -13,3 +13,30 @@
   src: url("../public/Durer.otf");
   font-display: swap;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Thin, minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 99px;
+}
+:where(.dark) ::-webkit-scrollbar-thumb {
+  background: #374151;
+}
+
+/* Subtle ambient gradient behind the whole page */
+body {
+  background-image: radial-gradient(ellipse 80% 40% at 50% -10%, rgba(20, 184, 166, 0.07), transparent);
+}
+:where(.dark) body {
+  background-image: radial-gradient(ellipse 80% 40% at 50% -10%, rgba(20, 184, 166, 0.04), transparent);
+}

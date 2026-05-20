@@ -85,6 +85,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {/* Profile */}
           <div className="flex flex-col items-center text-center xl:items-start xl:text-left">
             <div className="relative">
+              {/* Ambient glow behind profile photo */}
+              <div className="absolute inset-0 rounded-full bg-teal-400/25 dark:bg-teal-500/15 blur-2xl scale-150 -z-10" />
               <Image
                 alt={t("imageAlt")}
                 src={Me}
@@ -93,7 +95,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 priority
                 placeholder="blur"
                 sizes="(max-width: 768px) 176px, 208px"
-                className="h-44 w-44 sm:h-48 sm:w-48 xl:h-52 xl:w-52 rounded-full object-cover object-top ring-4 ring-white dark:ring-gray-900 shadow-xl"
+                className="h-44 w-44 sm:h-48 sm:w-48 xl:h-52 xl:w-52 rounded-full object-cover object-top ring-4 ring-white dark:ring-gray-800 shadow-2xl shadow-teal-500/10"
               />
               <span
                 className="absolute bottom-2 right-2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-[10px] font-semibold shadow-lg"
@@ -108,7 +110,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </span>
             </div>
 
-            <h1 className="pt-5 text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
+            <h1 className="pt-5 text-2xl sm:text-3xl font-bold leading-tight tracking-tight bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 dark:from-white dark:via-gray-100 dark:to-gray-400 bg-clip-text text-transparent">
               {t("name")}
             </h1>
             <p className="pt-1 text-base sm:text-lg text-gray-500 dark:text-gray-400">
@@ -182,7 +184,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-3">
             {t("skillsTitle")}
           </p>
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 max-w-2xl text-balance">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight max-w-2xl text-balance bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 dark:from-white dark:via-gray-100 dark:to-gray-400 bg-clip-text text-transparent">
             {t("skillsSubtitle")}
           </h2>
         </div>
@@ -191,9 +193,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {skills.map((s) => (
             <article
               key={s.key}
-              className="group relative flex flex-col p-5 sm:p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900/60 hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className="group relative flex flex-col p-5 sm:p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white/70 dark:bg-gray-900/50 backdrop-blur-sm hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
             >
-              <div className={`absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-gradient-to-r ${s.accent} opacity-0 group-hover:opacity-100 transition-opacity`} />
+              <div className={`absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-gradient-to-r ${s.accent} opacity-20 group-hover:opacity-100 transition-opacity duration-300`} />
               <div className={`flex items-center justify-center w-11 h-11 rounded-xl ${s.iconBg} mb-4`}>
                 <svg className={`w-5 h-5 ${s.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                   {s.icon}
