@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { client } from "../../lib/sanity";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const SITE_URL = "https://rentonhead.dev";
@@ -40,7 +39,7 @@ export async function generateMetadata({
   };
 }
 
-interface SanityProject {
+interface FeaturedProject {
   title: string;
   overview: string;
   link: string;
@@ -48,23 +47,11 @@ interface SanityProject {
   imageUrl: string;
 }
 
-async function getProjects() {
-  const query = `*[_type == "project"] {
-    title,
-      overview,
-      link,
-      _id,
-      "imageUrl": image.asset->url
-  }`;
-  const data = await client.fetch(query);
-  return data;
-}
-
-export const revalidate = 60;
+const featuredProjects: FeaturedProject[] = [];
 
 export default async function Projects({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
-  const data: SanityProject[] = await getProjects();
+  const data = featuredProjects;
   const t = await getTranslations("projects");
 
   const categories = [
