@@ -80,7 +80,10 @@
     "skill_seo_tags": "Rank Math · Local SEO · Content",
     "skill_appstore_title": "Дизайн скриншотов App Store",
     "skill_appstore_desc": "Скриншоты для App Store, ориентированные на конверсию и соответствующие визуальному языку бренда.",
-    "skill_appstore_tags": "App Store · Маркетинг · Визуал"
+    "skill_appstore_tags": "App Store · Маркетинг · Визуал",
+    "skill_wordpress_title": "Разработка плагинов WordPress",
+    "skill_wordpress_desc": "Кастомные плагины WordPress на PHP — расширяю WooCommerce, Elementor и ядро системы чистым и поддерживаемым кодом под задачи проекта.",
+    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks"
   },
   "projects": {
     "title": "Все проекты",
@@ -105,7 +108,10 @@
     "cat_branding_desc": "Комплексные брендовые идентичности и визуальные системы, создающие неизгладимое впечатление.",
     "cat_uiux": "UI/UX Дизайн",
     "cat_uiux_sub": "Figma & Adobe",
-    "cat_uiux_desc": "Продуманный интерфейсный и UX-дизайн — функциональный, эстетичный и ориентированный на человека."
+    "cat_uiux_desc": "Продуманный интерфейсный и UX-дизайн — функциональный, эстетичный и ориентированный на человека.",
+    "cat_wordpress": "Плагины WordPress",
+    "cat_wordpress_sub": "PHP & Hooks",
+    "cat_wordpress_desc": "Кастомные плагины WordPress, расширяющие ядро, WooCommerce и Elementor чистым PHP."
   },
   "mobileProjects": {
     "title": "Мобильные проекты",

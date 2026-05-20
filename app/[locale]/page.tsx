@@ -58,6 +58,16 @@ const skills = [
       <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
     ),
   },
+  {
+    key: "wordpress",
+    accent: "from-indigo-500 to-blue-700",
+    icon: (
+      <>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M14 4l-4 16" />
+      </>
+    ),
+  },
 ] as const;
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {

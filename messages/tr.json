@@ -80,7 +80,10 @@
     "skill_seo_tags": "Rank Math · Local SEO · Content",
     "skill_appstore_title": "App Store Screen Tasarımı",
     "skill_appstore_desc": "Mobil uygulamalar için dönüşüm odaklı, marka diliyle uyumlu App Store ekran tasarımları (screenshots) hazırlıyorum.",
-    "skill_appstore_tags": "App Store · Marketing · Visuals"
+    "skill_appstore_tags": "App Store · Marketing · Visuals",
+    "skill_wordpress_title": "WordPress Eklenti Geliştirme",
+    "skill_wordpress_desc": "PHP ile özel WordPress eklentileri geliştiriyorum — WooCommerce, Elementor ve çekirdek WordPress'i temiz ve sürdürülebilir kodla projeye özgü ihtiyaçlara göre genişletiyorum.",
+    "skill_wordpress_tags": "PHP · WordPress · WooCommerce · Hooks"
   },
   "projects": {
     "title": "Tüm Projeler",
@@ -105,7 +108,10 @@
     "cat_branding_desc": "Kalıcı izlenimler bırakan kapsamlı marka kimlikleri ve görsel sistemler.",
     "cat_uiux": "UI/UX Tasarım",
     "cat_uiux_sub": "Figma & Adobe",
-    "cat_uiux_desc": "İşlevsel, estetik ve insan odaklı arayüz ve deneyim tasarımı."
+    "cat_uiux_desc": "İşlevsel, estetik ve insan odaklı arayüz ve deneyim tasarımı.",
+    "cat_wordpress": "WordPress Eklentileri",
+    "cat_wordpress_sub": "PHP & Hooks",
+    "cat_wordpress_desc": "Çekirdek WordPress, WooCommerce ve Elementor'ü temiz PHP koduyla genişleten özel eklentiler."
   },
   "mobileProjects": {
     "title": "Mobil Projeler",

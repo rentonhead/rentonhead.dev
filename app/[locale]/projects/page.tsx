@@ -132,6 +132,22 @@ export default async function Projects({ params }: { params: Promise<{ locale: s
         </svg>
       ),
     },
+    {
+      id: "wordpress",
+      label: t("cat_wordpress"),
+      sublabel: t("cat_wordpress_sub"),
+      description: t("cat_wordpress_desc"),
+      href: "#web-projects",
+      gradient: "from-indigo-500 to-blue-700",
+      textAccent: "text-indigo-600 dark:text-indigo-400",
+      isLive: false,
+      icon: (
+        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M14 4l-4 16" />
+        </svg>
+      ),
+    },
   ];
 
   const itemListLd = {
