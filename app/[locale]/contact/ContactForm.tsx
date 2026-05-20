@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { sendContactEmail, ContactFormState } from "../../actions/contact";
 
@@ -8,19 +8,12 @@ const initialState: ContactFormState = { status: "idle" };
 
 export default function ContactPage() {
   const t = useTranslations("contact");
-  const [state, setState] = useState<ContactFormState>(initialState);
-  const [pending, startTransition] = useTransition();
+  const [state, formAction, pending] = useActionState(sendContactEmail, initialState);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    startTransition(async () => {
-      const result = await sendContactEmail(state, formData);
-      setState(result);
-      if (result.status === "success") form.reset();
-    });
-  };
+  useEffect(() => {
+    if (state.status === "success") formRef.current?.reset();
+  }, [state]);
 
   if (state.status === "success") {
     return (
@@ -134,7 +127,7 @@ export default function ContactPage() {
 
         {/* Right — form */}
         <div className="lg:col-span-3">
-          <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+          <form ref={formRef} action={formAction} className="space-y-5">
             {/* Honeypot anti-spam */}
             <input type="text" name="_honey" className="hidden" aria-hidden="true" tabIndex={-1} />
 
