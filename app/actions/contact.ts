@@ -3,6 +3,11 @@
 import nodemailer from "nodemailer";
 import { headers } from "next/headers";
 
+// Force Node.js runtime (nodemailer needs net + tls, not available on edge)
+export const runtime = "nodejs";
+// Allow up to 20s on Vercel (default hobby is 10s — sometimes too tight for cold-start + Gmail SMTP)
+export const maxDuration = 20;
+
 export type ContactFormState =
   | { status: "idle" }
   | { status: "success" }
@@ -61,6 +66,17 @@ export async function sendContactEmail(
   _prev: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  try {
+    return await sendContactEmailInner(formData);
+  } catch (err) {
+    // Last-resort guard: never let the server action throw — that crashes the
+    // form's POST response and shows the browser's "page couldn't load" page
+    console.error("Unhandled contact action error:", err);
+    return { status: "error", message: "server_error" };
+  }
+}
+
+async function sendContactEmailInner(formData: FormData): Promise<ContactFormState> {
   const name = (formData.get("name") as string | null)?.trim() ?? "";
   const email = (formData.get("email") as string | null)?.trim() ?? "";
   const subject = (formData.get("subject") as string | null)?.trim() ?? "";
@@ -115,7 +131,8 @@ export async function sendContactEmail(
     return { status: "error", message: "spam_detected" };
   }
 
-  const appPassword = process.env.GMAIL_APP_PASSWORD;
+  // Google App Passwords are displayed as "xxxx xxxx xxxx xxxx" — strip whitespace
+  const appPassword = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, "");
   if (!appPassword) {
     console.error("GMAIL_APP_PASSWORD env var is not set");
     return { status: "error", message: "server_error" };
@@ -127,6 +144,10 @@ export async function sendContactEmail(
       user: "hasancemilacar@gmail.com",
       pass: appPassword,
     },
+    // Fail fast so we surface a real error instead of hitting Vercel's function timeout
+    connectionTimeout: 8000,
+    greetingTimeout: 8000,
+    socketTimeout: 10000,
   });
 
   const safeName = escapeHtml(name);
