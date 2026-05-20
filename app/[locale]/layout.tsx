@@ -155,7 +155,10 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
-    icons: { icon: "/icon.png" },
+    icons: { icon: "/icon.png", apple: "/icon.png" },
+    manifest: "/manifest.json",
+    applicationName: "rentonhead",
+    appleWebApp: { capable: true, title: "rentonhead", statusBarStyle: "black-translucent" },
     title: {
       default: t("title"),
       template: "%s",
@@ -559,9 +562,38 @@ export default async function LocaleLayout({
     })),
   };
 
+  // Standalone Service nodes — each service gets its own ranking-worthy
+  // entity in addition to the OfferCatalog wrapping (which Google sometimes
+  // de-emphasises). This is the per-service equivalent of per-city LocalBusiness.
+  const standaloneServiceSchemas = services.map((s, i) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_URL}/${locale}#service-${i}`,
+    name: s.name,
+    description: s.description,
+    serviceType: s.name,
+    provider: { "@id": `${SITE_URL}/#service` },
+    areaServed: geo.areaServed.map((a) => ({
+      "@type": a.type === "Country" ? "Country" : a.type === "AdministrativeArea" ? "AdministrativeArea" : "City",
+      name: a.name,
+    })),
+    offers: {
+      "@type": "Offer",
+      priceCurrency: geo.currency,
+      availability: "https://schema.org/InStock",
+    },
+  }));
+
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [personSchema, serviceSchema, websiteSchema, faqSchema, ...cityLocalBusinessSchemas],
+    "@graph": [
+      personSchema,
+      serviceSchema,
+      websiteSchema,
+      faqSchema,
+      ...cityLocalBusinessSchemas,
+      ...standaloneServiceSchemas,
+    ],
   };
 
   return (

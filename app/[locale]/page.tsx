@@ -100,8 +100,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations("home");
   const areas = areaGroupsPerLocale[locale] || areaGroupsPerLocale.en;
 
+  const SITE_URL = "https://rentonhead.dev";
+  const homeName = locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home";
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: homeName, item: `${SITE_URL}/${locale}` },
+    ],
+  };
+
   return (
     <div className="pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* ============ HERO ============ */}
       <section className="pt-8 sm:pt-12">
         <div className="grid grid-cols-1 gap-10 md:gap-12 xl:grid-cols-3 xl:gap-x-12">
