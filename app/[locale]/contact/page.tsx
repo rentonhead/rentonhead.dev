@@ -4,6 +4,11 @@ import ContactForm from "./ContactForm";
 
 const SITE_URL = "https://rentonhead.dev";
 
+// Route segment config — moved here from app/actions/contact.ts because Next 16's
+// Turbopack only allows async function exports from "use server" files.
+export const runtime = "nodejs";
+export const maxDuration = 20;
+
 export async function generateMetadata({
   params,
 }: {

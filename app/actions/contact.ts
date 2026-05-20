@@ -3,11 +3,6 @@
 import nodemailer from "nodemailer";
 import { headers } from "next/headers";
 
-// Force Node.js runtime (nodemailer needs net + tls, not available on edge)
-export const runtime = "nodejs";
-// Allow up to 20s on Vercel (default hobby is 10s — sometimes too tight for cold-start + Gmail SMTP)
-export const maxDuration = 20;
-
 export type ContactFormState =
   | { status: "idle" }
   | { status: "success" }
