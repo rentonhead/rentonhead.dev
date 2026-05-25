@@ -312,6 +312,7 @@ export default async function LocaleLayout({
       "Art Direction",
     ],
     sameAs: [
+      "https://hasancemilacar.com.tr",
       "https://github.com/rentonhead",
       "https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/",
     ],
@@ -383,6 +384,7 @@ export default async function LocaleLayout({
       })),
     },
     sameAs: [
+      "https://hasancemilacar.com.tr",
       "https://github.com/rentonhead",
       "https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/",
     ],
@@ -476,6 +478,7 @@ export default async function LocaleLayout({
     },
     parentOrganization: { "@id": `${SITE_URL}/#service` },
     sameAs: [
+      "https://hasancemilacar.com.tr",
       "https://github.com/rentonhead",
       "https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/",
     ],
