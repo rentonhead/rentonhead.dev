@@ -1,0 +1,53 @@
+# rentonhead.dev
+
+> Hasan Cemil Acar (rentonhead) — İstanbul ve Moskova merkezli Art Director ve Programcı.
+
+## Hakkında
+
+Hasan Cemil Acar, internet dünyasında "rentonhead" olarak bilinen bir Art Director ve Programcıdır. İstanbul, Türkiye ile Moskova, Rusya arasında yaşar ve dünya genelinde müşterilere hizmet verir. Tasarım ile geliştirme arasında köprü kurarak modern dijital ürünler inşa eder.
+
+## Hizmetler
+
+- **iOS Mobil Uygulama Geliştirme**: Swift ve SwiftUI ile yerli iOS uygulamaları — konseptten App Store yayınına kadar uçtan uca geliştirme.
+- **Modern Web Geliştirme**: React, Next.js ve Tailwind CSS ile hızlı, SEO uyumlu web siteleri.
+- **E-Ticaret ve CMS Çözümleri**: WordPress, WooCommerce ve Shopify ile anahtar teslim online mağazalar.
+- **WordPress Eklenti Geliştirme**: PHP ile WooCommerce, Elementor ve WordPress çekirdeğini genişleten özel eklentiler.
+- **UI/UX Tasarım**: Figma ve Adobe Creative Suite ile profesyonel arayüz ve marka kimliği tasarımı.
+- **App Store Ekran Tasarımı**: Dönüşüm odaklı App Store görselleri ve pazarlama materyalleri.
+- **Lokal ve Teknik SEO**: Rank Math destekli lokal SEO — Türkiye, Rusya ve global pazarlar için.
+
+## Projeler
+
+- [Gastromancy](https://rentonhead.dev/tr/projects/mobile) — Buzdolabındaki malzemelerle yapay zekâ destekli tarif üreten iOS uygulaması. App Store'da yayında.
+- [BrewClock](https://rentonhead.dev/tr/projects/mobile) — Kahve tutkunları için hassas demleme zamanlayıcısı. Geliştirme aşamasında.
+
+## İletişim
+
+- E-posta: hasancemilacar@gmail.com
+- Web sitesi: https://rentonhead.dev
+- GitHub: https://github.com/rentonhead
+- LinkedIn: https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/
+- Konum: İstanbul, Türkiye ↔ Moskova, Rusya
+- Diller: Türkçe, İngilizce, Rusça
+
+## Hizmet Verilen Şehirler
+
+İstanbul (Kadıköy, Beşiktaş, Şişli, Beyoğlu, Üsküdar, Bakırköy, Maltepe), Ankara, İzmir, Bursa, Antalya, Eskişehir, Konya, Gaziantep, Adana ve tüm Türkiye genelinde uzaktan çalışma ile hizmet.
+
+## Sıkça Sorulan Sorular
+
+**S: Hangi hizmetleri sunuyorsunuz?**
+C: iOS mobil uygulama geliştirme, modern web sitesi, anahtar teslim e-ticaret, özel WordPress eklenti geliştirme, UI/UX tasarım ve lokal SEO.
+
+**S: Nereden hizmet veriyorsunuz?**
+C: İstanbul ve Moskova merkezliyim. Türkiye genelinde ve dünya çapında uzaktan freelance hizmet veriyorum.
+
+**S: Mobil uygulama maliyeti nedir?**
+C: Uygulama maliyeti kapsama ve özellik sayısına bağlıdır. İletişim sayfasından mesaj atarak 1-2 iş günü içinde detaylı teklif alabilirsiniz.
+
+## Sayfalar
+
+- Ana Sayfa: https://rentonhead.dev/tr
+- Projeler: https://rentonhead.dev/tr/projects
+- Mobil Projeler: https://rentonhead.dev/tr/projects/mobile
+- İletişim: https://rentonhead.dev/tr/contact

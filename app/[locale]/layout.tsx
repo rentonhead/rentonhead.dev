@@ -611,6 +611,16 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        {/* AI / LLM discovery — locale-specific llms.txt */}
+        <link rel="alternate" type="text/plain" href="https://rentonhead.dev/llms.txt" title="LLM Content (English)" hrefLang="en" />
+        <link rel="alternate" type="text/plain" href="https://rentonhead.dev/llms-tr.txt" title="LLM Content (Türkçe)" hrefLang="tr" />
+        <link rel="alternate" type="text/plain" href="https://rentonhead.dev/llms-ru.txt" title="LLM Content (Русский)" hrefLang="ru" />
+        {/* Citation meta tags for AI systems */}
+        <meta name="citation_author" content="Hasan Cemil Acar" />
+        <meta name="citation_title" content="rentonhead.dev — Art Director & Programmer" />
+        <meta name="citation_public_url" content="https://rentonhead.dev" />
+        <meta name="ai-content-license" content="citation-allowed" />
+        <meta name="referrer" content="origin-when-cross-origin" />
         <NextIntlClientProvider messages={messages}>
           <Provider>
             <CursorClient />

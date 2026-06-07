@@ -58,27 +58,48 @@ export default async function MobileProjectsPage({ params }: { params: Promise<{
   const brewclockApp = {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
+    "@id": `${SITE_URL}/#brewclock`,
     name: t("brewclock_name"),
     description: t("brewclock_description"),
     applicationCategory: "LifestyleApplication",
     operatingSystem: "iOS",
+    softwareVersion: "1.0",
     author: { "@id": `${SITE_URL}/#person` },
     publisher: { "@id": `${SITE_URL}/#person` },
     inLanguage: ["en", "tr", "ru"],
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    url: `${SITE_URL}/${locale}/projects/mobile`,
+    applicationSubCategory: "Coffee & Brewing",
+    programmingLanguage: ["Swift", "SwiftUI"],
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/PreOrder",
+    },
   };
 
   const gastromancyApp = {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
+    "@id": `${SITE_URL}/#gastromancy`,
     name: t("gastromancy_name"),
     description: t("gastromancy_description"),
     applicationCategory: "FoodAndDrinkApplication",
     operatingSystem: "iOS",
+    softwareVersion: "1.0",
     author: { "@id": `${SITE_URL}/#person` },
     publisher: { "@id": `${SITE_URL}/#person` },
     inLanguage: ["en", "tr", "ru"],
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    url: `${SITE_URL}/${locale}/projects/mobile`,
+    applicationSubCategory: "AI Recipe Assistant",
+    programmingLanguage: ["React Native", "TypeScript"],
+    featureList: "AI recipe generation, mood-based styles, dietary filters, voice-guided cooking, weekly menus, smart pantry tracker",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
   };
 
   const statusConfig: Record<string, { dot: string; badge: string }> = {

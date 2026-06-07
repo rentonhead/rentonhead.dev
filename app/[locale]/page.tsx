@@ -117,11 +117,30 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     ],
   };
 
+  // ProfilePage schema — tells Google & AI this is a person's profile page
+  const profilePageLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${SITE_URL}/${locale}#profilepage`,
+    url: `${SITE_URL}/${locale}`,
+    name: t("name"),
+    description: t("role"),
+    mainEntity: { "@id": `${SITE_URL}/#person` },
+    dateCreated: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    inLanguage: locale,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+  };
+
   return (
     <div className="pb-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageLd) }}
       />
       {/* ============ HERO ============ */}
       <section className="pt-8 sm:pt-12">

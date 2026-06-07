@@ -21,7 +21,7 @@ const nextConfig = {
           },
           {
             key: "Link",
-            value: '<https://rentonhead.dev/llms.txt>; rel="ai-content-description", <https://rentonhead.dev/llms-full.txt>; rel="ai-content-full"',
+            value: '<https://rentonhead.dev/llms.txt>; rel="ai-content-description", <https://rentonhead.dev/llms-full.txt>; rel="ai-content-full", <https://rentonhead.dev/llms-tr.txt>; rel="alternate"; hreflang="tr", <https://rentonhead.dev/llms-ru.txt>; rel="alternate"; hreflang="ru"',
           },
         ],
       },

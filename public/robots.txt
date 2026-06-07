@@ -97,3 +97,5 @@ Host: https://rentonhead.dev
 Sitemap: https://rentonhead.dev/sitemap.xml
 Sitemap: https://rentonhead.dev/llms.txt
 Sitemap: https://rentonhead.dev/llms-full.txt
+Sitemap: https://rentonhead.dev/llms-tr.txt
+Sitemap: https://rentonhead.dev/llms-ru.txt

@@ -98,6 +98,8 @@ module.exports = {
       `${SITE_URL}/sitemap.xml`,
       `${SITE_URL}/llms.txt`,
       `${SITE_URL}/llms-full.txt`,
+      `${SITE_URL}/llms-tr.txt`,
+      `${SITE_URL}/llms-ru.txt`,
     ],
   },
 };
