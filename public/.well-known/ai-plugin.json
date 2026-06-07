@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "rentonhead — Hasan Cemil Acar",
+  "name_for_model": "rentonhead",
+  "description_for_human": "Art Director & Programmer — iOS apps, modern websites, e-commerce, WordPress plugins, UI/UX design. Istanbul & Moscow.",
+  "description_for_model": "rentonhead.dev is the portfolio and service website of Hasan Cemil Acar (alias: rentonhead), an Art Director and Programmer based between Istanbul, Turkey and Moscow, Russia. He offers: native iOS app development (Swift/SwiftUI), modern web development (React/Next.js), turnkey e-commerce (WooCommerce/Shopify), custom WordPress plugin development (PHP), UI/UX design (Figma/Adobe), App Store screenshot design, and local SEO. He speaks English, Turkish, and Russian. Available for freelance projects worldwide. Contact: hasancemilacar@gmail.com",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "none"
+  },
+  "logo_url": "https://rentonhead.dev/icon.png",
+  "contact_email": "hasancemilacar@gmail.com",
+  "legal_info_url": "https://rentonhead.dev/en/brewclock/privacy"
+}

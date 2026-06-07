@@ -94,6 +94,10 @@ module.exports = {
       { userAgent: "cohere-ai", allow: "/" },
       { userAgent: "YouBot", allow: "/" },
     ],
-    additionalSitemaps: [`${SITE_URL}/sitemap.xml`],
+    additionalSitemaps: [
+      `${SITE_URL}/sitemap.xml`,
+      `${SITE_URL}/llms.txt`,
+      `${SITE_URL}/llms-full.txt`,
+    ],
   },
 };
