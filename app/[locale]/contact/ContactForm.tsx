@@ -1,8 +1,10 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { sendContactEmail, ContactFormState } from "../../actions/contact";
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
 
 const initialState: ContactFormState = { status: "idle" };
 
@@ -10,10 +12,55 @@ export default function ContactPage() {
   const t = useTranslations("contact");
   const [state, formAction, pending] = useActionState(sendContactEmail, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const [formTimestamp, setFormTimestamp] = useState<number>(Date.now);
+  const recaptchaTokenRef = useRef<string>("");
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
 
+  // Load reCAPTCHA v3 script
   useEffect(() => {
-    if (state.status === "success") formRef.current?.reset();
+    if (!RECAPTCHA_SITE_KEY) return;
+    if (document.getElementById("recaptcha-v3-script")) {
+      if (typeof window !== "undefined" && (window as any).grecaptcha) {
+        setRecaptchaReady(true);
+      }
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = "recaptcha-v3-script";
+    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.onload = () => {
+      (window as any).grecaptcha?.ready(() => setRecaptchaReady(true));
+    };
+    document.head.appendChild(script);
+  }, []);
+
+  // Reset form on success & refresh timestamp
+  useEffect(() => {
+    if (state.status === "success") {
+      formRef.current?.reset();
+      setFormTimestamp(Date.now());
+    }
   }, [state]);
+
+  // Intercept form submission to get reCAPTCHA token first
+  const handleSubmit = useCallback(
+    async (formData: FormData) => {
+      // Get reCAPTCHA token
+      if (RECAPTCHA_SITE_KEY && recaptchaReady) {
+        try {
+          const token = await (window as any).grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact" });
+          formData.set("_recaptcha", token);
+        } catch (err) {
+          console.error("reCAPTCHA execute error:", err);
+        }
+      }
+      // Set timestamp
+      formData.set("_timestamp", formTimestamp.toString());
+      return formAction(formData);
+    },
+    [formAction, formTimestamp, recaptchaReady]
+  );
 
   if (state.status === "success") {
     return (
@@ -127,9 +174,12 @@ export default function ContactPage() {
 
         {/* Right — form */}
         <div className="lg:col-span-3">
-          <form ref={formRef} action={formAction} className="space-y-5">
+          <form ref={formRef} action={handleSubmit} className="space-y-5">
             {/* Honeypot anti-spam */}
             <input type="text" name="_honey" className="hidden" aria-hidden="true" tabIndex={-1} />
+            {/* Hidden fields for anti-bot */}
+            <input type="hidden" name="_recaptcha" value="" />
+            <input type="hidden" name="_timestamp" value={formTimestamp.toString()} />
 
             {errorMsg && (
               <div className="flex items-center gap-2.5 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 text-sm text-red-600 dark:text-red-400">

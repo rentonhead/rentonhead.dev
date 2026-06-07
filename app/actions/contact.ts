@@ -3,6 +3,32 @@
 import nodemailer from "nodemailer";
 import { headers } from "next/headers";
 
+// ── reCAPTCHA v3 verification ─────────────────────────────────────────────────
+const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY ?? "";
+const RECAPTCHA_THRESHOLD = 0.5; // score below this → likely bot
+
+async function verifyRecaptcha(token: string): Promise<{ success: boolean; score: number }> {
+  if (!RECAPTCHA_SECRET) {
+    console.warn("RECAPTCHA_SECRET_KEY not set — skipping reCAPTCHA check");
+    return { success: true, score: 1 };
+  }
+  try {
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${encodeURIComponent(RECAPTCHA_SECRET)}&response=${encodeURIComponent(token)}`,
+    });
+    const data = await res.json();
+    return { success: !!data.success, score: data.score ?? 0 };
+  } catch (err) {
+    console.error("reCAPTCHA verification failed:", err);
+    return { success: false, score: 0 };
+  }
+}
+
+// ── Minimum form fill time (seconds) — bots fill instantly ────────────────────
+const MIN_FILL_TIME_MS = 3000;
+
 export type ContactFormState =
   | { status: "idle" }
   | { status: "success" }
@@ -77,9 +103,26 @@ async function sendContactEmailInner(formData: FormData): Promise<ContactFormSta
   const subject = (formData.get("subject") as string | null)?.trim() ?? "";
   const message = (formData.get("message") as string | null)?.trim() ?? "";
   const honeypot = (formData.get("_honey") as string | null) ?? "";
+  const recaptchaToken = (formData.get("_recaptcha") as string | null) ?? "";
+  const formTimestamp = parseInt((formData.get("_timestamp") as string | null) ?? "0", 10);
 
   // Honeypot: silently succeed so bots don't get useful feedback
   if (honeypot) return { status: "success" };
+
+  // Timestamp check: if the form was filled in under 3 seconds → bot
+  if (formTimestamp > 0 && Date.now() - formTimestamp < MIN_FILL_TIME_MS) {
+    return { status: "success" }; // silent success to not tip off bots
+  }
+
+  // reCAPTCHA v3 verification
+  if (!recaptchaToken) {
+    return { status: "error", message: "spam_detected" };
+  }
+  const captchaResult = await verifyRecaptcha(recaptchaToken);
+  if (!captchaResult.success || captchaResult.score < RECAPTCHA_THRESHOLD) {
+    console.warn(`reCAPTCHA failed: success=${captchaResult.success}, score=${captchaResult.score}`);
+    return { status: "error", message: "spam_detected" };
+  }
 
   // Rate limit
   const ip = await getClientIp();
