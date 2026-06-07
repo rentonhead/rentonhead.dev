@@ -597,7 +597,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} suppressHydrationWarning className="bg-white dark:bg-[#090908]">
+    <html lang={locale} dir="ltr" suppressHydrationWarning className="bg-white dark:bg-[#090908]">
       <body
         className={`${inter.className} bg-white text-black dark:bg-[#090908] dark:text-white min-h-screen antialiased selection:bg-teal-100 dark:selection:bg-teal-900/40`}
       >
@@ -605,6 +605,12 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
         />
+        {/* DNS prefetch & preconnect for third-party origins */}
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://www.gstatic.com" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+        <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
         <NextIntlClientProvider messages={messages}>
           <Provider>
             <CursorClient />

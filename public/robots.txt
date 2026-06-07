@@ -2,6 +2,94 @@
 User-agent: *
 Allow: /
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+# YandexBot
+User-agent: YandexBot
+Allow: /
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /
+
+# Applebot
+User-agent: Applebot
+Allow: /
+
+# GPTBot
+User-agent: GPTBot
+Allow: /
+
+# ChatGPT-User
+User-agent: ChatGPT-User
+Allow: /
+
+# OAI-SearchBot
+User-agent: OAI-SearchBot
+Allow: /
+
+# ClaudeBot
+User-agent: ClaudeBot
+Allow: /
+
+# Claude-Web
+User-agent: Claude-Web
+Allow: /
+
+# anthropic-ai
+User-agent: anthropic-ai
+Allow: /
+
+# PerplexityBot
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity-User
+User-agent: Perplexity-User
+Allow: /
+
+# Google-Extended
+User-agent: Google-Extended
+Allow: /
+
+# Applebot-Extended
+User-agent: Applebot-Extended
+Allow: /
+
+# Bytespider
+User-agent: Bytespider
+Allow: /
+
+# Amazonbot
+User-agent: Amazonbot
+Allow: /
+
+# Meta-ExternalAgent
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# FacebookBot
+User-agent: FacebookBot
+Allow: /
+
+# cohere-ai
+User-agent: cohere-ai
+Allow: /
+
+# YouBot
+User-agent: YouBot
+Allow: /
+
 # Host
 Host: https://rentonhead.dev
 

@@ -143,9 +143,9 @@ export default function Navbar() {
             <div className="flex items-center justify-between h-16 sm:h-20">
               {/* Logo */}
               <Link href="/" className="flex items-center" aria-label="rentonhead home">
-                <h1 className="text-3xl sm:text-4xl font-xl font-durer dark:text-yellow-300 leading-none">
+                <span className="text-3xl sm:text-4xl font-xl font-durer dark:text-yellow-300 leading-none">
                   rentonhead
-                </h1>
+                </span>
               </Link>
 
               {/* Desktop nav */}

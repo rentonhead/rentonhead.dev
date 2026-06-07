@@ -2,6 +2,8 @@ import Image from "next/image";
 import Me from "../myphoto.webp";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 
+const SITE_URL = "https://rentonhead.dev";
+
 export async function generateMetadata({
   params,
 }: {
@@ -9,9 +11,39 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.home" });
+  const url = `${SITE_URL}/${locale}`;
   return {
     title: t("title"),
     description: t("description"),
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${SITE_URL}/en`,
+        tr: `${SITE_URL}/tr`,
+        ru: `${SITE_URL}/ru`,
+        "x-default": `${SITE_URL}/en`,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url,
+      type: "website",
+      images: [
+        {
+          url: `${SITE_URL}/myphoto.webp`,
+          width: 500,
+          height: 500,
+          alt: "Hasan Cemil Acar - rentonhead",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [`${SITE_URL}/myphoto.webp`],
+    },
   };
 }
 
@@ -75,7 +107,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   setRequestLocale(locale);
   const t = await getTranslations("home");
 
-  const SITE_URL = "https://rentonhead.dev";
+  // SITE_URL defined at module level
   const homeName = locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home";
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -101,6 +133,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <div className="absolute inset-0 rounded-full bg-teal-400/25 dark:bg-teal-500/15 blur-2xl scale-150 -z-10" />
               <Image
                 alt={t("imageAlt")}
+                title="Hasan Cemil Acar — Art Director & Programmer"
                 src={Me}
                 width={500}
                 height={500}
