@@ -747,11 +747,29 @@ export default async function GastromancyPrivacyPage({
     ],
   };
 
+  const privacyPageLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/${locale}/gastromancy/privacy#webpage`,
+    url: `${SITE_URL}/${locale}/gastromancy/privacy`,
+    name: c.title + " – Gastromancy",
+    description: c.title + " – Gastromancy",
+    specialty: "PrivacyPolicy",
+    mainEntity: {
+      "@type": "MobileApplication",
+      "@id": `${SITE_URL}/#gastromancy`,
+    },
+  };
+
   return (
     <div className="max-w-3xl pb-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyPageLd) }}
       />
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 pt-6 mb-10 flex-wrap">

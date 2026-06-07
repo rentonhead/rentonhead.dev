@@ -49,6 +49,20 @@ export default async function BrewClockPrivacyPage({ params }: { params: Promise
     ],
   };
 
+  const privacyPageLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/${locale}/brewclock/privacy#webpage`,
+    url: `${SITE_URL}/${locale}/brewclock/privacy`,
+    name: t("pageTitle"),
+    description: t("pageTitle"),
+    specialty: "PrivacyPolicy",
+    mainEntity: {
+      "@type": "MobileApplication",
+      "@id": `${SITE_URL}/#brewclock`,
+    },
+  };
+
   const dataItems = [
     { key: "local", icon: <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" /> },
     { key: "cloud", icon: <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /> },
@@ -115,6 +129,10 @@ export default async function BrewClockPrivacyPage({ params }: { params: Promise
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyPageLd) }}
       />
       <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 pt-6 mb-10">
         <Link href="/projects" className="hover:text-teal-500 transition-colors duration-150">{t("breadcrumbProjects")}</Link>

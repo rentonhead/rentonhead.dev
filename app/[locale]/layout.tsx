@@ -611,6 +611,8 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        {/* Author information */}
+        <link rel="author" href="/humans.txt" />
         {/* AI / LLM discovery — locale-specific llms.txt */}
         <link rel="alternate" type="text/plain" href="https://rentonhead.dev/llms.txt" title="LLM Content (English)" hrefLang="en" />
         <link rel="alternate" type="text/plain" href="https://rentonhead.dev/llms-tr.txt" title="LLM Content (Türkçe)" hrefLang="tr" />

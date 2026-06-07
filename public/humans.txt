@@ -1,0 +1,17 @@
+/* TEAM */
+Chef / Developer: Hasan Cemil Acar (rentonhead)
+Contact: hasancemilacar@gmail.com
+GitHub: https://github.com/rentonhead
+LinkedIn: https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/
+Location: Istanbul, Turkey / Moscow, Russia
+
+/* SITE */
+Last update: 2026/06/08
+Standards: HTML5, CSS3, ES6+, WebP, JSON-LD, PWA (manifest.json)
+Framework: Next.js (React)
+Styling: TailwindCSS v4
+Internationalization: next-intl
+Hosting: Vercel
+Analytics: Vercel Analytics
+SEO: next-sitemap, Generative Engine Optimization (llms.txt, llms-full.txt)
+Security: reCAPTCHA v3, RFC 9116 (security.txt)
