@@ -1,42 +1,37 @@
-# rentonhead.dev
+# rentonhead
 
-> Hasan Cemil Acar (rentonhead) — Art Director & Programmer based between Istanbul and Moscow.
+> Official global portfolio of Hasan Cemil Acar, also known as rentonhead — an Art Director & Programmer designing and building native iOS apps, digital products, modern web experiences and brand systems.
 
-## About
+## Primary English pages
 
-Hasan Cemil Acar, known online as "rentonhead", is an Art Director and Programmer who bridges design and development to build modern digital products. He operates between Istanbul, Turkey and Moscow, Russia, serving clients worldwide.
+- [Home](https://rentonhead.dev/en): Identity, selected work and creative technology practice
+- [Work](https://rentonhead.dev/en/work): Selected real mobile, web and operational products
+- [Capabilities](https://rentonhead.dev/en/capabilities): Product direction, iOS, web, commerce, visual design and digital visibility
+- [About](https://rentonhead.dev/en/about): Biography, technologies and direct entity answers
+- [Contact](https://rentonhead.dev/en/contact): Official contact information
 
-## Services
+## Selected work
 
-- **iOS Mobile App Development**: Native iOS apps with Swift and SwiftUI — end-to-end from concept to App Store launch.
-- **Modern Web Development**: Fast, SEO-friendly websites with React, Next.js, and Tailwind CSS.
-- **E-Commerce & CMS**: Turnkey online stores with WordPress, WooCommerce, and Shopify.
-- **WordPress Plugin Development**: Custom PHP plugins extending WooCommerce, Elementor, and WordPress core.
-- **UI/UX Design**: Professional interface and brand identity design using Figma and Adobe Creative Suite.
-- **App Store Screenshot Design**: Conversion-focused App Store visuals and marketing assets.
-- **Local & Technical SEO**: Rank Math-powered local SEO for clients in Turkey, Russia, and worldwide.
-
-## Projects
-
-- [Gastromancy](https://rentonhead.dev/en/projects/mobile) — AI-powered home cooking assistant that turns fridge ingredients into recipes. Live on App Store.
-- [BrewClock](https://rentonhead.dev/en/projects/mobile) — Precision brew timer and guide for coffee enthusiasts. In development.
-
-## Contact
-
-- Email: hasancemilacar@gmail.com
-- Website: https://rentonhead.dev
-- GitHub: https://github.com/rentonhead
-- LinkedIn: https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/
-- Location: Istanbul, Turkey ↔ Moscow, Russia
-- Languages: English, Turkish, Russian
-
-## Pages
-
-- Home: https://rentonhead.dev/en
-- Projects: https://rentonhead.dev/en/projects
-- Mobile Projects: https://rentonhead.dev/en/projects/mobile
-- Contact: https://rentonhead.dev/en/contact
+- [BrewClock](https://rentonhead.dev/en/work/brewclock): Native iOS brewing companion built with Swift and SwiftUI
+- [Castor Coffee Mobile](https://rentonhead.dev/en/work/castor-coffee-mobile): React Native commerce, QR ordering and loyalty platform
+- [RentonSoft](https://rentonhead.dev/en/work/rentonsoft): Realtime restaurant operations platform
+- [OkulSistem](https://rentonhead.dev/en/work/okulsistem): School administration, finance and payment platform
 
 ## Languages
 
-This site is available in English (en), Turkish (tr), and Russian (ru).
+- [English](https://rentonhead.dev/en)
+- [Russian](https://rentonhead.dev/ru)
+
+## Official related websites
+
+- [Hasan Cemil Acar — Turkish personal portfolio](https://hasancemilacar.com.tr)
+- [RentonDiji — digital solutions for businesses in Türkiye](https://rentondiji.com)
+
+## Identity
+
+- Name: Hasan Cemil Acar
+- Alternate name: rentonhead
+- Primary title: Art Director & Programmer
+- Practice: native iOS, digital product design, modern web engineering, commerce and WordPress systems, App Store visuals
+- GitHub: https://github.com/rentonhead
+- LinkedIn: https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/
