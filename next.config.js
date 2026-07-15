@@ -1,52 +1,34 @@
-const createNextIntlPlugin = require('next-intl/plugin');
-
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+const isPreview = process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "cdn.sanity.io" },
-    ],
-  },
-  async headers() {
+  poweredByHeader: false,
+  compress: true,
+  async redirects() {
     return [
       {
-        // All pages — AI crawler discovery & security headers
         source: "/:path*",
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "all",
-          },
-          {
-            key: "Link",
-            value: '<https://rentonhead.dev/llms.txt>; rel="ai-content-description", <https://rentonhead.dev/llms-full.txt>; rel="ai-content-full", <https://rentonhead.dev/llms-tr.txt>; rel="alternate"; hreflang="tr", <https://rentonhead.dev/llms-ru.txt>; rel="alternate"; hreflang="ru"',
-          },
-          {
-            key: "X-Frame-Options",
-            value: "DENY",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
-          },
-          {
-            key: "Strict-Transport-Security",
-            value: "max-age=31536000; includeSubDomains; preload",
-          },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
-          },
-        ],
+        has: [{ type: "host", value: "www.rentonhead.dev" }],
+        destination: "https://rentonhead.dev/:path*",
+        permanent: true,
       },
+      { source: "/:locale(tr|en|ru)/projects/mobile", destination: "/:locale/work/brewclock", permanent: true },
+      { source: "/:locale(tr|en|ru)/projects", destination: "/:locale/work", permanent: true },
     ];
+  },
+  async headers() {
+    const securityHeaders = [
+      { key: "Content-Security-Policy", value: "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com; connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com; upgrade-insecure-requests" },
+      { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "X-Frame-Options", value: "DENY" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+      { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+    ];
+    if (isPreview) securityHeaders.push({ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" });
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
 
-module.exports = withNextIntl(nextConfig);
+module.exports = nextConfig;

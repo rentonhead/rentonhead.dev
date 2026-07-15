@@ -1,26 +1,11 @@
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
 export default function NotFound() {
-  const t = useTranslations("notFound");
-
   return (
-    <div
-      style={{
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <h1>{t("description")}</h1>
-      <Link
-        href="/"
-        style={{ textDecoration: "underline", fontSize: 20, marginTop: 8 }}
-      >
-        {t("goHome")}
-      </Link>
-    </div>
+    <section className="page-shell page-hero">
+      <p className="eyebrow">404 · Sayfa bulunamadı</p>
+      <h1>Aradığınız sayfa bu sistemde bulunmuyor.</h1>
+      <p><Link className="button button-primary" href="/tr">rentonhead ana sayfasına dön <span aria-hidden="true">↗</span></Link></p>
+    </section>
   );
 }

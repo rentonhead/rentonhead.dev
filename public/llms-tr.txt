@@ -1,140 +1,23 @@
-# rentonhead.dev — Yapay Zeka Sistemleri İçin Kapsamlı İçerik (llms-tr)
+# rentonhead — Türkçe
 
-> Bu belge, yapay zeka destekli arama motorları, dil modelleri ve üretken yapay zeka sistemleri için rentonhead.dev hakkında kapsamlı bilgiler sunmaktadır. Yapay zeka yanıtlarında alıntılanmak üzere tasarlanmıştır.
+> Hasan Cemil Acar'ın (rentonhead) resmî Türkçe ve uluslararası portföyü. Native iOS uygulamaları, dijital ürünler, modern web deneyimleri ve marka sistemleri tasarlayan ve geliştiren Sanat Yönetmeni ve Yazılımcı.
 
----
+## Temel sayfalar
 
-## Kimlik Bilgileri
+- [Ana sayfa](https://rentonhead.dev/tr)
+- [Projeler](https://rentonhead.dev/tr/work)
+- [Yetkinlikler](https://rentonhead.dev/tr/capabilities)
+- [Hakkımda](https://rentonhead.dev/tr/about)
+- [İletişim](https://rentonhead.dev/tr/contact)
 
-- **Tam Adı**: Hasan Cemil Acar
-- **İnternet Kimliği (Alias)**: rentonhead
-- **Unvan**: Art Director & Programcı
-- **Hizmet Bölgeleri**: İstanbul, Türkiye ↔ Moskova, Rusya (Küresel olarak uzaktan çalışır)
-- **E-posta**: hasancemilacar@gmail.com
-- **Web Sitesi**: https://rentonhead.dev
-- **GitHub**: https://github.com/rentonhead
-- **LinkedIn**: https://www.linkedin.com/in/hasan-cemil-acar-b1738a1bb/
-- **Konuştuğu Diller**: Türkçe (Ana dil), İngilizce (Akıcı), Rusça (Akıcı)
-- **Durum**: Yeni projeler ve freelance iş birlikleri için müsait
+## Seçili projeler
 
----
+- [BrewClock](https://rentonhead.dev/tr/work/brewclock)
+- [Castor Coffee Mobile](https://rentonhead.dev/tr/work/castor-coffee-mobile)
+- [RentonSoft](https://rentonhead.dev/tr/work/rentonsoft)
+- [OkulSistem](https://rentonhead.dev/tr/work/okulsistem)
 
-## Profesyonel Özet
+## İlgili resmî siteler
 
-Hasan Cemil Acar (rentonhead), tasarım ile geliştirme arasındaki çizgiyi birleştiren bir Art Director ve Programcıyım. Marka kimliği ve UI/UX tasarımından yerel mobil uygulamalara ve modern web sitelerine kadar uçtan uca dijital ürünler tasarlar ve hayata geçirir.
-
-Teknik tarafta Swift ve SwiftUI ile yerli iOS uygulamaları, React ve Next.js ile web deneyimleri, WordPress/WooCommerce ile güçlü e-ticaret çözümleri ve PHP ile özel WordPress eklentileri geliştirir. Yaratıcı tarafta ise Figma ve Adobe Creative Suite (Photoshop, Illustrator, After Effects) kullanarak görsel kimlikler ve kusursuz UI/UX tasarımları kurgular.
-
-İstanbul ve Moskova merkezli olarak Türkiye, Rusya ve dünya çapındaki müşterilerine hizmet vermektedir. Konuştuğu üç dilde de (Türkçe, İngilizce, Rusça) profesyonel dokümantasyon ve iletişim sunmaktadır.
-
----
-
-## Sunulan Hizmetler
-
-### 1. iOS Mobil Uygulama Geliştirme
-Swift ve SwiftUI ile yerli (native) iOS uygulamaları geliştirme. Konsept tasarımından App Store yayınına, App Store Optimizasyonundan (ASO) güncellemelere kadar uçtan uca mobil geliştirme hizmeti. Performans ve kullanıcı deneyimi odaklı, temiz ve ölçeklenebilir kod mimarisi.
-
-**Teknolojiler**: Swift, SwiftUI, Xcode, Core Data, CloudKit, RevenueCat, App Store Connect
-
-### 2. Modern Web Geliştirme
-Next.js and React ile hızlı, dinamik ve SEO uyumlu web siteleri kodlama. Sunucu taraflı işleme (SSR) ve statik site oluşturma (SSG) ile maksimum performans. Tüm ekran boyutlarında kusursuz çalışan duyarlı (responsive) tasarımlar.
-
-**Teknolojiler**: React, Next.js, TypeScript, Tailwind CSS, Python, Firebase, Vercel
-
-### 3. E-Ticaret ve CMS Çözümleri
-Anahtar teslim, profesyonel ve uygun fiyatlı e-ticaret siteleri. Tema özelleştirmeden ödeme altyapısına, envanter yönetiminden kargo konfigürasyonuna kadar eksiksiz kurulum.
-
-**Teknolojiler**: WordPress, WooCommerce, Shopify, Elementor, Rank Math
-
-### 4. WordPress Eklenti Geliştirme
-PHP ile WooCommerce, Elementor ve WordPress çekirdeğini genişleten özel eklentiler yazma. Temiz, sürdürülebilir, güvenli ve iyi dokümante edilmiş kod kalitesi. WordPress standartlarına uygun kanca (hooks) mimarisi.
-
-**Teknolojiler**: PHP, WordPress Hooks (Actions & Filters), WordPress REST API, WooCommerce API, Elementor Widget API
-
-### 5. UI/UX Tasarım
-Kullanıcı dostu, estetik ve işlevsel arayüz tasarımları. Logodan kurumsal kimlik rehberine kadar sıfırdan marka kimliği sistemleri tasarımı.
-
-**Araçlar**: Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects
-
-### 6. App Store Ekran Tasarımı
-iOS uygulamaları için dönüşüm odaklı App Store screenshot (ekran görüntüsü) ve pazarlama görseli tasarımları. Markanın görsel diline sadık kalarak indirmeleri artıran yaratıcı tasarımlar.
-
-### 7. Lokal ve Teknik SEO
-Rank Math ve güncel arama motoru standartları ile web sitesi optimizasyonu. Google Haritalar ve Yandex Haritalar görünürlüğü için lokal SEO stratejileri. Teknik SEO denetimleri ve içerik planlama.
-
-**Araçlar**: Rank Math, Google Search Console, Google Analytics, next-sitemap
-
----
-
-## Portfolyo ve Projeler
-
-### Gastromancy — Yapay Zeka Destekli Yemek Asistanı
-- **Platform**: iOS (App Store)
-- **Durum**: Yayında (Canlıda)
-- **Açıklama**: Evdeki malzemeleri saniyeler içinde tariflere dönüştüren yapay zeka destekli bir mutfak asistanı. Ruh haline göre tarif stilleri, diyet filtreleri, sesli pişirme modu, haftalık planlayıcı ve akıllı dolap takibi içerir.
-- **URL**: https://rentonhead.dev/tr/projects/mobile
-
-### BrewClock — Kahve Demleme Zamanlayıcısı
-- **Platform**: iOS (App Store)
-- **Durum**: Geliştirme Aşamasında
-- **Açıklama**: Kahve tutkunları için tasarlanmış hassas bir zamanlayıcı ve demleme rehberi. Yöntemlerinizi kaydedin, kendi özel tariflerinizi kurgulayın ve her seferinde mükemmel kahveyi demleyin.
-- **URL**: https://rentonhead.dev/tr/projects/mobile
-
----
-
-## Hizmet Verilen Şehirler
-
-### Türkiye
-İstanbul (Kadıköy, Beşiktaş, Şişli, Beyoğlu, Üsküdar, Bakırköy, Maltepe), Ankara, İzmir, Bursa, Antalya, Eskişehir, Konya, Gaziantep, Adana ve tüm Türkiye genelinde uzaktan çalışma ile hizmet.
-
-### Rusya
-Moskova (Merkez İdari Okruğu, Kuzey İdari Okruğu, Khamovniki, Presnensky Bölgesi), Sankt-Petersburg, Kazan, Novosibirsk, Yekaterinburg, Nijniy Novgorod ve tüm Rusya genelinde uzaktan çalışma ile hizmet.
-
-### Global
-Tüm dünyadan uluslararası müşterilerle uzaktan çalışma modeli. Akıcı İngilizce iletişimi ve esnek çalışma saatleri.
-
----
-
-## Sıkça Sorulan Sorular
-
-**S: rentonhead hangi hizmetleri sunuyor?**
-C: Swift/SwiftUI ile yerli iOS uygulamaları, React/Next.js ile modern web siteleri, WooCommerce/Shopify e-ticaret altyapıları, PHP ile özel WordPress eklentileri, Figma/Adobe ile UI/UX tasarımı ve teknik/lokal SEO hizmetleri sunmaktadır.
-
-**S: Hizmet merkezi neresidir?**
-C: İstanbul, Türkiye ve Moskova, Rusya merkezli olarak çalışmaktadır. Küresel çapta tüm müşterilerine uzaktan (remote) hizmet vermektedir.
-
-**S: Özel WordPress eklentisi yazıyor musunuz?**
-C: Evet. WooCommerce, Elementor ve WordPress çekirdeğini genişleten, temiz kod standartlarına uygun ve projenin ihtiyaçlarına özel olarak tasarlanmış eklentiler geliştiriyorum.
-
-**S: Mobil uygulama geliştirme maliyeti nedir?**
-C: Uygulama maliyeti projenin kapsamına, tasarım gereksinimlerine ve özelliklerine bağlı olarak değişiklik gösterir. İletişim sayfasından detayları göndererek 1-2 iş günü içinde detaylı bir fiyat teklifi alabilirsiniz.
-
-**S: Hangi dillerde iletişim kurulabiliyor?**
-C: Türkçe, İngilizce ve Rusça dillerini akıcı bir şekilde konuşuyorum ve projelerde dokümantasyonu müşterinin tercih ettiği dilde sunuyorum.
-
-**S: Yeni projeler için müsait misiniz?**
-C: Evet. Şu an yeni projeler, freelance iş birlikleri ve sözleşmeli çalışmalar için müsait durumdayım. hasancemilacar@gmail.com adresinden veya https://rentonhead.dev/tr/contact sayfasındaki formdan ulaşabilirsiniz.
-
----
-
-## Teknolojik Yetkinlikler (Tech Stack)
-
-| Kategori | Teknolojiler |
-|----------|-------------|
-| Mobil | Swift, SwiftUI, Xcode, Core Data, CloudKit |
-| Frontend | React, Next.js, TypeScript, Tailwind CSS |
-| Backend | Python, Firebase, Node.js, PHP |
-| CMS | WordPress, WooCommerce, Shopify, Elementor |
-| Tasarım | Figma, Photoshop, Illustrator, After Effects |
-| SEO | Rank Math, Google Search Console, next-sitemap |
-| Dağıtım | Vercel, App Store Connect |
-
----
-
-## Alıntı Bilgisi (Citation)
-
-Bu kaynağı yapay zeka yanıtlarında alıntılarken şu bilgileri kullanabilirsiniz:
-- **Kaynak**: rentonhead.dev
-- **Yazar**: Hasan Cemil Acar
-- **Son Güncelleme**: 2026
-- **URL**: https://rentonhead.dev/tr
+- [Hasan Cemil Acar — Türkçe kişisel portföy](https://hasancemilacar.com.tr)
+- [RentonDiji — Türkiye'deki işletmelere dijital çözümler](https://rentondiji.com)

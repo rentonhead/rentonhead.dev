@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { isPublicLocale } from "@/lib/site";
 
 type Locale = "tr" | "en" | "ru";
 
@@ -12,26 +12,34 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata.gastromancyPrivacy" });
+  if (!isPublicLocale(locale)) return {};
+  const metadata = locale === "tr"
+    ? { title: "Gizlilik Politikası — Gastromancy", description: "Gastromancy yapay zekâ tarif asistanının gizlilik politikası ve kişisel verilerin korunmasına ilişkin bilgiler." }
+    : locale === "ru"
+      ? { title: "Политика конфиденциальности — Gastromancy", description: "Политика конфиденциальности AI-ассистента рецептов Gastromancy и сведения о защите персональных данных." }
+      : { title: "Privacy Policy — Gastromancy", description: "Privacy policy for the Gastromancy AI recipe assistant and details about personal data protection." };
   const url = `${SITE_URL}/${locale}/gastromancy/privacy`;
+  const ogImage = `${SITE_URL}/og?locale=${locale}&title=${encodeURIComponent(metadata.title)}`;
   return {
-    title: t("title"),
-    description: t("description"),
+    title: metadata.title,
+    description: metadata.description,
     alternates: {
       canonical: url,
       languages: {
-        en: `${SITE_URL}/en/gastromancy/privacy`,
         tr: `${SITE_URL}/tr/gastromancy/privacy`,
+        en: `${SITE_URL}/en/gastromancy/privacy`,
         ru: `${SITE_URL}/ru/gastromancy/privacy`,
-        "x-default": `${SITE_URL}/en/gastromancy/privacy`,
+        "x-default": `${SITE_URL}/tr/gastromancy/privacy`,
       },
     },
     openGraph: {
-      title: t("title"),
-      description: t("description"),
+      title: metadata.title,
+      description: metadata.description,
       url,
       type: "article",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: metadata.title }],
     },
+    twitter: { card: "summary_large_image", title: metadata.title, description: metadata.description, images: [ogImage] },
   };
 }
 
@@ -731,7 +739,6 @@ export default async function GastromancyPrivacyPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
   const c = getContent((["tr", "en", "ru"].includes(locale) ? locale : "en") as Locale);
 
   const contactNumber = String(c.sections.length + 1);
@@ -773,13 +780,13 @@ export default async function GastromancyPrivacyPage({
       />
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 pt-6 mb-10 flex-wrap">
-        <Link href="/projects" className="hover:text-teal-500 transition-colors duration-150">
+        <Link href={`/${locale}/work`} className="hover:text-teal-500 transition-colors duration-150">
           {c.breadcrumbProjects}
         </Link>
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
-        <Link href="/projects/mobile" className="hover:text-teal-500 transition-colors duration-150">
+        <Link href={`/${locale}/work`} className="hover:text-teal-500 transition-colors duration-150">
           {c.breadcrumbMobile}
         </Link>
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
