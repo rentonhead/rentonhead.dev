@@ -8,6 +8,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   if (!isPublicLocale(locale)) notFound();
   const copy = getContent(locale);
+  const featuredProjects = copy.projects.filter(({ slug }) => slug === "brewclock" || slug === "castor-coffee-mobile");
 
   return (
     <>
@@ -38,8 +39,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <h2 id="selected-work">{copy.home.workTitle}</h2>
           <Link className="text-link" href={localePath(locale, "/work")}>{copy.common.viewAllWork}<span aria-hidden="true">↗</span></Link>
         </div>
-        <div className="project-list">
-          {copy.projects.map((project, index) => <ProjectCard key={project.slug} locale={locale} project={project} index={index} />)}
+        <div className="project-list home-project-list">
+          {featuredProjects.map((project, index) => <ProjectCard key={project.slug} locale={locale} project={project} index={index} />)}
         </div>
       </section>
 
