@@ -10,7 +10,8 @@ test("portfolio exposes four verified project slugs", () => {
   }
 });
 
-test("English and Russian product narratives are present", () => {
+test("Turkish, English and Russian product narratives are present", () => {
+  assert.match(source, /Sanat yönetimi ve yazılım/);
   assert.match(source, /Art direction and engineering/);
   assert.match(source, /Арт-дирекшн и разработка/);
 });

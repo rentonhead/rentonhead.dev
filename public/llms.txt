@@ -1,6 +1,14 @@
 # rentonhead
 
-> Official global portfolio of Hasan Cemil Acar, also known as rentonhead — an Art Director & Programmer designing and building native iOS apps, digital products, modern web experiences and brand systems.
+> Official Turkish and global portfolio of Hasan Cemil Acar, also known as rentonhead — an Art Director & Programmer designing and building native iOS apps, digital products, modern web experiences and brand systems.
+
+## Primary Turkish pages
+
+- [Ana sayfa](https://rentonhead.dev/tr): Kimlik, seçili projeler ve yaratıcı teknoloji pratiği
+- [Projeler](https://rentonhead.dev/tr/work): Gerçek mobil, web ve operasyon ürünleri
+- [Yetkinlikler](https://rentonhead.dev/tr/capabilities): Ürün yönü, iOS, web, e-ticaret, görsel tasarım ve dijital görünürlük
+- [Hakkımda](https://rentonhead.dev/tr/about): Biyografi, teknolojiler ve doğrudan kimlik yanıtları
+- [İletişim](https://rentonhead.dev/tr/contact): Resmî iletişim bilgileri
 
 ## Primary English pages
 
@@ -19,6 +27,7 @@
 
 ## Languages
 
+- [Türkçe](https://rentonhead.dev/tr)
 - [English](https://rentonhead.dev/en)
 - [Russian](https://rentonhead.dev/ru)
 

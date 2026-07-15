@@ -16,7 +16,7 @@ const titles = new Map();
 const descriptions = new Map();
 const internalLinks = new Set();
 
-for (const locale of ["en", "ru"]) {
+for (const locale of ["tr", "en", "ru"]) {
   for (const path of pagePaths) {
     const route = `/${locale}${path}`;
     const response = await fetch(`${base}${route}`);
@@ -28,6 +28,7 @@ for (const locale of ["en", "ru"]) {
     assert.match(html, new RegExp(`<link[^>]+rel=["']canonical["'][^>]+href=["']https://rentonhead\\.dev${canonicalRoute.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`), `${route} should have a self-canonical`);
     assert.match(html, /hreflang=["']en["']/i, `${route} should reference English`);
     assert.match(html, /hreflang=["']ru["']/i, `${route} should reference Russian`);
+    assert.match(html, /hreflang=["']tr["']/i, `${route} should reference Turkish`);
     assert.match(html, /property=["']og:title["']/, `${route} should expose Open Graph metadata`);
     assert.match(html, /property=["']og:description["']/, `${route} should expose an Open Graph description`);
     assert.match(html, /property=["']og:image["']/, `${route} should expose an Open Graph image`);
@@ -55,7 +56,8 @@ for (const href of internalLinks) {
 }
 
 const redirectChecks = [
-  ["/", "/en"],
+  ["/", "/tr"],
+  ["/tr/projects", "/tr/work"],
   ["/en/projects", "/en/work"],
   ["/ru/projects/mobile", "/ru/work/brewclock"],
 ];
@@ -67,7 +69,9 @@ for (const [from, to] of redirectChecks) {
 
 const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
 assert.match(sitemap, /https:\/\/rentonhead\.dev\/en\/work\/brewclock/);
+assert.match(sitemap, /https:\/\/rentonhead\.dev\/tr\/work\/brewclock/);
 assert.match(sitemap, /hreflang="ru"/);
+assert.match(sitemap, /hreflang="tr"/);
 
 const robots = await (await fetch(`${base}/robots.txt`)).text();
 assert.match(robots, /Sitemap: https:\/\/rentonhead\.dev\/sitemap\.xml/);
@@ -76,10 +80,10 @@ for (const path of ["/manifest.webmanifest", "/llms.txt", "/llms-full.txt", "/ll
   assert.equal((await fetch(`${base}${path}`)).status, 200, `${path} should return 200`);
 }
 
-const og = await fetch(`${base}/og?locale=en&title=Hasan%20Cemil%20Acar`);
+const og = await fetch(`${base}/og?locale=tr&title=Hasan%20Cemil%20Acar`);
 assert.equal(og.status, 200);
 assert.match(og.headers.get("content-type") ?? "", /image\/png/);
 
 assert.equal((await fetch(`${base}/en/route-that-does-not-exist`, { redirect: "manual" })).status, 404);
 
-console.log(`Validated ${pagePaths.length * 2} localized pages, ${internalLinks.size} internal links, redirects, metadata, discovery files, OG image and 404 behavior.`);
+console.log(`Validated ${pagePaths.length * 3} localized pages, ${internalLinks.size} internal links, redirects, metadata, discovery files, OG image and 404 behavior.`);

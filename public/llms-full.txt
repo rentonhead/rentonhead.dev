@@ -8,6 +8,7 @@ Verified portfolio subjects on this website include BrewClock, Castor Coffee Mob
 
 Official identity URLs:
 
+- https://rentonhead.dev/tr
 - https://rentonhead.dev/en
 - https://rentonhead.dev/ru
 - https://hasancemilacar.com.tr

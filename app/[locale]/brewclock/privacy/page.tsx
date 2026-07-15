@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { isPublicLocale } from "@/lib/site";
 import enMessages from "@/messages/en.json";
 import ruMessages from "@/messages/ru.json";
+import trMessages from "@/messages/tr.json";
 
 const SITE_URL = "https://rentonhead.dev";
 
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!isPublicLocale(locale)) return {};
-  const metadata = locale === "ru" ? ruMessages.metadata.brewclockPrivacy : enMessages.metadata.brewclockPrivacy;
+  const metadata = locale === "tr" ? trMessages.metadata.brewclockPrivacy : locale === "ru" ? ruMessages.metadata.brewclockPrivacy : enMessages.metadata.brewclockPrivacy;
   const title = metadata.title.replace(" | rentonhead", "");
   const url = `${SITE_URL}/${locale}/brewclock/privacy`;
   const ogImage = `${SITE_URL}/og?locale=${locale}&title=${encodeURIComponent(title)}`;
@@ -24,9 +25,10 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
       languages: {
+        tr: `${SITE_URL}/tr/brewclock/privacy`,
         en: `${SITE_URL}/en/brewclock/privacy`,
         ru: `${SITE_URL}/ru/brewclock/privacy`,
-        "x-default": `${SITE_URL}/en/brewclock/privacy`,
+        "x-default": `${SITE_URL}/tr/brewclock/privacy`,
       },
     },
     openGraph: {
@@ -43,14 +45,14 @@ export async function generateMetadata({
 export default async function BrewClockPrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isPublicLocale(locale)) notFound();
-  const privacy = locale === "ru" ? ruMessages.privacy : enMessages.privacy;
+  const privacy = locale === "tr" ? trMessages.privacy : locale === "ru" ? ruMessages.privacy : enMessages.privacy;
   const t = (key: keyof typeof enMessages.privacy) => privacy[key];
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 1, name: locale === "tr" ? "Ana sayfa" : locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
       { "@type": "ListItem", position: 2, name: t("breadcrumbProjects"), item: `${SITE_URL}/${locale}/work` },
       { "@type": "ListItem", position: 3, name: t("breadcrumbPrivacy"), item: `${SITE_URL}/${locale}/brewclock/privacy` },
     ],

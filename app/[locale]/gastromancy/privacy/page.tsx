@@ -13,9 +13,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!isPublicLocale(locale)) return {};
-  const metadata = locale === "ru"
-    ? { title: "Политика конфиденциальности — Gastromancy", description: "Политика конфиденциальности AI-ассистента рецептов Gastromancy и сведения о защите персональных данных." }
-    : { title: "Privacy Policy — Gastromancy", description: "Privacy policy for the Gastromancy AI recipe assistant and details about personal data protection." };
+  const metadata = locale === "tr"
+    ? { title: "Gizlilik Politikası — Gastromancy", description: "Gastromancy yapay zekâ tarif asistanının gizlilik politikası ve kişisel verilerin korunmasına ilişkin bilgiler." }
+    : locale === "ru"
+      ? { title: "Политика конфиденциальности — Gastromancy", description: "Политика конфиденциальности AI-ассистента рецептов Gastromancy и сведения о защите персональных данных." }
+      : { title: "Privacy Policy — Gastromancy", description: "Privacy policy for the Gastromancy AI recipe assistant and details about personal data protection." };
   const url = `${SITE_URL}/${locale}/gastromancy/privacy`;
   const ogImage = `${SITE_URL}/og?locale=${locale}&title=${encodeURIComponent(metadata.title)}`;
   return {
@@ -24,9 +26,10 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
       languages: {
+        tr: `${SITE_URL}/tr/gastromancy/privacy`,
         en: `${SITE_URL}/en/gastromancy/privacy`,
         ru: `${SITE_URL}/ru/gastromancy/privacy`,
-        "x-default": `${SITE_URL}/en/gastromancy/privacy`,
+        "x-default": `${SITE_URL}/tr/gastromancy/privacy`,
       },
     },
     openGraph: {

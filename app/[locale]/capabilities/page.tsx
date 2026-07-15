@@ -26,11 +26,11 @@ export default async function CapabilitiesPage({ params }: { params: Promise<{ l
             <span>{String(index + 1).padStart(2, "0")}</span>
             <h2>{capability.title}</h2>
             <p>{capability.description}</p>
-            <dl><div><dt>Output</dt><dd>{capability.outputs}</dd></div><div><dt>Tools</dt><dd>{capability.tools}</dd></div></dl>
+            <dl><div><dt>{copy.labels.output}</dt><dd>{capability.outputs}</dd></div><div><dt>{copy.labels.tools}</dt><dd>{capability.tools}</dd></div></dl>
           </article>
         ))}
       </div>
-      <section className="capability-bridge"><p className="eyebrow">Design × Engineering</p><h2>{copy.capabilitiesPage.bridgeTitle}</h2><p>{copy.capabilitiesPage.bridgeBody}</p></section>
+      <section className="capability-bridge"><p className="eyebrow">{copy.labels.designEngineering}</p><h2>{copy.capabilitiesPage.bridgeTitle}</h2><p>{copy.capabilitiesPage.bridgeBody}</p></section>
     </div>
   );
 }

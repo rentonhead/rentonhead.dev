@@ -23,7 +23,7 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: locale === "ru" ? "Главная" : "Home", item: absoluteUrl(locale) },
+          { "@type": "ListItem", position: 1, name: copy.labels.home, item: absoluteUrl(locale) },
           { "@type": "ListItem", position: 2, name: copy.nav.work, item: absoluteUrl(locale, "/work") },
         ],
       },

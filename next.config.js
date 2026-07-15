@@ -12,14 +12,8 @@ const nextConfig = {
         destination: "https://rentonhead.dev/:path*",
         permanent: true,
       },
-      { source: "/tr/brewclock/privacy", destination: "/en/brewclock/privacy", permanent: true },
-      { source: "/tr/gastromancy/privacy", destination: "/en/gastromancy/privacy", permanent: true },
-      { source: "/tr/projects", destination: "https://hasancemilacar.com.tr/projects/", permanent: true },
-      { source: "/tr/contact", destination: "https://hasancemilacar.com.tr/#contact", permanent: true },
-      { source: "/tr/:path*", destination: "https://hasancemilacar.com.tr/", permanent: true },
-      { source: "/tr", destination: "https://hasancemilacar.com.tr/", permanent: true },
-      { source: "/:locale(en|ru)/projects/mobile", destination: "/:locale/work/brewclock", permanent: true },
-      { source: "/:locale(en|ru)/projects", destination: "/:locale/work", permanent: true },
+      { source: "/:locale(tr|en|ru)/projects/mobile", destination: "/:locale/work/brewclock", permanent: true },
+      { source: "/:locale(tr|en|ru)/projects", destination: "/:locale/work", permanent: true },
     ];
   },
   async headers() {

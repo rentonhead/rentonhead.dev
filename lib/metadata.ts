@@ -15,7 +15,7 @@ export function pageMetadata({ locale, path, title, description }: { locale: Pub
       title,
       description,
       siteName: "rentonhead",
-      locale: locale === "ru" ? "ru_RU" : "en_US",
+      locale: locale === "tr" ? "tr_TR" : locale === "ru" ? "ru_RU" : "en_US",
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
     twitter: { card: "summary_large_image", title, description, images: [ogImage] },

@@ -25,7 +25,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div>{copy.about.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
       </section>
       <section className="facts-section">
-        <p className="eyebrow">Entity notes · FAQ</p><h2>{copy.about.factsTitle}</h2>
+        <p className="eyebrow">{copy.labels.faqEyebrow}</p><h2>{copy.about.factsTitle}</h2>
         <div>{copy.about.facts.map((fact) => <article key={fact.question}><h3>{fact.question}</h3><p>{fact.answer}</p></article>)}</div>
       </section>
     </div>

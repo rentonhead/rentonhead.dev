@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isPublicLocale } from "./lib/site";
+import { DEFAULT_LOCALE, isPublicLocale } from "./lib/site";
 
 const PUBLIC_FILE = /\.[^/]+$/;
 
@@ -17,12 +17,12 @@ export function proxy(request: NextRequest) {
   }
 
   if (pathname === "/") {
-    return NextResponse.redirect(new URL("/en", request.url), 308);
+    return NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}`, request.url), 308);
   }
 
   const firstSegment = pathname.split("/")[1];
-  if (!isPublicLocale(firstSegment) && firstSegment !== "tr") {
-    return NextResponse.redirect(new URL(`/en${pathname}`, request.url), 308);
+  if (!isPublicLocale(firstSegment)) {
+    return NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}${pathname}`, request.url), 308);
   }
 
   return NextResponse.next();

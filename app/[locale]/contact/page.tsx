@@ -21,7 +21,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <Breadcrumb locale={locale} current={copy.nav.contact} path="/contact" />
       <header className="page-hero"><p className="eyebrow">{copy.contact.eyebrow}</p><h1>{copy.contact.title}</h1><p>{copy.contact.intro}</p></header>
       <section className="contact-panel">
-        <div><p className="eyebrow">{copy.contact.emailLabel}</p><a className="contact-email" href={`mailto:${PERSON.email}?subject=Project%20enquiry%20from%20rentonhead.dev`}>{PERSON.email}<span aria-hidden="true">↗</span></a><p>{copy.contact.availability}</p></div>
+        <div><p className="eyebrow">{copy.contact.emailLabel}</p><a className="contact-email" href={`mailto:${PERSON.email}?subject=${encodeURIComponent(copy.common.emailSubject)}`}>{PERSON.email}<span aria-hidden="true">↗</span></a><p>{copy.contact.availability}</p></div>
         <div><p className="eyebrow">{copy.contact.networkTitle}</p><a href={PERSON.github}>GitHub <span aria-hidden="true">↗</span></a><a href={PERSON.linkedin}>LinkedIn <span aria-hidden="true">↗</span></a><a href={PERSON.turkishPortfolio}>{copy.footer.turkish} <span aria-hidden="true">↗</span></a></div>
       </section>
     </div>

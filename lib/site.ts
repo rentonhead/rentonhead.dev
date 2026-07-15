@@ -1,6 +1,6 @@
 export const SITE_URL = "https://rentonhead.dev";
-export const DEFAULT_LOCALE = "en" as const;
-export const PUBLIC_LOCALES = ["en", "ru"] as const;
+export const DEFAULT_LOCALE = "tr" as const;
+export const PUBLIC_LOCALES = ["tr", "en", "ru"] as const;
 
 export type PublicLocale = (typeof PUBLIC_LOCALES)[number];
 
@@ -30,8 +30,9 @@ export function absoluteUrl(locale: PublicLocale, path = "") {
 
 export function languageAlternates(path = "") {
   return {
+    tr: absoluteUrl("tr", path),
     en: absoluteUrl("en", path),
     ru: absoluteUrl("ru", path),
-    "x-default": absoluteUrl("en", path),
+    "x-default": absoluteUrl(DEFAULT_LOCALE, path),
   };
 }

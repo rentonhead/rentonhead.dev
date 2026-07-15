@@ -12,13 +12,13 @@ export default function Footer({ locale }: { locale: PublicLocale }) {
           <Link className="wordmark footer-wordmark" href={localePath(locale)}>rentonhead</Link>
           <p>{copy.footer.descriptor}</p>
         </div>
-        <nav aria-label="Footer navigation">
+        <nav aria-label={copy.labels.footerNavigation}>
           <Link href={localePath(locale, "/work")}>{copy.nav.work}</Link>
           <Link href={localePath(locale, "/capabilities")}>{copy.nav.capabilities}</Link>
           <Link href={localePath(locale, "/about")}>{copy.nav.about}</Link>
           <Link href={localePath(locale, "/contact")}>{copy.nav.contact}</Link>
         </nav>
-        <nav aria-label="Related official websites">
+        <nav aria-label={copy.labels.relatedWebsites}>
           <a href={PERSON.turkishPortfolio}>{copy.footer.turkish}<span aria-hidden="true">↗</span></a>
           <a href={PERSON.businessStudio}>{copy.footer.business}<span aria-hidden="true">↗</span></a>
           <a href={PERSON.github}>GitHub<span aria-hidden="true">↗</span></a>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function Themebutton() {
+export default function Themebutton({ useLightLabel, useDarkLabel }: { useLightLabel: string; useDarkLabel: string }) {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Themebutton() {
   }
 
   return (
-    <button className="theme-toggle" type="button" onClick={toggle} aria-label={theme === "dark" ? "Use light theme" : "Use dark theme"}>
+    <button className="theme-toggle" type="button" onClick={toggle} aria-label={theme === "dark" ? useLightLabel : useDarkLabel}>
       <span aria-hidden="true">{theme === "dark" ? "○" : "●"}</span>
     </button>
   );

@@ -7,7 +7,7 @@ import { localePath } from "@/lib/site";
 
 type MenuItem = readonly [label: string, href: string];
 
-export default function MobileMenu({ locale, label, items }: { locale: PublicLocale; label: string; items: readonly MenuItem[] }) {
+export default function MobileMenu({ locale, label, navigationLabel, items }: { locale: PublicLocale; label: string; navigationLabel: string; items: readonly MenuItem[] }) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const summaryRef = useRef<HTMLElement>(null);
 
@@ -48,7 +48,7 @@ export default function MobileMenu({ locale, label, items }: { locale: PublicLoc
   return (
     <details className="mobile-menu" ref={detailsRef}>
       <summary aria-label={label} ref={summaryRef}><span /><span /></summary>
-      <nav aria-label="Mobile navigation">
+      <nav aria-label={navigationLabel}>
         {items.map(([itemLabel, href]) => (
           <Link key={href} href={localePath(locale, href)} onClick={close}>{itemLabel}<span aria-hidden="true">↗</span></Link>
         ))}

@@ -1,6 +1,6 @@
 # rentonhead.dev
 
-Global English/Russian portfolio of Hasan Cemil Acar (rentonhead), built with Next.js 16, React 19 and TypeScript.
+Turkish, English and Russian portfolio of Hasan Cemil Acar (rentonhead), built with Next.js 16, React 19 and TypeScript.
 
 ## Local development
 
@@ -26,10 +26,10 @@ npm run validate
 
 ## URL policy
 
-- `/` permanently redirects to `/en`.
-- English and Russian are published at `/en` and `/ru` with matching route structures.
-- Legacy `/en|ru/projects` routes permanently redirect to `/en|ru/work`.
-- Turkish portfolio traffic is directed to [hasancemilacar.com.tr](https://hasancemilacar.com.tr).
+- `/` permanently redirects to the primary Turkish route at `/tr`.
+- Turkish, English and Russian are published at `/tr`, `/en` and `/ru` with matching route structures.
+- Legacy `/tr|en|ru/projects` routes permanently redirect to the matching `/work` route.
+- [hasancemilacar.com.tr](https://hasancemilacar.com.tr) remains the related Turkish personal profile; rentonhead.dev now also provides a complete Turkish version of the global portfolio.
 - `rentonhead.dev` is the canonical non-www host.
 
 SEO metadata, sitemap, robots policy, manifest, JSON-LD and AI discovery documents are generated or maintained from the App Router source. Vercel preview deployments are configured as `noindex`.

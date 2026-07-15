@@ -56,8 +56,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <h3>{capability.title}</h3>
               <p>{capability.description}</p>
               <dl>
-                <div><dt>Output</dt><dd>{capability.outputs}</dd></div>
-                <div><dt>Tools</dt><dd>{capability.tools}</dd></div>
+                <div><dt>{copy.labels.output}</dt><dd>{capability.outputs}</dd></div>
+                <div><dt>{copy.labels.tools}</dt><dd>{capability.tools}</dd></div>
               </dl>
             </article>
           ))}
@@ -70,7 +70,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <h2>{copy.home.bridgeTitle}</h2>
           <div>
             <p>{copy.home.bridgeBody}</p>
-            <div className="tool-rail" aria-label="Core tools">
+            <div className="tool-rail" aria-label={copy.labels.coreTools}>
               <span>SwiftUI</span><span>Next.js</span><span>Figma</span><span>React Native</span><span>WordPress</span>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <h2>{copy.home.contactTitle}</h2>
         <div>
           <p>{copy.home.contactBody}</p>
-          <a className="button button-primary" href={`mailto:${PERSON.email}?subject=Project%20enquiry%20from%20rentonhead.dev`}>{copy.common.email}<span aria-hidden="true">↗</span></a>
+          <a className="button button-primary" href={`mailto:${PERSON.email}?subject=${encodeURIComponent(copy.common.emailSubject)}`}>{copy.common.email}<span aria-hidden="true">↗</span></a>
         </div>
       </section>
     </>

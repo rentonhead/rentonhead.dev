@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { PublicLocale } from "@/lib/site";
 import { absoluteUrl, localePath } from "@/lib/site";
+import { getContent } from "@/lib/content";
 
 export default function Breadcrumb({ locale, current, path, includeSchema = true }: { locale: PublicLocale; current: string; path: string; includeSchema?: boolean }) {
-  const home = locale === "ru" ? "Главная" : "Home";
+  const home = getContent(locale).labels.home;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

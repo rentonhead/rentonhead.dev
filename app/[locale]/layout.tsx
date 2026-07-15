@@ -16,6 +16,7 @@ const wordmark = localFont({
 });
 
 const descriptions = {
+  tr: "Hasan Cemil Acar, diğer adıyla rentonhead; native iOS uygulamaları, dijital ürünler, modern web deneyimleri ve marka sistemleri geliştiren bir Sanat Yönetmeni ve Yazılımcıdır.",
   en: "Hasan Cemil Acar, known as rentonhead, is an Art Director & Programmer creating native iOS apps, digital products, modern web experiences and brand systems for international clients.",
   ru: "Хасан Джемиль Аджар, известный как rentonhead, — арт-директор и программист, создающий iOS-приложения, цифровые продукты, современные веб-сервисы и визуальные системы.",
 } as const;
@@ -29,9 +30,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!isPublicLocale(locale)) return {};
 
   const isPreview = Boolean(process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production");
-  const title = locale === "ru"
-    ? "Hasan Cemil Acar (rentonhead) — Арт-директор и программист"
-    : "Hasan Cemil Acar (rentonhead) — Art Director & Programmer";
+  const title = locale === "tr"
+    ? "Hasan Cemil Acar (rentonhead) — Sanat Yönetmeni ve Yazılımcı"
+    : locale === "ru"
+      ? "Hasan Cemil Acar (rentonhead) — Арт-директор и программист"
+      : "Hasan Cemil Acar (rentonhead) — Art Director & Programmer";
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -54,8 +57,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "rentonhead",
       title,
       description: descriptions[locale],
-      locale: locale === "ru" ? "ru_RU" : "en_US",
-      alternateLocale: locale === "ru" ? ["en_US"] : ["ru_RU"],
+      locale: locale === "tr" ? "tr_TR" : locale === "ru" ? "ru_RU" : "en_US",
+      alternateLocale: ["tr_TR", "en_US", "ru_RU"].filter((value) => value !== (locale === "tr" ? "tr_TR" : locale === "ru" ? "ru_RU" : "en_US")),
       images: [{ url: `/og?locale=${locale}&title=${encodeURIComponent(title)}`, width: 1200, height: 630, alt: title }],
     },
     twitter: {
@@ -94,7 +97,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         url: SITE_URL,
         name: "rentonhead",
         description: descriptions[locale],
-        inLanguage: ["en", "ru"],
+        inLanguage: ["tr", "en", "ru"],
         publisher: { "@id": `${SITE_URL}/#person` },
       },
       {
@@ -126,7 +129,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} className={wordmark.variable} data-theme="dark">
       <body>
-        <a className="skip-link" href="#main-content">Skip to content</a>
+        <a className="skip-link" href="#main-content">{copy.labels.skipToContent}</a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(structuredData) }} />
         <Navbar locale={locale} />
         <main id="main-content">{children}</main>

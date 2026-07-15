@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: locale === "ru" ? "Главная" : "Home", item: absoluteUrl(locale) },
+          { "@type": "ListItem", position: 1, name: copy.labels.home, item: absoluteUrl(locale) },
           { "@type": "ListItem", position: 2, name: copy.nav.work, item: absoluteUrl(locale, "/work") },
           { "@type": "ListItem", position: 3, name: project.name, item: absoluteUrl(locale, `/work/${project.slug}`) },
         ],

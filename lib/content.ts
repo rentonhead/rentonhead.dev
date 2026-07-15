@@ -27,6 +27,22 @@ type Capability = {
 };
 
 type SiteContent = {
+  labels: {
+    home: string;
+    homeLink: string;
+    skipToContent: string;
+    useLightTheme: string;
+    useDarkTheme: string;
+    output: string;
+    tools: string;
+    coreTools: string;
+    faqEyebrow: string;
+    designEngineering: string;
+    primaryNavigation: string;
+    footerNavigation: string;
+    relatedWebsites: string;
+    mobileNavigation: string;
+  };
   nav: { work: string; capabilities: string; about: string; contact: string; availability: string; menu: string };
   common: {
     eyebrow: string;
@@ -39,6 +55,7 @@ type SiteContent = {
     source: string;
     nextProject: string;
     backToWork: string;
+    emailSubject: string;
   };
   home: {
     kicker: string;
@@ -89,6 +106,22 @@ type SiteContent = {
 };
 
 const en: SiteContent = {
+  labels: {
+    home: "Home",
+    homeLink: "rentonhead home",
+    skipToContent: "Skip to content",
+    useLightTheme: "Use light theme",
+    useDarkTheme: "Use dark theme",
+    output: "Output",
+    tools: "Tools",
+    coreTools: "Core tools",
+    faqEyebrow: "Entity notes · FAQ",
+    designEngineering: "Design × Engineering",
+    primaryNavigation: "Primary navigation",
+    footerNavigation: "Footer navigation",
+    relatedWebsites: "Related official websites",
+    mobileNavigation: "Mobile navigation",
+  },
   nav: {
     work: "Work",
     capabilities: "Capabilities",
@@ -108,6 +141,7 @@ const en: SiteContent = {
     source: "View public repository",
     nextProject: "Next project",
     backToWork: "Back to work",
+    emailSubject: "Project enquiry from rentonhead.dev",
   },
   home: {
     kicker: "Independent creative technology practice · Istanbul ↔ Moscow",
@@ -273,6 +307,22 @@ const en: SiteContent = {
 
 const ru: SiteContent = {
   ...en,
+  labels: {
+    home: "Главная",
+    homeLink: "Главная rentonhead",
+    skipToContent: "Перейти к содержимому",
+    useLightTheme: "Включить светлую тему",
+    useDarkTheme: "Включить тёмную тему",
+    output: "Результат",
+    tools: "Инструменты",
+    coreTools: "Основные инструменты",
+    faqEyebrow: "Краткие сведения · FAQ",
+    designEngineering: "Дизайн × Разработка",
+    primaryNavigation: "Основная навигация",
+    footerNavigation: "Навигация в подвале",
+    relatedWebsites: "Связанные официальные сайты",
+    mobileNavigation: "Мобильная навигация",
+  },
   nav: {
     work: "Проекты",
     capabilities: "Компетенции",
@@ -292,6 +342,7 @@ const ru: SiteContent = {
     source: "Открытый репозиторий",
     nextProject: "Следующий проект",
     backToWork: "Назад к проектам",
+    emailSubject: "Запрос по проекту с rentonhead.dev",
   },
   home: {
     kicker: "Независимая практика креативных технологий · Стамбул ↔ Москва",
@@ -436,7 +487,190 @@ const ru: SiteContent = {
   },
 };
 
-export const content: Record<PublicLocale, SiteContent> = { en, ru };
+const tr: SiteContent = {
+  ...en,
+  labels: {
+    home: "Ana sayfa",
+    homeLink: "rentonhead ana sayfa",
+    skipToContent: "İçeriğe geç",
+    useLightTheme: "Açık temayı kullan",
+    useDarkTheme: "Koyu temayı kullan",
+    output: "Çıktılar",
+    tools: "Araçlar",
+    coreTools: "Temel araçlar",
+    faqEyebrow: "Kısa bilgiler · SSS",
+    designEngineering: "Tasarım × Yazılım",
+    primaryNavigation: "Ana menü",
+    footerNavigation: "Alt menü",
+    relatedWebsites: "İlgili resmî siteler",
+    mobileNavigation: "Mobil menü",
+  },
+  nav: {
+    work: "Projeler",
+    capabilities: "Yetkinlikler",
+    about: "Hakkımda",
+    contact: "İletişim",
+    availability: "Seçili projeler için müsait",
+    menu: "Menü",
+  },
+  common: {
+    ...en.common,
+    viewWork: "Seçili projeleri incele",
+    startProject: "Proje konuşalım",
+    readCase: "Projeyi incele",
+    viewAllWork: "Tüm projeler",
+    email: "Hasan'a e-posta gönder",
+    external: "Harici web sitesi",
+    source: "Açık kaynak deposunu görüntüle",
+    nextProject: "Sonraki proje",
+    backToWork: "Projelere dön",
+    emailSubject: "rentonhead.dev üzerinden proje talebi",
+  },
+  home: {
+    kicker: "Bağımsız yaratıcı teknoloji pratiği · İstanbul ↔ Moskova",
+    title: "Sanat yönetimi ve yazılım, tek ve kesintisiz bir üretim pratiğinde.",
+    intro:
+      "Ben Hasan Cemil Acar, diğer adıyla rentonhead. Uluslararası ekipler için native uygulamalar, dijital ürünler, modern web deneyimleri ve marka sistemleri tasarlayan ve geliştiren bir Sanat Yönetmeni ve Yazılımcıyım.",
+    availability: "Seçili iş birlikleri · Dünya çapında",
+    workEyebrow: "Seçili projeler",
+    workTitle: "İlk fikirden çalışan sisteme dönüşen ürünler.",
+    capabilitiesEyebrow: "Yetkinlikler",
+    capabilitiesTitle: "Teknik karşılığı olan yaratıcı yönlendirme.",
+    bridgeEyebrow: "Tasarım + yazılım",
+    bridgeTitle: "Görsel fikir geliştirme sürecinde kaybolmaz.",
+    bridgeBody:
+      "Strateji, arayüz tasarımı ve uygulama aynı masada ilerler. Teknik sınırlar fikri en baştan besler; tasarım sistemi SwiftUI, Next.js, React Native veya WordPress teslimatında bütünlüğünü korur.",
+    processEyebrow: "Çalışma yöntemi",
+    processTitle: "Daha az devir teslimle küçük ve doğrudan bir süreç.",
+    process: [
+      { title: "Keşfet", body: "Gerçek problemi, hedef kitleyi, sınırları ve başarı işaretlerini netleştiririm." },
+      { title: "Tanımla", body: "Ürün anlatısını, bilgi mimarisini ve teknik yönü belirlerim." },
+      { title: "Tasarla", body: "Görsel sistemi ve etkileşim modelini gerçek içerik üzerinde kurarım." },
+      { title: "Geliştir", body: "Onaylanan yönü responsive ve sürdürülebilir bir ürüne dönüştürürüm." },
+      { title: "İyileştir ve yayınla", body: "Yayından önce uç senaryoları, performansı ve erişilebilirliği test ederim." },
+    ],
+    ecosystemEyebrow: "Marka ağı",
+    ecosystemTitle: "Tek kişi, üç farklı bağlam.",
+    ecosystemBody:
+      "rentonhead, küresel yaratıcı teknoloji pratiğidir. Türkçe kişisel profil HasanCemilAcar.com.tr'de; Türkiye'deki işletmelere yönelik ticari dijital hizmetler ise RentonDiji markası altında yer alır.",
+    contactEyebrow: "İletişim",
+    contactTitle: "Hem güçlü bir bakış açısına hem çalışan koda ihtiyaç duyan bir ürününüz mü var?",
+    contactBody: "Bağlamı, hedeflenen sonucu ve zamanlamayı paylaşın. Başlamak için kısa bir e-posta yeterli.",
+  },
+  work: {
+    eyebrow: "Seçili projeler · 2024–2026",
+    title: "Dijital ürünler, operasyon sistemleri ve mobil deneyimler.",
+    intro:
+      "Native iOS, React Native, e-ticaret, restoran operasyonları ve okul finansını kapsayan gerçek ürünlerden odaklı bir seçki. Uydurma sonuçlar veya süs amaçlı başarı metrikleri içermez.",
+  },
+  capabilitiesPage: {
+    eyebrow: "Yetkinlikler",
+    title: "Kimlik ve arayüzden production koduna kadar.",
+    intro:
+      "Çalışma; yönlendirme, tasarım veya mevcut bir kod tabanıyla başlayabilir. Temel fark sürekliliktir: aynı ürün mantığı her katmanda korunur.",
+    bridgeTitle: "Ürünün belirsiz orta bölümü için doğrudan bir ortak.",
+    bridgeBody:
+      "Bu çalışma biçimi; görsel kalite, teknik muhakeme ve yayına giden açık bir yolun birbirinden kopuk ekiplere bölünmeden birlikte ilerlemesi gerektiğinde özellikle değerlidir.",
+  },
+  about: {
+    eyebrow: "Hakkımda",
+    title: "Hasan Cemil Acar, rentonhead adıyla çalışan bir Sanat Yönetmeni ve Yazılımcıdır.",
+    intro:
+      "Ürün tasarımı, görsel yönlendirme ve yazılım geliştirmeyi bir araya getirerek dijital ürünleri kimlikten çalışan koda taşır.",
+    body: [
+      "Hasan, İstanbul ve Moskova arasında uluslararası müşteri ve ekiplerle çalışır. Pratiği; Swift ve SwiftUI ile native iOS geliştirme, React ve Next.js web mühendisliği, React Native mobil ürünler, e-ticaret sistemleri ve özel WordPress geliştirmeyi kapsar.",
+      "Yaratıcı tarafta ürün arayüzleri, marka sistemleri ve App Store sunumları için Figma ve Adobe araçlarıyla çalışır. Teknik tarafta sürdürülebilir bileşen sistemleri, uygulama mimarileri ve ürünün yayına çıkması için gereken production yolunu tasarlar.",
+      "rentonhead küresel kişisel pratiktir; tam hizmet ajansı değildir. Türkçe kişisel çalışmalar ayrıca yayımlanırken, Türkiye'deki işletme yazılımları ve yerel dijital hizmetler RentonDiji tarafından temsil edilir.",
+    ],
+    factsTitle: "Doğrudan yanıtlar",
+    facts: [
+      { question: "rentonhead kimdir?", answer: "rentonhead, Hasan Cemil Acar'ın küresel yaratıcı ve teknik kimliğidir." },
+      { question: "Hasan ne tasarlar ve geliştirir?", answer: "Native iOS uygulamaları, dijital ürün arayüzleri, modern web ürünleri, e-ticaret sistemleri, özel WordPress araçları ve App Store görselleri." },
+      { question: "Hangi teknolojileri kullanır?", answer: "Ürünün ihtiyacına göre Swift, SwiftUI, TypeScript, React, Next.js, React Native, Node.js, PHP, WordPress, WooCommerce, PostgreSQL, MySQL ve Redis." },
+      { question: "rentonhead uluslararası çalışıyor mu?", answer: "Evet. Pratik İstanbul ve Moskova arasında konumlanır ve seçili uluslararası projelere açıktır." },
+      { question: "Üç web sitesi nasıl ilişkilidir?", answer: "rentonhead.dev küresel pratiktir; HasanCemilAcar.com.tr Türkçe kişisel portföy, RentonDiji ise Türkiye'deki işletmelere yönelik çözümlerdir." },
+    ],
+  },
+  contact: {
+    eyebrow: "İletişim",
+    title: "Uzun bir form yerine problemle başlayın.",
+    intro: "Ürünü, hizmet ettiği kişileri ve çalışmanın bugün hangi aşamada olduğunu kısaca anlatın.",
+    emailLabel: "Ana iletişim",
+    networkTitle: "Diğer kanallar",
+    availability: "Dünya çapında seçili ürün, mobil ve web iş birliklerine açığım.",
+  },
+  footer: {
+    descriptor: "Sanat Yönetmeni ve Yazılımcı · İstanbul ↔ Moskova · Dünya çapında çalışır",
+    rights: "Tüm hakları saklıdır.",
+    turkish: "Türkçe kişisel portföy",
+    business: "Türkiye için iş çözümleri",
+  },
+  capabilities: [
+    { title: "Ürün ve Yaratıcı Yönlendirme", description: "Çalışmaya tutarlı bir bakış açısı kazandıran konumlandırma, ürün anlatısı, arayüz yönü ve görsel sistemler.", outputs: "Yönlendirme · Ürün çerçevesi · Tasarım sistemleri", tools: "Figma · Adobe Creative Suite" },
+    { title: "Native iOS Geliştirme", description: "Native etkileşim modeli, açık mimari ve App Store'a hazır teslimat yoluyla amaca özel iPhone deneyimleri.", outputs: "SwiftUI uygulamaları · Prototipler · App Store teslimatı", tools: "Swift · SwiftUI · Core Data" },
+    { title: "Web Mühendisliği", description: "Sürdürülebilir bileşen ve içerik mimarisiyle hızlı, erişilebilir ürün ve portföy deneyimleri.", outputs: "Web ürünleri · Frontend · Tasarım sistemleri", tools: "Next.js · React · TypeScript" },
+    { title: "E-ticaret ve WordPress Sistemleri", description: "WordPress ve WooCommerce'i gerçek işletme ihtiyaçlarına göre genişleten ticaret akışları ve özel operasyon araçları.", outputs: "Mağazalar · Eklentiler · Entegrasyonlar", tools: "PHP · WordPress · WooCommerce" },
+    { title: "Marka ve App Store Görselleri", description: "Ürün değerini açık bir görsel hikâyeye dönüştüren kimlik sistemleri, lansman grafikleri ve App Store anlatıları.", outputs: "Kimlik · Lansman kitleri · Mağaza görselleri", tools: "Figma · Photoshop · Illustrator" },
+    { title: "SEO ve Dijital Görünürlük", description: "İnsanların ve yapay zekâ destekli aramanın ürünü doğru anlamasına yardımcı olan teknik temeller ve yapılandırılmış içerik.", outputs: "Teknik SEO · İçerik yapısı · GEO", tools: "Next.js Metadata · Schema.org · Search Console" },
+  ],
+  projects: en.projects.map((project) => {
+    const localized: Record<ProjectSlug, Pick<Project, "category" | "role" | "summary" | "statement" | "problem" | "approach" | "result" | "responsibilities">> = {
+      brewclock: {
+        category: "Native iOS ürünü",
+        role: "Ürün tasarımı · iOS geliştirme",
+        summary: "Tarif zamanlamasını, kahve araçlarını ve günlük ritüeli odaklı bir iOS deneyiminde buluşturan native demleme yardımcısı.",
+        statement: "Zaman, sıra ve dikkat gerektiren bir ritüel için sakin bir native araç.",
+        problem: "Demleme rehberleri çoğu zaman referans bilgiyi, zamanlamayı ve kişisel rutinleri birbirinden ayırır. Ürün, basit bir ritüeli yoğun bir kontrol paneline dönüştürmeden bu eylemleri yakın tutmalıydı.",
+        approach: "Arayüz; hızlı algılama, native kontroller ve kompakt bir görsel dil etrafında tasarlandı. SwiftUI etkileşim ve düzeni iOS platformuyla uyumlu tutarken Core Data yerel sürekliliği destekler.",
+        result: "Yeniden kullanılabilir görsel öğeler, demleme ekranları ve odaklı çekirdeği bozmadan büyüyebilecek bir mimariyle tutarlı bir native ürün temeli.",
+        responsibilities: ["Ürün fikri ve etkileşim yönü", "SwiftUI arayüz geliştirme", "Görsel öğe ve ikon sistemi", "Yerel veri mimarisi"],
+      },
+      "castor-coffee-mobile": {
+        category: "Mobil ticaret ve sadakat",
+        role: "Ürün yönü · Mobil mimari",
+        summary: "Specialty e-ticaret, kafede QR sipariş ve dijital sadakat kimliğini tek sistemde buluşturan mobil ürün.",
+        statement: "Üç müşteri bağlamı, tek tasarım sistemi ve tutarlı bir mobil ürün.",
+        problem: "Evden alışveriş, masadan sipariş ve kasada kimlik tanımlama farklı veri ve ödeme ihtiyaçlarına sahiptir. Bunları ayrı uygulamalar olarak ele almak hem müşteri ilişkisini hem ürün sistemini parçalayacaktı.",
+        approach: "Bağlam değiştirici ürün kaynaklarını, sepet kurallarını ve eylem çağrılarını değiştirirken ortak token ve bileşenler tanıdık deneyimi korur. Tip güvenli servisler mock ve gelecekteki WooCommerce veya kafe endpoint'lerini değiştirilebilir tutar.",
+        result: "Ticaret, QR, sadakat, cüzdan ve abonelik akışları tamamlanmış; canlı backend bağlantılarına hazır, çevrimdışı gösterilebilir bir mobil ürün.",
+        responsibilities: ["Ürün mimarisi ve mod modeli", "Tasarım sistemi aktarımı", "Mobil navigasyon ve state stratejisi", "Ticaret, QR ve sadakat akışları"],
+      },
+      rentonsoft: {
+        category: "Restoran operasyon platformu",
+        role: "Ürün mimarisi · Full-stack geliştirme",
+        summary: "Masa servisi, hızlı satış, mutfak ekranı, kasa, vardiya ve raporlamayı bağlayan rol tabanlı restoran sistemi.",
+        statement: "Sipariş, mutfak ve ödeme arasındaki anlar için gerçek zamanlı operasyon katmanı.",
+        problem: "Restoran iş akışları garson, mutfak, bar ve kasaya bölünür. Her devir teslimde aynı sipariş durumu, açık yetkiler ve servisi yavaşlatmayan güvenli ödeme davranışı gerekir.",
+        approach: "Sistem; tip güvenli monorepo, işlemsel sipariş ve ödeme kuralları, rol tabanlı gerçek zamanlı odalar ve tek bir aşırı yüklü yönetim ekranı yerine her iş için özel yüzeyler kullanır.",
+        result: "Masa ve self-servis akışlarını, mutfak yönlendirmesini, bölünmüş ödemeleri, vardiyaları, iadeleri ve yönetim raporlarını destekleyen yayına hazır operasyon platformu.",
+        responsibilities: ["Sistem ve domain mimarisi", "Rol tabanlı UX akışları", "Gerçek zamanlı ve ödeme state tasarımı", "Production dağıtım modeli"],
+      },
+      okulsistem: {
+        category: "Okul yönetimi ve finans",
+        role: "Ürün mimarisi · Full-stack geliştirme",
+        summary: "Yönetim, veli erişimi, finans, ödemeler, belgeler ve iletişimi kapsayan modüler okul platformu.",
+        statement: "Karmaşık okul operasyonlarının rol tabanlı ve denetlenebilir iş akışlarına dönüştürülmesi.",
+        problem: "Öğrenci kayıtları, taksitler, çevrimiçi ödemeler, makbuzlar, iletişim ve izin verileri farklı yetki ve operasyon riskleri taşır. Platform, okulun günlük işini parçalamadan açık sınırlar kurmalıydı.",
+        approach: "Ürün; rol tabanlı erişim, denetim kayıtları, kuyruklanmış bildirimler ve kart verilerini hiçbir zaman saklamayan ödeme akışlarıyla modüler frontend ve backend uygulamaları olarak yapılandırıldı.",
+        result: "Güvenlik ve izlenebilirliği ürün gereksinimi olarak ele alan; yönetim, öğretmenler, finans ekipleri ve veliler için ölçeklenebilir bir temel.",
+        responsibilities: ["Bilgi mimarisi ve modül sınırları", "Finans ve ödeme iş akışları", "Rol ve yetki modeli", "Frontend ve backend ürün entegrasyonu"],
+      },
+    };
+    return { ...project, ...localized[project.slug] };
+  }),
+  projectLabels: {
+    overview: "Projeye genel bakış",
+    role: "Rol",
+    year: "Yıl",
+    technology: "Teknoloji",
+    problem: "Problem",
+    approach: "Yaklaşım",
+    result: "Sonuç",
+    responsibilities: "Sorumluluklar",
+  },
+};
+
+export const content: Record<PublicLocale, SiteContent> = { tr, en, ru };
 
 export function getContent(locale: PublicLocale) {
   return content[locale];
