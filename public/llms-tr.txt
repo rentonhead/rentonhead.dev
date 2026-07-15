@@ -4,18 +4,18 @@
 
 ## Temel sayfalar
 
-- [Ana sayfa](https://rentonhead.dev/tr)
-- [Projeler](https://rentonhead.dev/tr/work)
-- [Yetkinlikler](https://rentonhead.dev/tr/capabilities)
-- [Hakkımda](https://rentonhead.dev/tr/about)
-- [İletişim](https://rentonhead.dev/tr/contact)
+- [Ana sayfa](https://www.rentonhead.dev/tr)
+- [Projeler](https://www.rentonhead.dev/tr/work)
+- [Yetkinlikler](https://www.rentonhead.dev/tr/capabilities)
+- [Hakkımda](https://www.rentonhead.dev/tr/about)
+- [İletişim](https://www.rentonhead.dev/tr/contact)
 
 ## Seçili projeler
 
-- [BrewClock](https://rentonhead.dev/tr/work/brewclock)
-- [Castor Coffee Mobile](https://rentonhead.dev/tr/work/castor-coffee-mobile)
-- [RentonSoft](https://rentonhead.dev/tr/work/rentonsoft)
-- [OkulSistem](https://rentonhead.dev/tr/work/okulsistem)
+- [BrewClock](https://www.rentonhead.dev/tr/work/brewclock)
+- [Castor Coffee Mobile](https://www.rentonhead.dev/tr/work/castor-coffee-mobile)
+- [RentonSoft](https://www.rentonhead.dev/tr/work/rentonsoft)
+- [OkulSistem](https://www.rentonhead.dev/tr/work/okulsistem)
 
 ## İlgili resmî siteler
 

@@ -4,18 +4,18 @@
 
 ## Основные страницы
 
-- [Главная](https://rentonhead.dev/ru)
-- [Проекты](https://rentonhead.dev/ru/work)
-- [Компетенции](https://rentonhead.dev/ru/capabilities)
-- [Обо мне](https://rentonhead.dev/ru/about)
-- [Контакты](https://rentonhead.dev/ru/contact)
+- [Главная](https://www.rentonhead.dev/ru)
+- [Проекты](https://www.rentonhead.dev/ru/work)
+- [Компетенции](https://www.rentonhead.dev/ru/capabilities)
+- [Обо мне](https://www.rentonhead.dev/ru/about)
+- [Контакты](https://www.rentonhead.dev/ru/contact)
 
 ## Избранные проекты
 
-- [BrewClock](https://rentonhead.dev/ru/work/brewclock)
-- [Castor Coffee Mobile](https://rentonhead.dev/ru/work/castor-coffee-mobile)
-- [RentonSoft](https://rentonhead.dev/ru/work/rentonsoft)
-- [OkulSistem](https://rentonhead.dev/ru/work/okulsistem)
+- [BrewClock](https://www.rentonhead.dev/ru/work/brewclock)
+- [Castor Coffee Mobile](https://www.rentonhead.dev/ru/work/castor-coffee-mobile)
+- [RentonSoft](https://www.rentonhead.dev/ru/work/rentonsoft)
+- [OkulSistem](https://www.rentonhead.dev/ru/work/okulsistem)
 
 ## Связанные официальные сайты
 

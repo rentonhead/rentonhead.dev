@@ -4,7 +4,7 @@ import { isPublicLocale } from "@/lib/site";
 
 type Locale = "tr" | "en" | "ru";
 
-const SITE_URL = "https://rentonhead.dev";
+const SITE_URL = "https://www.rentonhead.dev";
 
 export async function generateMetadata({
   params,

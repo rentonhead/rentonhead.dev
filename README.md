@@ -30,6 +30,6 @@ npm run validate
 - Turkish, English and Russian are published at `/tr`, `/en` and `/ru` with matching route structures.
 - Legacy `/tr|en|ru/projects` routes permanently redirect to the matching `/work` route.
 - [hasancemilacar.com.tr](https://hasancemilacar.com.tr) remains the related Turkish personal profile; rentonhead.dev now also provides a complete Turkish version of the global portfolio.
-- `rentonhead.dev` is the canonical non-www host.
+- Vercel routes the apex domain to `www.rentonhead.dev`; metadata, sitemap and structured data use that active canonical host.
 
 SEO metadata, sitemap, robots policy, manifest, JSON-LD and AI discovery documents are generated or maintained from the App Router source. Vercel preview deployments are configured as `noindex`.
