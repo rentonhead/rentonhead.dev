@@ -1,7 +1,9 @@
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
-export const runtime = "edge";
+// Keep the generated image on the Node.js runtime. The Edge bundle exceeds
+// the 1 MB function limit on the current Vercel plan by a small margin.
+export const runtime = "nodejs";
 
 export function GET(request: NextRequest) {
   const locale = request.nextUrl.searchParams.get("locale") === "ru" ? "ru" : "en";
