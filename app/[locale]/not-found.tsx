@@ -1,26 +1,11 @@
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
 export default function NotFound() {
-  const t = useTranslations("notFound");
-
   return (
-    <div
-      style={{
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <h1>{t("description")}</h1>
-      <Link
-        href="/"
-        style={{ textDecoration: "underline", fontSize: 20, marginTop: 8 }}
-      >
-        {t("goHome")}
-      </Link>
-    </div>
+    <section className="page-shell page-hero">
+      <p className="eyebrow">404 · Not found</p>
+      <h1>This route left the system.</h1>
+      <p><Link className="button button-primary" href="/en">Return to rentonhead <span aria-hidden="true">↗</span></Link></p>
+    </section>
   );
 }

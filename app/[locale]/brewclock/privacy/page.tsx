@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { isPublicLocale } from "@/lib/site";
+import enMessages from "@/messages/en.json";
+import ruMessages from "@/messages/ru.json";
 
 const SITE_URL = "https://rentonhead.dev";
 
@@ -10,42 +13,46 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata.brewclockPrivacy" });
+  if (!isPublicLocale(locale)) return {};
+  const metadata = locale === "ru" ? ruMessages.metadata.brewclockPrivacy : enMessages.metadata.brewclockPrivacy;
+  const title = metadata.title.replace(" | rentonhead", "");
   const url = `${SITE_URL}/${locale}/brewclock/privacy`;
+  const ogImage = `${SITE_URL}/og?locale=${locale}&title=${encodeURIComponent(title)}`;
   return {
-    title: t("title"),
-    description: t("description"),
+    title,
+    description: metadata.description,
     alternates: {
       canonical: url,
       languages: {
         en: `${SITE_URL}/en/brewclock/privacy`,
-        tr: `${SITE_URL}/tr/brewclock/privacy`,
         ru: `${SITE_URL}/ru/brewclock/privacy`,
         "x-default": `${SITE_URL}/en/brewclock/privacy`,
       },
     },
     openGraph: {
-      title: t("title"),
-      description: t("description"),
+      title,
+      description: metadata.description,
       url,
       type: "article",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
+    twitter: { card: "summary_large_image", title, description: metadata.description, images: [ogImage] },
   };
 }
 
 export default async function BrewClockPrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations("privacy");
+  if (!isPublicLocale(locale)) notFound();
+  const privacy = locale === "ru" ? ruMessages.privacy : enMessages.privacy;
+  const t = (key: keyof typeof enMessages.privacy) => privacy[key];
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: t("breadcrumbProjects"), item: `${SITE_URL}/${locale}/projects` },
-      { "@type": "ListItem", position: 3, name: t("breadcrumbMobile"), item: `${SITE_URL}/${locale}/projects/mobile` },
-      { "@type": "ListItem", position: 4, name: t("breadcrumbPrivacy"), item: `${SITE_URL}/${locale}/brewclock/privacy` },
+      { "@type": "ListItem", position: 1, name: locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t("breadcrumbProjects"), item: `${SITE_URL}/${locale}/work` },
+      { "@type": "ListItem", position: 3, name: t("breadcrumbPrivacy"), item: `${SITE_URL}/${locale}/brewclock/privacy` },
     ],
   };
 
@@ -68,7 +75,7 @@ export default async function BrewClockPrivacyPage({ params }: { params: Promise
     { key: "cloud", icon: <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /> },
     { key: "location", icon: <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> },
     { key: "photo", icon: <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> },
-  ];
+  ] as const;
 
   const sections = [
     {
@@ -135,9 +142,9 @@ export default async function BrewClockPrivacyPage({ params }: { params: Promise
         dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyPageLd) }}
       />
       <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 pt-6 mb-10">
-        <Link href="/projects" className="hover:text-teal-500 transition-colors duration-150">{t("breadcrumbProjects")}</Link>
+        <Link href={`/${locale}/work`} className="hover:text-teal-500 transition-colors duration-150">{t("breadcrumbProjects")}</Link>
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-        <Link href="/projects/mobile" className="hover:text-teal-500 transition-colors duration-150">{t("breadcrumbMobile")}</Link>
+        <Link href={`/${locale}/work/brewclock`} className="hover:text-teal-500 transition-colors duration-150">{t("breadcrumbMobile")}</Link>
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
         <span className="text-gray-600 dark:text-gray-400 font-medium">{t("breadcrumbPrivacy")}</span>
       </nav>

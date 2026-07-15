@@ -1,16 +1,33 @@
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
+import { NextRequest, NextResponse } from "next/server";
+import { isPublicLocale } from "./lib/site";
 
-export default createMiddleware(routing);
+const PUBLIC_FILE = /\.[^/]+$/;
+
+export function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_vercel") ||
+    pathname === "/og" ||
+    PUBLIC_FILE.test(pathname)
+  ) {
+    return NextResponse.next();
+  }
+
+  if (pathname === "/") {
+    return NextResponse.redirect(new URL("/en", request.url), 308);
+  }
+
+  const firstSegment = pathname.split("/")[1];
+  if (!isPublicLocale(firstSegment) && firstSegment !== "tr") {
+    return NextResponse.redirect(new URL(`/en${pathname}`, request.url), 308);
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: [
-    '/',
-    '/(en|tr|ru)/:path*',
-    // Match all pathnames except for
-    // - … if they start with `/api`, `/_next` or `/_vercel`
-    // - … the ones containing a dot (e.g. `favicon.ico`)
-    '/((?!api|_next|_vercel|.*\\..*).*)'
-  ]
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };

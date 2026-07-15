@@ -1,91 +1,29 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import ContactForm from "./ContactForm";
+import { notFound } from "next/navigation";
+import { getContent } from "@/lib/content";
+import { PERSON, isPublicLocale } from "@/lib/site";
+import { pageMetadata } from "@/lib/metadata";
+import Breadcrumb from "../components/Breadcrumb";
 
-const SITE_URL = "https://rentonhead.dev";
-
-// Route segment config — moved here from app/actions/contact.ts because Next 16's
-// Turbopack only allows async function exports from "use server" files.
-export const runtime = "nodejs";
-export const maxDuration = 20;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata.contact" });
-  const url = `${SITE_URL}/${locale}/contact`;
-  return {
-    title: t("title"),
-    description: t("description"),
-    keywords: t("keywords").split(",").map((k) => k.trim()),
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${SITE_URL}/en/contact`,
-        tr: `${SITE_URL}/tr/contact`,
-        ru: `${SITE_URL}/ru/contact`,
-        "x-default": `${SITE_URL}/en/contact`,
-      },
-    },
-    openGraph: {
-      title: t("title"),
-      description: t("description"),
-      url,
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
-    },
-  };
+  if (!isPublicLocale(locale)) return {};
+  const copy = getContent(locale);
+  return pageMetadata({ locale, path: "/contact", title: copy.contact.title, description: copy.contact.intro });
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  setRequestLocale(locale);
-
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: locale === "tr" ? "Ana Sayfa" : locale === "ru" ? "Главная" : "Home", item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: locale === "tr" ? "İletişim" : locale === "ru" ? "Контакты" : "Contact", item: `${SITE_URL}/${locale}/contact` },
-    ],
-  };
-
-  const contactPointLd = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    url: `${SITE_URL}/${locale}/contact`,
-    mainEntity: {
-      "@type": "Person",
-      "@id": `${SITE_URL}/#person`,
-      name: "Hasan Cemil Acar",
-      email: "mailto:hasancemilacar@gmail.com",
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "customer support",
-        email: "hasancemilacar@gmail.com",
-        availableLanguage: ["English", "Turkish", "Russian"],
-      },
-    },
-  };
-
+  if (!isPublicLocale(locale)) notFound();
+  const copy = getContent(locale);
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPointLd) }}
-      />
-      <ContactForm />
-    </>
+    <div className="page-shell contact-page">
+      <Breadcrumb locale={locale} current={copy.nav.contact} path="/contact" />
+      <header className="page-hero"><p className="eyebrow">{copy.contact.eyebrow}</p><h1>{copy.contact.title}</h1><p>{copy.contact.intro}</p></header>
+      <section className="contact-panel">
+        <div><p className="eyebrow">{copy.contact.emailLabel}</p><a className="contact-email" href={`mailto:${PERSON.email}?subject=Project%20enquiry%20from%20rentonhead.dev`}>{PERSON.email}<span aria-hidden="true">↗</span></a><p>{copy.contact.availability}</p></div>
+        <div><p className="eyebrow">{copy.contact.networkTitle}</p><a href={PERSON.github}>GitHub <span aria-hidden="true">↗</span></a><a href={PERSON.linkedin}>LinkedIn <span aria-hidden="true">↗</span></a><a href={PERSON.turkishPortfolio}>{copy.footer.turkish} <span aria-hidden="true">↗</span></a></div>
+      </section>
+    </div>
   );
 }
