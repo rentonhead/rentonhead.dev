@@ -25,7 +25,7 @@ for (const locale of ["tr", "en", "ru"]) {
     const canonicalRoute = path === "" ? `${route}/` : route;
     assert.match(html, new RegExp(`<html[^>]+lang=["']${locale}["']`), `${route} should set html lang`);
     assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1, `${route} should expose one h1`);
-    assert.match(html, new RegExp(`<link[^>]+rel=["']canonical["'][^>]+href=["']https://rentonhead\\.dev${canonicalRoute.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`), `${route} should have a self-canonical`);
+    assert.match(html, new RegExp(`<link[^>]+rel=["']canonical["'][^>]+href=["']https://www\\.rentonhead\\.dev${canonicalRoute.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`), `${route} should have a self-canonical`);
     assert.match(html, /hreflang=["']en["']/i, `${route} should reference English`);
     assert.match(html, /hreflang=["']ru["']/i, `${route} should reference Russian`);
     assert.match(html, /hreflang=["']tr["']/i, `${route} should reference Turkish`);
@@ -68,13 +68,13 @@ for (const [from, to] of redirectChecks) {
 }
 
 const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
-assert.match(sitemap, /https:\/\/rentonhead\.dev\/en\/work\/brewclock/);
-assert.match(sitemap, /https:\/\/rentonhead\.dev\/tr\/work\/brewclock/);
+assert.match(sitemap, /https:\/\/www\.rentonhead\.dev\/en\/work\/brewclock/);
+assert.match(sitemap, /https:\/\/www\.rentonhead\.dev\/tr\/work\/brewclock/);
 assert.match(sitemap, /hreflang="ru"/);
 assert.match(sitemap, /hreflang="tr"/);
 
 const robots = await (await fetch(`${base}/robots.txt`)).text();
-assert.match(robots, /Sitemap: https:\/\/rentonhead\.dev\/sitemap\.xml/);
+assert.match(robots, /Sitemap: https:\/\/www\.rentonhead\.dev\/sitemap\.xml/);
 
 for (const path of ["/manifest.webmanifest", "/llms.txt", "/llms-full.txt", "/llms-ru.txt", "/llms-tr.txt"]) {
   assert.equal((await fetch(`${base}${path}`)).status, 200, `${path} should return 200`);

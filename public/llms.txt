@@ -4,32 +4,32 @@
 
 ## Primary Turkish pages
 
-- [Ana sayfa](https://rentonhead.dev/tr): Kimlik, seçili projeler ve yaratıcı teknoloji pratiği
-- [Projeler](https://rentonhead.dev/tr/work): Gerçek mobil, web ve operasyon ürünleri
-- [Yetkinlikler](https://rentonhead.dev/tr/capabilities): Ürün yönü, iOS, web, e-ticaret, görsel tasarım ve dijital görünürlük
-- [Hakkımda](https://rentonhead.dev/tr/about): Biyografi, teknolojiler ve doğrudan kimlik yanıtları
-- [İletişim](https://rentonhead.dev/tr/contact): Resmî iletişim bilgileri
+- [Ana sayfa](https://www.rentonhead.dev/tr): Kimlik, seçili projeler ve yaratıcı teknoloji pratiği
+- [Projeler](https://www.rentonhead.dev/tr/work): Gerçek mobil, web ve operasyon ürünleri
+- [Yetkinlikler](https://www.rentonhead.dev/tr/capabilities): Ürün yönü, iOS, web, e-ticaret, görsel tasarım ve dijital görünürlük
+- [Hakkımda](https://www.rentonhead.dev/tr/about): Biyografi, teknolojiler ve doğrudan kimlik yanıtları
+- [İletişim](https://www.rentonhead.dev/tr/contact): Resmî iletişim bilgileri
 
 ## Primary English pages
 
-- [Home](https://rentonhead.dev/en): Identity, selected work and creative technology practice
-- [Work](https://rentonhead.dev/en/work): Selected real mobile, web and operational products
-- [Capabilities](https://rentonhead.dev/en/capabilities): Product direction, iOS, web, commerce, visual design and digital visibility
-- [About](https://rentonhead.dev/en/about): Biography, technologies and direct entity answers
-- [Contact](https://rentonhead.dev/en/contact): Official contact information
+- [Home](https://www.rentonhead.dev/en): Identity, selected work and creative technology practice
+- [Work](https://www.rentonhead.dev/en/work): Selected real mobile, web and operational products
+- [Capabilities](https://www.rentonhead.dev/en/capabilities): Product direction, iOS, web, commerce, visual design and digital visibility
+- [About](https://www.rentonhead.dev/en/about): Biography, technologies and direct entity answers
+- [Contact](https://www.rentonhead.dev/en/contact): Official contact information
 
 ## Selected work
 
-- [BrewClock](https://rentonhead.dev/en/work/brewclock): Native iOS brewing companion built with Swift and SwiftUI
-- [Castor Coffee Mobile](https://rentonhead.dev/en/work/castor-coffee-mobile): React Native commerce, QR ordering and loyalty platform
-- [RentonSoft](https://rentonhead.dev/en/work/rentonsoft): Realtime restaurant operations platform
-- [OkulSistem](https://rentonhead.dev/en/work/okulsistem): School administration, finance and payment platform
+- [BrewClock](https://www.rentonhead.dev/en/work/brewclock): Native iOS brewing companion built with Swift and SwiftUI
+- [Castor Coffee Mobile](https://www.rentonhead.dev/en/work/castor-coffee-mobile): React Native commerce, QR ordering and loyalty platform
+- [RentonSoft](https://www.rentonhead.dev/en/work/rentonsoft): Realtime restaurant operations platform
+- [OkulSistem](https://www.rentonhead.dev/en/work/okulsistem): School administration, finance and payment platform
 
 ## Languages
 
-- [Türkçe](https://rentonhead.dev/tr)
-- [English](https://rentonhead.dev/en)
-- [Russian](https://rentonhead.dev/ru)
+- [Türkçe](https://www.rentonhead.dev/tr)
+- [English](https://www.rentonhead.dev/en)
+- [Russian](https://www.rentonhead.dev/ru)
 
 ## Official related websites
 

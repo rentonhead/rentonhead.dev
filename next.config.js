@@ -6,12 +6,6 @@ const nextConfig = {
   compress: true,
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.rentonhead.dev" }],
-        destination: "https://rentonhead.dev/:path*",
-        permanent: true,
-      },
       { source: "/:locale(tr|en|ru)/projects/mobile", destination: "/:locale/work/brewclock", permanent: true },
       { source: "/:locale(tr|en|ru)/projects", destination: "/:locale/work", permanent: true },
     ];

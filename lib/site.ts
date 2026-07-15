@@ -1,4 +1,4 @@
-export const SITE_URL = "https://rentonhead.dev";
+export const SITE_URL = "https://www.rentonhead.dev";
 export const DEFAULT_LOCALE = "tr" as const;
 export const PUBLIC_LOCALES = ["tr", "en", "ru"] as const;
 
